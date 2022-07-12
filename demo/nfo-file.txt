@@ -1,0 +1,27 @@
+-------------
+:: rage OS ::
+-------------
+
+Release Date: 2022-07-09
+Version: 0.01-horse
+
+Fuck-shit-up Engineer: Losso
+
+--------------
+:: Foreword ::
+--------------
+
+Well, sorry, Hoffman :). This was just too tempting a target.
+Had a lot of fun decompiling the Rose bytecode and figuring
+out the bitmap formats. Thanks for providing the original
+ProTracker mod with the release!
+
+-------------------------
+:: System Requirements ::
+-------------------------
+
+Should work on OCS and up with 512k+512k RAM. I'm pretty sure
+I messed something up with the engine initialization along
+the way; will crash your system and might not work after reboot.
+
+For stability and a polished user experience, use the original!

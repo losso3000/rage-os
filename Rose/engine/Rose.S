@@ -1,0 +1,288 @@
+;              T         T               T
+
+
+	include	Engine.S
+
+	ifnd	COMPATIBILITY
+COMPATIBILITY	set	1
+	endif
+
+	section	Code,code
+
+reg	set	$000
+regval	macro
+	dc.w	\1-reg,\2
+reg	set	\1+2
+	endm
+
+RegisterData:
+	regval	$02e,$0002
+	regval	$042,$0000
+	regval	$044,$ffff
+	regval	$046,$0000
+	regval	$08e,(TOPPOS<<8)+LEFTPOS
+	regval	$090,((TOPPOS+SCREENHEIGHT-$100)<<8)+(LEFTPOS+DISPLAYWIDTH-$100)
+	regval	$092,((LEFTPOS>>4)-1)<<3
+	regval	$094,((LEFTPOS>>4)+(DISPLAYWIDTH>>4)-2)<<3
+	if	COMPATIBILITY=2
+	regval	$100,$4600
+	else
+BPLCON0:	regval	$100,$7600
+	endif
+	regval	$102,$0000
+	regval	$104,$0040
+	if	COMPATIBILITY>=1
+	regval	$106,$0800
+	else
+	regval	$106,$0000
+	endif
+	regval	$108,(SCREENWIDTH-DISPLAYWIDTH)/8
+	regval	$10a,(SCREENWIDTH-DISPLAYWIDTH)/8
+	if	COMPATIBILITY>=1
+	regval	$10c,$0800
+	endif
+	if	COMPATIBILITY<=1
+	regval	$118,$ffff
+	regval	$11a,$0000
+	endif
+color	set	0
+	rept	16
+	regval	$180+color*2,$0000
+color	set	color+1
+	endr
+	if	COMPATIBILITY>=1
+	regval	$1fc,$0000
+	endif
+RegisterData_End:
+
+
+RoseInit:
+	; A1 = Color Script
+	; A2 = Constants
+	; A3 = Bytecode
+	; A4 = Sinus
+	; A5 = Rose Chip Space
+	; A6 = Rose Space
+
+	; Clear memory
+	if	CLEARMEM
+	move.l	a5,a0
+	move.l	#ROSE_CHIPSIZE/4,d0
+.cloop1:	clr.l	(a0)+
+	subq.l	#1,d0
+	bgt.b	.cloop1
+
+	move.l	a6,a0
+	move.l	#ROSE_FASTSIZE/4,d0
+.cloop2:	clr.l	(a0)+
+	subq.l	#1,d0
+	bgt.b	.cloop2
+	endif
+
+	; Initialize code and data pointers
+
+	lea	PutCircle(pc),a0
+	;move.l	a0,r_PutCircle(a6)
+	;move.l	a1,r_ColorScript(a6)
+	;move.l	a2,r_Constants(a6)
+	;move.l	a3,r_Bytecode(a6)
+	;move.l	a4,r_Sinus(a6)
+	movem.l	a0-a4,(a6)
+
+	; Initialize chip mem pointers
+
+	lea.l	r_Circles(a6),a1
+	move.l	a5,d0
+
+	move.l	d0,d1
+	add.l	#$10000-1,d1
+	and.l	#-$10000,d1
+	;move.l	d1,r_Circles(a6)
+	move.l	d1,(a1)+
+
+	move.l	d1,d2
+	add.l	#$10000,d2
+	;move.l	d2,r_Screen(a6)
+	move.l	d2,(a1)+
+	add.l	#SCREENSIZE,d2
+
+	move.l	d2,a0
+	cmp.w	#(-COPPERBUFFER)&$FFFF,d0
+	bhi.b	.copperslast
+	if	COPPERBUFFER&$10000
+	addq.w	#1,r_Circles(a6)
+	addq.w	#1,r_Screen(a6)
+	endif
+	move.l	a5,a0
+.copperslast:
+	;move.l	a0,r_Coppers(a6)
+	move.l	a0,(a1)+
+	move.l	#-2,(a0)+
+	;move.l	a0,r_CopperLimit(a6)
+	move.l	a0,(a1)+
+	move.l	#-2,(a0)+
+	;move.l	a0,r_CopperWrite(a6)
+	move.l	a0,(a1)+
+
+	add.l	#COPPERBUFFER-MARGIN-4,a0
+	;move.l	a0,r_CoppersEnd(a6)
+	move.l	a0,(a1)+
+
+	; Initialize engine and circles
+
+	bsr.w	InitEngine
+	bsr.w	MakeCircles
+
+	; Flush cache if possible
+
+	if	COMPATIBILITY>=1
+	move.l	$4.w,a6
+	if	COMPATIBILITY=1
+	cmp.w	#37,20(a6)
+	blo.b	.noflush
+	endif
+	jsr	-636(a6)
+.noflush:
+	endif
+
+CopperDanger:
+	move.w	#$0000,$dff02e
+	rts
+
+	
+RoseMain:
+	; A6 = Rose Space
+	lea.l	$dff000,a3
+	move.l	r_Screen(a6),$048(a3)
+	move.l	r_Circles(a6),$050(a3)
+	move.l	r_Screen(a6),$054(a3)
+	move.l	r_Coppers(a6),a0
+	move.l	a0,$080(a3)
+	addq.l	#4,a0
+	move.l	a0,$084(a3)
+	move.w	a0,$088(a3)
+
+	lea	RegisterData(pc),a0
+	if	COMPATIBILITY=1
+	btst.b	#1,$004(a3)
+	beq.b	.noaga
+	move.w	#$4600,BPLCON0+2-RegisterData(a0)
+.noaga:
+	endif
+	moveq.l	#(RegisterData_End-RegisterData)/4-1,d7
+.copperloop:	add.w	(a0)+,a3
+	move.w	(a0)+,(a3)+
+	dbf	d7,.copperloop
+
+	move.l	r_FrameCounter(a6),d7
+MainLoop:
+	bsr.w	InitCircleBuffer
+	bsr.w	RunFrame
+
+	move.l	r_CopperWrite(a6),a3
+	move.l	a6,a4
+	add.l	#r_CopperPtr,a4
+
+	COPBUFSTALL
+
+	move.l	a3,-(a7)
+
+	bsr.w	CollectCircles
+	move.l	#-2,(a3)+
+
+	move.l	d7,d0
+	lsl.l	#2,d0
+	move.l	(a7)+,(a4,d0.l)
+
+	move.l	a3,r_CopperWrite(a6)
+
+	addq.l	#1,d7
+	move.l	d7,r_FrameCounter(a6)
+	cmp.l	#MAX_FRAMES-1,d7
+	blt.b	MainLoop
+
+	st.b	r_Ready(a6)
+
+.exitwait:	cmp.l	r_VBlank(a6),d7
+	bgt.b	.exitwait
+	rts
+
+
+RoseInterrupt:
+	; A6 = Rose Space
+	lea.l	$dff000,a3
+	move.l	a6,a4
+	add.l	#r_CopperPtr,a4
+
+	; Set current copperlist as write limit
+	lea.l	r_CopperLimit(a6),a0
+	move.l	r_VBlank(a6),d0
+	cmp.l	#MAX_FRAMES,d0
+	bge.b	.lastcopper
+	lsl.l	#2,d0
+	move.l	(a4,d0.l),d1
+	beq.b	.lastcopper
+	move.l	d1,(a0)
+.lastcopper:
+	; Set bitplane pointers
+	move.l	r_Screen(a6),a1
+	add.w	#GUARDBAND/8,a1
+	lea.l	$0e0(a3),a0
+	move.l	a1,(a0)+
+	add.w	#SCREENWIDTH*SCREENHEIGHT/8,a1
+	move.l	a1,(a0)+
+	add.w	#SCREENWIDTH*SCREENHEIGHT/8,a1
+	move.l	a1,(a0)+
+	add.w	#SCREENWIDTH*SCREENHEIGHT/8,a1
+	move.l	a1,(a0)+
+
+	; Next frame
+	addq.l	#1,r_VBlank(a6)
+
+; LOSSO
+ move.l d0,-(a7)
+ move.l r_VBlank(a6),d0
+ move.w d0,2
+ divu #5,d0	; tempo F05 -> number of rows so far
+ and.w #63,d0
+ move.w d0,0	; row in current pattern
+ move.l (a7)+,d0
+
+	beq.b	.colorsdone
+
+	; Execute color script
+	if	COMPATIBILITY<=1
+	lea.l	$188(a3),a0
+	else
+	lea.l	$190(a3),a0
+	endif
+	if	COMPATIBILITY=1
+	btst.b	#1,$004(a3)
+	beq.b	.noaga
+	addq.l	#8,a0
+.noaga:
+	endif
+	move.l	r_ColorScript(a6),a1
+	addq.w	#1,(a1)+
+	bmi.b	.colorsdone
+.putcolor:	move.w	(a1)+,d2
+	move.w	d2,d1
+	rol.w	#5,d1
+	and.w	#14,d1
+	move.w	d2,(a0,d1.w)
+	tst.w	(a1)
+	bpl.b	.putcolor
+	move.l	a1,r_ColorScript(a6)
+.colorsdone:
+
+	; Set next copperlist
+	move.l	r_Coppers(a6),a0
+	move.l	r_VBlank(a6),d0
+	cmp.l	#MAX_FRAMES,d0
+	bge.b	.nocopper
+	lsl.l	#2,d0
+	move.l	(a4,d0.l),d1
+	beq.b	.nocopper
+	move.l	d1,a0
+.nocopper:	move.l	a0,$080(a3)
+	rts

@@ -1,0 +1,6891 @@
+#
+# bytecode
+#
+
+# mod starts: framecount = ~102
+# first drive bump: ~ 400
+# first blip: ~ 407 <-- that's not the frame counter?!
+
+
+proc main
+	64 :: 5 :: * :: wait # 1 pattern
+
+	<title_sequence>
+	fork(0)					# <title_sequence>()
+##############################################################################
+#
+#
+#	eyes n shit
+#
+#
+##############################################################################
+	64 :: 5 :: * :: wait # 1 pattern
+	<eyes_n_shit> :: fork(0)
+##############################################################################
+#
+#
+#	wipe out intro shizzle
+#
+#
+##############################################################################
+	64 :: 5 :: * :: wait # 1 pattern
+	32 :: 5 :: * :: wait # 1 pattern
+	<title_wipeout>
+	fork(0)
+##############################################################################
+#
+#
+#	login sequence
+#
+#
+##############################################################################
+	32 :: 5 :: * :: wait
+	0
+	set state.face				# set state.face 0
+	<draw_username_hoffman_password>
+	fork(0)					# <draw_username_hoffman_password>()
+
+	64 :: 5 :: * :: wait	# pattern: type type
+	64 :: 5 :: * :: wait	# pattern: type angrily
+	64 :: 5 :: * :: wait	# pattern: backspace, type losso
+
+##############################################################################
+#
+#
+#	start UI
+#
+#
+##############################################################################
+
+	<loading_user_profile_and_main_ui> :: fork(0)
+
+##############################################################################
+#
+#
+#	select tracker
+#
+#
+##############################################################################
+
+	5
+	64
+	*					# 64*5
+	wait					# wait 64*5
+	<icon_highlighting_search_messaging_demos_tracker>
+	fork(0)					# <icon_highlighting_search_messaging_demos_tracker>()
+	5
+	43
+	*					# 43*5
+	wait					# wait 43*5
+	3
+	<loading_xxx_and_title_upper_left>
+	fork(1)					# <loading_xxx_and_title_upper_left>(3)
+	5
+	48
+	*					# 48*5
+	wait					# wait 48*5
+	<draw_tracker_title_and_pattern>
+	fork(0)					# <draw_tracker_title_and_pattern>()
+	5
+	42
+	*					# 42*5
+	wait					# wait 42*5
+	<tracker_play_new_voice_message_and_stop>
+	fork(0)					# <tracker_play_new_voice_message_and_stop>()
+
+##############################################################################
+#
+#
+#	play voice message
+#
+#
+##############################################################################
+
+	6
+	32
+	*					# 32*6
+	wait					# wait 32*6
+	6
+	56
+	*					# 56*6
+	wait					# wait 56*6
+	<icon_highlighting_tracker_demos_messaging>
+	fork(0)					# <icon_highlighting_tracker_demos_messaging>()
+	5
+	32
+	*					# 32*5
+	wait					# wait 32*5
+	1
+	<loading_xxx_and_title_upper_left>
+	fork(1)					# <loading_xxx_and_title_upper_left>(1)
+	5
+	48
+	*					# 48*5
+	wait					# wait 48*5
+	<speech_message_part_and_crash>
+	fork(0)					# <speech_message_part_and_crash>()
+
+	5
+	64
+	*					# 64*5
+	wait					# wait 64*5
+	5
+	64
+	*					# 64*5
+	wait					# wait 64*5
+	5
+	64
+	*					# 64*5
+	wait					# wait 64*5
+	5
+	8
+	*					# 8*5
+	wait					# wait 8*5
+
+##############################################################################
+#
+#
+#	scanner a.k.a. horse porn
+#
+#
+##############################################################################
+
+	<icon_highlighting_scanner>
+	fork(0)					# <icon_highlighting_scanner>()
+
+	200 :: wait
+
+	<unclear_after_scanner> :: fork(0)
+
+##############################################################################
+#
+#
+#	horse porn title
+#
+#
+##############################################################################
+
+	<endpart> :: fork(0)
+
+	end
+
+proc eyes_n_shit
+
+ # move left eye by -3 +6 in 10 steps
+ 179
+ set state.x
+ 62
+ set state.y
+ 0.15
+ ~
+ 0.3
+ 20
+ 100
+ <eye_move>	# dx dy steps wait_after_first_draw
+ fork(4)
+ # move right eye by -7 +7
+ 196
+ set state.x
+ 62
+ set state.y
+ 0.35
+ ~
+ 0.35
+ 20
+ 100
+ <eye_move>
+ fork(4)
+
+ 200
+ wait
+
+ # mouth
+ 187
+ set state.x
+ 82
+ set state.y
+ 7
+ set state.size
+ 0
+ set state.tint
+ draw
+
+ 176			# mouth
+ set state.x
+ 83
+ set state.y
+ 240
+ set state.face
+ 0
+ set state.size
+ 3
+ set state.tint
+ 22
+ 2
+ 1
+ <drawline_len_speed_curve>
+ fork(3)
+
+ 10
+ wait
+
+ 3
+ set state.tint
+ 0
+ set state.size
+ 184			# right eyebrow
+ set state.x
+ 62
+ set state.y
+ 234
+ set state.face
+ 10
+ 2
+ <drawline_len_speed>
+ fork(2)
+
+ 182			# left eyebrow
+ set state.x
+ 62
+ set state.y
+ 150
+ set state.face
+ 10
+ 2
+ <drawline_len_speed>
+ fork(2)
+
+ 30
+ wait
+
+	154		# highlight T
+	set state.x
+	102
+	set state.y
+	3
+	set state.tint
+	<highlight_t>
+	fork(0)
+
+	20
+	wait
+	0
+	set state.tint
+	<highlight_t>
+	fork(0)
+
+	20
+	wait
+	3
+	set state.tint
+	<highlight_t>
+	fork(0)
+
+	20
+	wait
+	0
+	set state.tint
+	<highlight_t>
+	fork(0)
+
+ 50
+ wait
+
+	# cross T - /
+	224
+	set state.face
+	18
+	move
+	96
+	set state.face
+	2
+	set state.tint
+	1.5
+	set state.size
+	 35
+	 1
+	 0.4
+	 ~
+	 <drawline_len_speed_curve>
+	 fork(3)
+	70		# cross T \
+	wait
+	120
+	set state.face
+	20
+	move
+	30
+	set state.face
+	 30
+	 1
+	 0.5
+	 <drawline_len_speed_curve>
+	 fork(3)
+	end
+
+proc endpart
+	200 :: wait
+
+	2 :: set state.tint
+	<atw_pictures> :: fork(0)
+	200 :: wait
+	<a_romantic> :: fork(0)
+	200 :: wait
+
+	3 :: set state.tint
+	1 :: set state.size
+	<write_poem> :: fork(0)
+
+	500 :: wait
+
+	<buffering> :: fork(0)
+	200 :: wait
+	<buf_text> :: fork(0)
+
+	5 :: 64 :: * :: wait
+
+	<crasho> :: fork(0)
+
+	5 :: 64 :: * :: wait
+
+	<realcrash> :: fork(0)
+
+#	<unclear_after_scanner> :: fork(0)
+	end
+
+proc clearscreen
+	#
+	# 320 * 180 -> 10 * 5 32px plots
+	#
+	16 :: set state.size
+	16 :: ~ :: set state.y
+	16 :: set state.x :: state.y :: 32 :: + :: set state.y
+		plot :: state.x :: 32 :: + :: set state.x
+		plot :: state.x :: 32 :: + :: set state.x
+		plot :: state.x :: 32 :: + :: set state.x
+		plot :: state.x :: 32 :: + :: set state.x
+		plot :: state.x :: 32 :: + :: set state.x
+		plot :: state.x :: 32 :: + :: set state.x
+		plot :: state.x :: 32 :: + :: set state.x
+		plot :: state.x :: 32 :: + :: set state.x
+		plot :: state.x :: 32 :: + :: set state.x
+		plot
+		1 :: wait
+	16 :: set state.x :: state.y :: 32 :: + :: set state.y
+		plot :: state.x :: 32 :: + :: set state.x
+		plot :: state.x :: 32 :: + :: set state.x
+		plot :: state.x :: 32 :: + :: set state.x
+		plot :: state.x :: 32 :: + :: set state.x
+		plot :: state.x :: 32 :: + :: set state.x
+		plot :: state.x :: 32 :: + :: set state.x
+		plot :: state.x :: 32 :: + :: set state.x
+		plot :: state.x :: 32 :: + :: set state.x
+		plot :: state.x :: 32 :: + :: set state.x
+		plot
+		1 :: wait
+	16 :: set state.x :: state.y :: 32 :: + :: set state.y
+		plot :: state.x :: 32 :: + :: set state.x
+		plot :: state.x :: 32 :: + :: set state.x
+		plot :: state.x :: 32 :: + :: set state.x
+		plot :: state.x :: 32 :: + :: set state.x
+		plot :: state.x :: 32 :: + :: set state.x
+		plot :: state.x :: 32 :: + :: set state.x
+		plot :: state.x :: 32 :: + :: set state.x
+		plot :: state.x :: 32 :: + :: set state.x
+		plot :: state.x :: 32 :: + :: set state.x
+		plot
+		1 :: wait
+	16 :: set state.x :: state.y :: 32 :: + :: set state.y
+		plot :: state.x :: 32 :: + :: set state.x
+		plot :: state.x :: 32 :: + :: set state.x
+		plot :: state.x :: 32 :: + :: set state.x
+		plot :: state.x :: 32 :: + :: set state.x
+		plot :: state.x :: 32 :: + :: set state.x
+		plot :: state.x :: 32 :: + :: set state.x
+		plot :: state.x :: 32 :: + :: set state.x
+		plot :: state.x :: 32 :: + :: set state.x
+		plot :: state.x :: 32 :: + :: set state.x
+		plot
+		1 :: wait
+	16 :: set state.x :: state.y :: 32 :: + :: set state.y
+		plot :: state.x :: 32 :: + :: set state.x
+		plot :: state.x :: 32 :: + :: set state.x
+		plot :: state.x :: 32 :: + :: set state.x
+		plot :: state.x :: 32 :: + :: set state.x
+		plot :: state.x :: 32 :: + :: set state.x
+		plot :: state.x :: 32 :: + :: set state.x
+		plot :: state.x :: 32 :: + :: set state.x
+		plot :: state.x :: 32 :: + :: set state.x
+		plot :: state.x :: 32 :: + :: set state.x
+		plot
+		1 :: wait
+	16 :: set state.x :: state.y :: 20 :: + :: set state.y
+		plot :: state.x :: 32 :: + :: set state.x
+		plot :: state.x :: 32 :: + :: set state.x
+		plot :: state.x :: 32 :: + :: set state.x
+		plot :: state.x :: 32 :: + :: set state.x
+		plot :: state.x :: 32 :: + :: set state.x
+		plot :: state.x :: 32 :: + :: set state.x
+		plot :: state.x :: 32 :: + :: set state.x
+		plot :: state.x :: 32 :: + :: set state.x
+		plot :: state.x :: 32 :: + :: set state.x
+		plot
+		1 :: wait
+	end
+
+proc eye_move		# delta_x delta_y steps wait_after_first_draw
+	0
+	local.c
+	<cmp>
+	when(>)					# (local.a>0)
+		0
+		set state.tint
+		7
+		set state.size
+		draw			# erase old eye
+
+		5
+		set state.size
+		3
+		set state.tint
+		draw			# big circle (tint 3)
+
+		4
+		set state.size
+		0
+		set state.tint
+		draw			# big-1 circle (tint 0)
+
+		3
+		set state.tint
+		0
+		set state.size
+		plot
+
+		2
+		local.d
+		+
+		wait
+		0
+		set local.d
+
+		state.x
+		local.a
+		+
+		set state.x		# x += A
+
+		state.y
+		local.b
+		+
+		set state.y		# y += A
+
+		<eye_move>
+		1
+		local.c
+		-
+		set local.c			# set local.c (local.c-1)
+		set state.proc			# set state.proc <drawline_len_speed>
+		tail
+	else
+		70
+		set state.face
+		5
+		<move_pupil>
+		fork(1)
+	done
+	end
+
+proc move_pupil
+	0
+	local.a
+	<cmp>
+	when(>)					# (local.a>0)
+		0
+		set state.tint
+		1
+		set state.size
+		draw
+		0.5
+		move
+		0
+		set state.size
+		3
+		set state.tint
+		draw
+
+		3
+		wait				# wait 0.5
+
+		<move_pupil>
+		1
+		local.a
+		-
+		set local.a			# set local.a (local.a-1)
+		set state.proc			# set state.proc <proc_050>
+		tail
+	else
+		200				# pause before eye roll
+		wait
+		160
+		set state.face
+		16 :: <roll_eye> :: fork(1)
+		100 :: wait
+		<pupils_back_to_viewer>
+		fork(0)
+	done
+	end
+
+proc roll_eye
+	0
+	local.a
+	<cmp>
+	when(>)					# (local.a>0)
+		0 :: set state.size
+		0 :: set state.tint
+		plot
+
+		1 :: move
+		0 :: set state.size
+		3 :: set state.tint
+		plot
+
+		state.face :: 16 :: + :: set state.face
+
+		6 :: wait
+
+		<roll_eye>
+		1
+		local.a
+		-
+		set local.a			# set local.a (local.a-1)
+		set state.proc			# set state.proc <proc_050>
+		tail
+	done
+	end
+
+proc pupils_back_to_viewer
+	224
+	set state.face
+	0
+	set state.size
+		0
+		set state.tint
+		draw
+		1
+		move
+		3
+		set state.tint
+		draw
+		4
+		wait
+
+		0
+		set state.tint
+		draw
+		1
+		move
+		3
+		set state.tint
+		draw
+		4
+		wait
+		0
+		set state.tint
+		draw
+		1
+		move
+		3
+		set state.tint
+		draw
+		4
+		wait
+		0
+		set state.tint
+		draw
+		1
+		move
+		3
+		set state.tint
+		draw
+ end
+
+
+
+proc highlight_t
+	20
+	64
+	-
+	set state.face
+	<highlight_t_proc>
+	fork(0)
+
+	64
+	set state.face
+	<highlight_t_proc>
+	fork(0)
+
+	64
+	20
+	+
+	set state.face
+	<highlight_t_proc>
+	fork(0)
+
+	20
+	192
+	-
+	set state.face
+	<highlight_t_proc>
+	fork(0)
+
+	192
+	set state.face
+	<highlight_t_proc>
+	fork(0)
+
+	192
+	20
+	+
+	set state.face
+	<highlight_t_proc>
+	fork(0)
+	end
+
+proc highlight_t_proc
+	0
+	set state.size
+	6
+	move
+	draw
+	2
+	wait
+
+	3
+	move
+	draw
+	2
+	wait
+	3
+	move
+	draw
+	2
+	wait
+	3
+	move
+	draw
+
+	end
+
+
+proc mark_xy
+	local.a
+	set state.x
+	local.b
+	set state.y
+	6
+	set state.tint
+	6
+	set state.size
+	draw
+	5
+	set state.size
+	4
+	set state.tint
+	draw
+	0
+	set state.size
+	6
+	set state.tint
+	draw
+	end
+
+proc debug_end_draw_k
+	# <debug_end_draw_k>()
+	160
+	set state.x				# set state.x 160
+	90
+	set state.y				# set state.y 90
+	3
+	set state.tint				# set state.tint 3
+	32
+	~
+	set state.face				# set state.face (-32)
+	20
+	1
+	<drawline_len_speed>
+	fork(2)					# <drawline_len_speed>(20, 1)
+	state.face
+	64
+	+
+	set state.face				# set state.face (64+state.face)
+	20
+	1
+	<drawline_len_speed>
+	fork(2)					# <drawline_len_speed>(20, 1)
+	160
+	set state.x				# set state.x 160
+	80
+	set state.y				# set state.y 80
+	64
+	set state.face				# set state.face 64
+	40
+	1
+	<drawline_len_speed>
+	fork(2)					# <drawline_len_speed>(40, 1)
+	160
+	set state.x				# set state.x 160
+	90
+	set state.y				# set state.y 90
+	6
+	set state.tint				# set state.tint 6
+	40
+	set state.size				# set state.size 40
+	draw
+	4
+	set state.tint				# set state.tint 4
+	40
+	1
+	~
+	+
+	set state.size				# set state.size ((-1)+40)
+	draw
+	end
+
+proc title_sequence
+	# <title_sequence>()
+	70
+	65
+	set state.x				# set state.x 65
+	set state.y				# set state.y 70
+	2
+	move					# move 2
+	3
+	set state.tint				# set state.tint 3
+	0
+	set state.size				# set state.size 0
+	0
+	set state.B				# set state.B 0
+	3
+	set state.A				# set state.A 3
+ 5
+ move
+	<title_logic_L>
+	fork(0)					# <title_logic_L>()
+	20
+	10
+	+
+	move					# move 20
+	10
+	wait					# wait 10
+	<title_logic_O>
+	fork(0)					# <title_logic_O>()
+
+	24
+	move					# move 20
+	10
+	wait					# wait 10
+	<title_logic_G>
+	fork(0)					# <title_logic_G>()
+
+	20
+	5
+	+
+	move					# move 20
+	10
+	wait					# wait 10
+	<title_logic_E>
+	fork(0)					# <title_logic_I>()
+
+	36
+	move					# move 40
+
+	30 :: wait
+
+
+	<logicoma_logo_big>
+	fork(0)					# <logicoma_logo_big>()
+	20
+	wait					# wait 20
+	50
+	move					# move 50
+	<big_S_in_OS>
+	fork(0)					# <big_S_in_OS>()
+	7
+	~
+	move					# move (-7)
+	2
+	set state.size				# set state.size 2
+	3
+	set state.tint				# set state.tint 3
+	plot
+	1
+	set state.size				# set state.size 1
+	0
+	set state.tint				# set state.tint 0
+	plot
+	20
+	wait					# wait 20
+	95
+	57
+	set state.x				# set state.x 57
+	set state.y				# set state.y 95
+	196
+	50
+	70
+	<draw_fading_plot>
+	<smart_rect>
+	fork(4)					# <smart_rect>(196, 50, 70, <draw_fading_plot>)
+	100
+	117
+	set state.x				# set state.x 117
+	set state.y				# set state.y 100
+	1
+	set state.F				# set state.F 1
+	7
+	set state.E				# set state.E 7
+	<drawpixel>
+	set state.D				# set state.D <drawpixel>
+	3
+	set state.tint				# set state.tint 3
+	f860:2087
+	107e:3c08
+	f860:2087
+	f041:0107
+	f860:2087
+	f041:0107
+	14bc:3c49
+	083f:3082
+	f860:2087
+	9a6e:19a6
+	9a7f:2186
+	<draw_11_chars_F_is_zoom_E_is_letter_spacing>
+	fork(11)				# <draw_11_chars_F_is_zoom_E_is_letter_spacing>(f860:2087, 107e:3c08, f860:2087, f041:0107, f860:2087, f041:0107, 14bc:3c49, 083f:3082, f860:2087, 9a6e:19a6, 9a7f:2186)
+	1
+	move					# move 1
+	2
+	set state.tint				# set state.tint 2
+	f860:2087
+	107e:3c08
+	f860:2087
+	f041:0107
+	f860:2087
+	f041:0107
+	14bc:3c49
+	083f:3082
+	f860:2087
+	9a6e:19a6
+	9a7f:2186
+	<draw_11_chars_F_is_zoom_E_is_letter_spacing>
+	fork(11)				# <draw_11_chars_F_is_zoom_E_is_letter_spacing>(f860:2087, 107e:3c08, f860:2087, f041:0107, f860:2087, f041:0107, 14bc:3c49, 083f:3082, f860:2087, 9a6e:19a6, 9a7f:2186)
+	80
+	wait					# wait 80
+	7
+	<draw_title_progress_bar>
+	fork(1)					# <draw_title_progress_bar>(7)
+	end
+
+proc title_wipeout
+	0
+	set state.face				# set state.face 0
+	105
+	57
+	set state.x				# set state.x 57
+	7
+	+
+	set state.y				# set state.y 106
+	14
+	<maybe_title_logo_wipeout_with_squares>
+	fork(1)					# <maybe_title_logo_wipeout_with_squares>(14)
+	15
+	state.y
+	-
+	set state.y				# set state.y (state.y-15)
+	1
+	wait					# wait 1
+	14
+	<maybe_title_logo_wipeout_with_squares>
+	fork(1)					# <maybe_title_logo_wipeout_with_squares>(14)
+	15
+	state.y
+	-
+	set state.y				# set state.y (state.y-15)
+	1
+	wait					# wait 1
+	14
+	<maybe_title_logo_wipeout_with_squares>
+	fork(1)					# <maybe_title_logo_wipeout_with_squares>(14)
+	15
+	state.y
+	-
+	set state.y				# set state.y (state.y-15)
+
+	1
+	wait					# wait 1
+	14
+	<maybe_title_logo_wipeout_with_squares>
+	fork(1)					# <maybe_title_logo_wipeout_with_squares>(14)
+	15
+	state.y
+	-
+	set state.y				# set state.y (state.y-15)
+
+	1
+	wait					# wait 1
+	14
+	<maybe_title_logo_wipeout_with_squares>
+	fork(1)					# <maybe_title_logo_wipeout_with_squares>(14)
+	end
+
+proc title_logic_L
+	# <title_logic_L>()
+	64 :: set state.face				# set state.face 64
+	5 :: ~ :: move					# move (-5)
+	10 :: 0 :: <drawline_len_speed> :: fork(2)					# <drawline_len_speed>(10, 0)
+
+	0 :: set state.face
+	5 :: 0 :: <drawline_len_speed> :: fork(2)
+	5 :: move
+
+	32 :: set state.face
+	8 :: 0 :: <drawline_len_speed> :: fork(2)
+	8 :: move
+
+	128 :: set state.face
+	5 :: 0 :: <drawline_len_speed> :: fork(2)
+	5 :: move
+
+	32 :: set state.face
+	8 :: 0 :: <drawline_len_speed> :: fork(2)
+
+	end
+
+proc title_logic_O
+	# <title_logic_O>()
+	64 :: set state.face				# set state.face 64
+	5 :: ~ :: move					# move (-5)
+
+	32 :: set state.face
+	9 :: 0 :: <drawline_len_speed> :: fork(2)
+	96 :: set state.face
+	8 :: 0 :: <drawline_len_speed> :: fork(2)
+	8 :: move
+	64 :: set state.face
+	5 :: 0 :: <drawline_len_speed> :: fork(2)
+	128 :: set state.face :: 11 :: ~ :: move
+	64 :: set state.face
+	5 :: 0 :: <drawline_len_speed> :: fork(2)
+	2 :: move
+	128 :: set state.face
+	12 :: 0 :: <drawline_len_speed> :: fork(2)
+
+	end
+
+proc title_logic_G
+	# <title_logic_G>()
+	5
+	set state.size				# set state.size 5
+	draw
+	4
+	set state.size				# set state.size 4
+	state.B
+	set state.tint				# set state.tint state.B
+	draw
+	0
+	set state.face				# set state.face 0
+	state.B
+	set state.tint				# set state.tint state.B
+	5
+	move					# move 5
+	plot
+	3
+	~
+	move					# move (-3)
+	64
+	set state.face				# set state.face 64
+	0
+	set state.size				# set state.size 0
+	state.A
+	set state.tint				# set state.tint state.A
+	5
+	move					# move 5
+	0
+	set state.face				# set state.face 0
+	3
+	0
+	<drawline_len_speed>
+	fork(2)					# <drawline_len_speed>(3, 0)
+	3
+	move					# move 3
+	64
+	~
+	state.face
+	+
+	set state.face				# set state.face (state.face+(-64))
+	4
+	0
+	<drawline_len_speed>
+	fork(2)					# <drawline_len_speed>(4, 0)
+	end
+
+proc title_logic_E
+	# <title_logic_I>()
+	64
+	set state.face				# set state.face 64
+	5
+	~
+	move					# move (-5)
+
+	128 :: set state.face
+	6 :: 0 :: <drawline_len_speed> :: fork(2)
+	6 :: move
+
+	64 :: set state.face
+	10 :: 0 :: <drawline_len_speed> :: fork(2)
+
+	6 :: move
+		0 :: set state.face :: 9 :: 0 :: <drawline_len_speed> :: fork(2) :: 64 :: set state.face
+	4 :: move
+
+	0 :: set state.face
+	12 :: 0 :: <drawline_len_speed> :: fork(2)
+
+	end
+
+proc logicoma_logo_big
+	# <logicoma_logo_big>()
+	64
+	set state.face				# set state.face 64
+	<move_12_then_logicoma_logo_circle_tint_3>
+	fork(0)					# <move_12_then_logicoma_logo_circle_tint_3>()
+	90
+	state.face
+	+
+	set state.face				# set state.face (state.face+90)
+	<move_12_then_logicoma_logo_circle_tint_3>
+	fork(0)					# <move_12_then_logicoma_logo_circle_tint_3>()
+	90
+	~
+	state.face
+	+
+	set state.face				# set state.face (state.face+(-90))
+	90
+	~
+	state.face
+	+
+	set state.face				# set state.face (state.face+(-90))
+	<move_12_then_logicoma_logo_circle_tint_3>
+	fork(0)					# <move_12_then_logicoma_logo_circle_tint_3>()
+	128
+	set state.face				# set state.face 128
+	20
+	set state.size				# set state.size 20
+	5
+	set state.tint				# set state.tint 5
+	draw
+	3
+	set state.tint				# set state.tint 3
+	draw
+	19
+	set state.size				# set state.size 19
+	0
+	set state.tint				# set state.tint 0
+	draw
+	4
+	set state.tint				# set state.tint 4
+	draw
+	4
+	set state.tint				# set state.tint 4
+	3
+	set state.size				# set state.size 3
+	32
+	18
+	<logicoma_logo_half_circle>
+	fork(2)					# <logicoma_logo_half_circle>(32, 18)
+	128
+	state.face
+	+
+	set state.face				# set state.face (state.face+128)
+	32
+	18
+	<logicoma_logo_half_circle>
+	fork(2)					# <logicoma_logo_half_circle>(32, 18)
+	end
+
+proc big_S_in_OS
+	# <big_S_in_OS>()
+	128
+	set state.face				# set state.face 128
+	16
+	state.y
+	-
+	5
+	state.x
+	+
+	set state.x				# set state.x (state.x+5)
+	set state.y				# set state.y (state.y-16)
+	<big_S_draw_helper>
+	fork(0)					# <big_S_draw_helper>()
+	32
+	state.y
+	+
+	24
+	state.x
+	-
+	set state.x				# set state.x (state.x-24)
+	set state.y				# set state.y (state.y+32)
+	0
+	set state.face				# set state.face 0
+	<big_S_draw_helper>
+	set state.proc				# set state.proc <big_S_draw_helper>
+	tail
+	end
+
+proc draw_fading_plot
+	1
+	set state.tint				# set state.tint 1
+	plot
+	1
+	wait					# wait 1
+	2
+	set state.tint				# set state.tint 2
+	plot
+	1
+	wait					# wait 1
+	3
+	set state.tint				# set state.tint 3
+	plot
+	1
+	wait					# wait 1
+	2
+	set state.tint				# set state.tint 2
+	plot
+	1
+	set state.tint				# set state.tint 1
+	1
+	wait					# wait 1
+	plot
+	end
+
+proc smart_rect
+	# <smart_rect>(196, 50, 70, <draw_fading_plot>)
+	0
+	set state.size				# set state.size 0
+	0
+	set state.face				# set state.face 0
+
+	local.a
+	1
+	<drawline_len_speed_fading>
+	fork(2)
+	local.a
+	move
+
+	state.face
+	64
+	~
+	+
+	set state.face
+
+	local.b
+	1
+	<drawline_len_speed_fading>
+	fork(2)
+	local.b
+	move
+
+	state.face
+	64
+	~
+	+
+	set state.face
+
+	local.a
+	1
+	<drawline_len_speed_fading>
+	fork(2)
+	local.a
+	move
+
+	state.face
+	64
+	~
+	+
+	set state.face
+
+	local.b
+	1
+	<drawline_len_speed_fading>
+	fork(2)
+	end
+
+proc drawpixel
+	0
+	set state.size				# set state.size 0
+	plot
+	end
+
+proc draw_11_chars_F_is_zoom_E_is_letter_spacing
+	# <draw_11_chars_F_is_zoom_E_is_letter_spacing>(f860:2087, 107e:3c08, f860:2087, f041:0107, f860:2087, f041:0107, 14bc:3c49, 083f:3082, f860:2087, 9a6e:19a6, 9a7f:2186)
+	local.a
+	state.D
+	1
+	1
+	<draw_char_column>
+	fork(4)					# <draw_char_column>(local.a, state.D, 1, 1)
+	state.E
+	move					# move state.E
+	3
+	wait					# wait 3
+	local.b
+	state.D
+	1
+	1
+	<draw_char_column>
+	fork(4)					# <draw_char_column>(local.b, state.D, 1, 1)
+	state.E
+	move					# move state.E
+	3
+	wait					# wait 3
+	local.c
+	state.D
+	1
+	1
+	<draw_char_column>
+	fork(4)					# <draw_char_column>(local.c, state.D, 1, 1)
+	state.E
+	move					# move state.E
+	3
+	wait					# wait 3
+	local.d
+	state.D
+	1
+	1
+	<draw_char_column>
+	fork(4)					# <draw_char_column>(local.d, state.D, 1, 1)
+	state.E
+	move					# move state.E
+	3
+	wait					# wait 3
+	local.e
+	state.D
+	1
+	1
+	<draw_char_column>
+	fork(4)					# <draw_char_column>(local.e, state.D, 1, 1)
+	state.E
+	move					# move state.E
+	3
+	wait					# wait 3
+	local.f
+	state.D
+	1
+	1
+	<draw_char_column>
+	fork(4)					# <draw_char_column>(local.f, state.D, 1, 1)
+	state.E
+	move					# move state.E
+	3
+	wait					# wait 3
+	local.g
+	state.D
+	1
+	1
+	<draw_char_column>
+	fork(4)					# <draw_char_column>(local.g, state.D, 1, 1)
+	state.E
+	move					# move state.E
+	3
+	wait					# wait 3
+	local.h
+	state.D
+	1
+	1
+	<draw_char_column>
+	fork(4)					# <draw_char_column>(local.h, state.D, 1, 1)
+	state.E
+	move					# move state.E
+	3
+	wait					# wait 3
+	local.i
+	state.D
+	1
+	1
+	<draw_char_column>
+	fork(4)					# <draw_char_column>(local.i, state.D, 1, 1)
+	state.E
+	move					# move state.E
+	3
+	wait					# wait 3
+	local.j
+	state.D
+	1
+	1
+	<draw_char_column>
+	fork(4)					# <draw_char_column>(local.j, state.D, 1, 1)
+	state.E
+	move					# move state.E
+	3
+	wait					# wait 3
+	<draw_char_column>
+	local.k
+	state.D
+	1
+	1
+	set local.d				# set local.d 1
+	set local.c				# set local.c 1
+	set local.b				# set local.b state.D
+	set local.a				# set local.a local.k
+	set state.proc				# set state.proc <draw_char_column>
+	pop
+	pop
+	pop
+	pop
+	pop
+	pop
+	pop
+	tail
+	end
+
+proc draw_title_progress_bar
+	# <draw_title_progress_bar>(7)
+	0
+	local.a
+	<cmp>
+	when(>)					# (local.a>0)
+		140
+		3
+		set state.x			# set state.x 3
+		set state.y			# set state.y 140
+		3
+		set state.size			# set state.size 3
+		2
+		set state.tint			# set state.tint 2
+		46
+		<draw_squares_length_a_step_7>
+		fork(1)				# <draw_squares_length_a_step_7>(46)
+		10
+		wait				# wait 10
+		1
+		set state.tint			# set state.tint 1
+		46
+		<draw_squares_length_a_step_7>
+		fork(1)				# <draw_squares_length_a_step_7>(46)
+		10
+		wait				# wait 10
+		2
+		set state.tint			# set state.tint 2
+		46
+		<draw_squares_length_a_step_7>
+		fork(1)				# <draw_squares_length_a_step_7>(46)
+		10
+		wait				# wait 10
+		3
+		set state.tint			# set state.tint 3
+		46
+		<draw_squares_length_a_step_7>
+		fork(1)				# <draw_squares_length_a_step_7>(46)
+		10
+		wait				# wait 10
+		<draw_title_progress_bar>
+		1
+		local.a
+		-
+		set local.a			# set local.a (local.a-1)
+		set state.proc			# set state.proc <draw_title_progress_bar>
+		tail
+	else
+		0
+		set state.tint			# set state.tint 0
+		<draw_squares_length_a_step_7>
+		46
+		set local.a			# set local.a 46
+		set state.proc			# set state.proc <draw_squares_length_a_step_7>
+		tail
+	done
+	end
+
+proc maybe_title_logo_wipeout_with_squares
+	# <maybe_title_logo_wipeout_with_squares>(14)
+	0
+	local.a
+	<cmp>
+	when(>)					# (local.a>0)
+		1
+		8
+		13
+		<render_5cols>
+		fork(3)				# <render_5cols>(1, 8, 13)
+		6
+		wait				# wait 6
+		15
+		move				# move 15
+		<maybe_title_logo_wipeout_with_squares>
+		1
+		local.a
+		-
+		set local.a			# set local.a (local.a-1)
+		set state.proc			# set state.proc <maybe_title_logo_wipeout_with_squares>
+		tail
+	done
+	end
+
+proc drawline_len_speed
+	# <drawline_len_speed>(20, 1)
+	# <drawline_len_speed>(40, 1)
+	# <drawline_len_speed>(10, 0)
+	# <drawline_len_speed>(5, 0)
+	# <drawline_len_speed>(3, 0)
+	# <drawline_len_speed>(4, 0)
+	0
+	local.a
+	<cmp>
+	when(>)					# (local.a>0)
+		plot
+		1
+		move				# move 1
+		local.b
+		wait				# wait local.b
+		<drawline_len_speed>
+		1
+		local.a
+		-
+		set local.a			# set local.a (local.a-1)
+		set state.proc			# set state.proc <drawline_len_speed>
+		tail
+	done
+	end
+
+proc drawline_len_speed_fading
+	0
+	local.a
+	<cmp>
+	when(>)					# (local.a>0)
+		#<draw_fading_plot>
+		#fork(0)
+		2
+		set state.tint
+		plot
+		1
+		move
+		local.b
+		wait				# wait local.b
+		<drawline_len_speed_fading>
+		1
+		local.a
+		-
+		set local.a			# set local.a (local.a-1)
+		set state.proc			# set state.proc <drawline_len_speed_fading>
+		tail
+	done
+	end
+
+proc drawline_len_speed_curve
+	0
+	local.a
+	<cmp>
+	when(>)					# (local.a>0)
+		draw
+		1
+		move				# move 1
+		local.b
+		wait				# wait local.b
+
+		state.face
+		local.c
+		+
+		set state.face
+
+		<drawline_len_speed_curve>
+		1
+		local.a
+		-
+		set local.a			# set local.a (local.a-1)
+		set state.proc			# set state.proc <drawline_len_speed>
+		tail
+	done
+	end
+
+proc move_12_then_logicoma_logo_circle_tint_3 
+	# <move_12_then_logicoma_logo_circle_tint_3>()
+	12
+	move					# move 12
+	2
+	set state.size				# set state.size 2
+	3
+	set state.tint				# set state.tint 3
+	draw
+	1
+	set state.size				# set state.size 1
+	0
+	set state.tint				# set state.tint 0
+	draw
+	end
+
+proc logicoma_logo_half_circle 
+	# <logicoma_logo_half_circle>(32, 18)
+	local.a
+	when(!=)				# local.a !=
+		local.b
+		<move_a_draw>
+		fork(1)				# <move_a_draw>(local.b)
+		0.5
+		wait				# wait 0.5
+		4
+		state.face
+		+
+		set state.face			# set state.face (state.face+4)
+		<logicoma_logo_half_circle>
+		1
+		local.a
+		-
+		set local.a			# set local.a (local.a-1)
+		set state.proc			# set state.proc <logicoma_logo_half_circle>
+		tail
+	done
+	end
+
+proc big_S_draw_helper 
+	# <big_S_draw_helper>()
+	64
+	~
+	state.face
+	+
+	set state.face				# set state.face (state.face+(-64))
+	2
+	move					# move 2
+	plot
+	1
+	wait					# wait 1
+	2
+	~
+	move					# move (-2)
+	64
+	state.face
+	+
+	set state.face				# set state.face (state.face+64)
+	3
+	move					# move 3
+	plot
+	1
+	move					# move 1
+	plot
+	3
+	move					# move 3
+	1
+	wait					# wait 1
+	4
+	18
+	-
+	0.25
+	<drawline_len_speed>
+	fork(2)					# <drawline_len_speed>((18-4), 0.25)
+	4
+	17
+	-
+	move					# move (17-4)
+	3
+	wait					# wait 3
+	6
+	0.5
+	<diagonal_line_len_speed>
+	fork(2)					# <diagonal_line_len_speed>(6, 0.5)
+	5
+	move					# move 5
+	64
+	~
+	state.face
+	+
+	set state.face				# set state.face (state.face+(-64))
+	6
+	move					# move 6
+	3
+	wait					# wait 3
+	5
+	0.5
+	<drawline_len_speed>
+	fork(2)					# <drawline_len_speed>(5, 0.5)
+	5
+	move					# move 5
+	3
+	wait					# wait 3
+	6
+	0.5
+	<diagonal_line_len_speed>
+	fork(2)					# <diagonal_line_len_speed>(6, 0.5)
+	5
+	move					# move 5
+	64
+	~
+	state.face
+	+
+	set state.face				# set state.face (state.face+(-64))
+	5
+	move					# move 5
+	2
+	wait					# wait 2
+	5
+	0.5
+	<drawline_len_speed>
+	fork(2)					# <drawline_len_speed>(5, 0.5)
+	end
+
+proc erase_pixel 
+	0
+	set state.tint				# set state.tint 0
+	0
+	set state.size				# set state.size 0
+	plot
+	end
+
+proc plot_tint_1_2_3_2_0_5 
+	1
+	set state.tint				# set state.tint 1
+	plot
+	1
+	wait					# wait 1
+	2
+	set state.tint				# set state.tint 2
+	plot
+	1
+	wait					# wait 1
+	3
+	set state.tint				# set state.tint 3
+	plot
+	1
+	wait					# wait 1
+	2
+	set state.tint				# set state.tint 2
+	plot
+	1
+	wait					# wait 1
+	0
+	set state.tint				# set state.tint 0
+	plot
+	5
+	set state.tint				# set state.tint 5
+	plot
+	end
+
+proc pixel_plot_tint_7_tint_5 
+	0
+	set state.size				# set state.size 0
+	7
+	set state.tint				# set state.tint 7
+	plot
+	1
+	wait					# wait 1
+	5
+	set state.tint				# set state.tint 5
+	plot
+	end
+
+proc drawline_using_c_wait_b_len_a
+	# <drawline_using_c_wait_b_len_a>(local.a, local.e, local.d)
+	# <drawline_using_c_wait_b_len_a>(local.b, local.f, local.d)
+	0
+	local.a
+	<cmp>
+	when(>)					# (local.a>0)
+		local.c
+		fork(0)				# local.c()
+		1
+		move				# move 1
+		local.b
+		wait				# wait local.b
+		<drawline_using_c_wait_b_len_a>
+		1
+		local.a
+		-
+		set local.a			# set local.a (local.a-1)
+		set state.proc			# set state.proc <drawline_using_c_wait_b_len_a>
+		tail
+	done
+	end
+
+proc draw_char_column 
+	# <draw_char_column>(local.a, state.D, 1, 1)
+	# <draw_char_column>(local.b, state.D, 1, 1)
+	# <draw_char_column>(local.c, state.D, 1, 1)
+	# <draw_char_column>(local.d, state.D, 1, 1)
+	# <draw_char_column>(local.e, state.D, 1, 1)
+	# <draw_char_column>(local.f, state.D, 1, 1)
+	# <draw_char_column>(local.g, state.D, 1, 1)
+	# <draw_char_column>(local.h, state.D, 1, 1)
+	# <draw_char_column>(local.i, state.D, 1, 1)
+	# <draw_char_column>(local.j, state.D, 1, 1)
+	local.a
+	5
+	local.b
+	local.c
+	local.d
+	<draw_char_iterate_rows>
+	fork(5)					# <draw_char_iterate_rows>(local.a, 5, local.b, local.c, local.d)
+	end
+
+proc draw_squares_length_a_step_7 
+	# <draw_squares_length_a_step_7>(46)
+	0
+	local.a
+	<cmp>
+	when(>)					# (local.a>0)
+		plot
+		7
+		move				# move 7
+		1
+		wait				# wait 1
+		<draw_squares_length_a_step_7>
+		1
+		local.a
+		-
+		set local.a			# set local.a (local.a-1)
+		set state.proc			# set state.proc <draw_squares_length_a_step_7>
+		tail
+	done
+	end
+
+proc render_5cols 
+	# <render_5cols>(1, 8, 13)
+	local.c
+	local.a
+	<cmp>
+	when(<)					# (local.a<local.c)
+		local.a
+		1
+		local.b
+		<set_size_a_max_c_and_tint_b_and_plot>
+		fork(3)				# <set_size_a_max_c_and_tint_b_and_plot>(local.a, 1, local.b)
+		1
+		local.a
+		-
+		2
+		local.b
+		<set_size_a_max_c_and_tint_b_and_plot>
+		fork(3)				# <set_size_a_max_c_and_tint_b_and_plot>((local.a-1), 2, local.b)
+		2
+		local.a
+		-
+		3
+		local.b
+		<set_size_a_max_c_and_tint_b_and_plot>
+		fork(3)				# <set_size_a_max_c_and_tint_b_and_plot>((local.a-2), 3, local.b)
+		3
+		local.a
+		-
+		2
+		local.b
+		<set_size_a_max_c_and_tint_b_and_plot>
+		fork(3)				# <set_size_a_max_c_and_tint_b_and_plot>((local.a-3), 2, local.b)
+		4
+		local.a
+		-
+		1
+		local.b
+		<set_size_a_max_c_and_tint_b_and_plot>
+		fork(3)				# <set_size_a_max_c_and_tint_b_and_plot>((local.a-4), 1, local.b)
+		5
+		local.a
+		-
+		0
+		local.b
+		<set_size_a_max_c_and_tint_b_and_plot>
+		fork(3)				# <set_size_a_max_c_and_tint_b_and_plot>((local.a-5), 0, local.b)
+		4
+		wait				# wait 4
+		<render_5cols>
+		1
+		local.a
+		+
+		set local.a			# set local.a (local.a+1)
+		set state.proc			# set state.proc <render_5cols>
+		tail
+	done
+	end
+
+proc move_a_draw 
+	# <move_a_draw>(local.b)
+	local.a
+	move					# move local.a
+	draw
+	end
+
+proc diagonal_line_len_speed 
+	# <diagonal_line_len_speed>(6, 0.5)
+	0
+	local.a
+	<cmp>
+	when(>)					# (local.a>0)
+		plot
+		64
+		~
+		state.face
+		+
+		set state.face			# set state.face (state.face+(-64))
+		1
+		move				# move 1
+		64
+		state.face
+		+
+		set state.face			# set state.face (state.face+64)
+		1
+		move				# move 1
+		local.b
+		wait				# wait local.b
+		<diagonal_line_len_speed>
+		1
+		local.a
+		-
+		set local.a			# set local.a (local.a-1)
+		set state.proc			# set state.proc <diagonal_line_len_speed>
+		tail
+	done
+	end
+
+proc draw_char_iterate_rows 
+	# <draw_char_iterate_rows>(local.a, 5, local.b, local.c, local.d)
+	local.b
+	when(!=)				# local.b !=
+		6
+		local.a
+		local.c
+		local.e
+		<draw_char_turn_downward>
+		fork(4)				# <draw_char_turn_downward>(6, local.a, local.c, local.e)
+		state.F
+		move				# move state.F
+		local.d
+		wait				# wait local.d
+		<draw_char_iterate_rows>
+		6
+		local.a
+		<ror>
+		1
+		local.b
+		-
+		set local.b			# set local.b (local.b-1)
+		set local.a			# set local.a (local.a<ror>6)
+		set state.proc			# set state.proc <draw_char_iterate_rows>
+		tail
+	done
+	end
+
+proc set_size_a_max_c_and_tint_b_and_plot 
+	# <set_size_a_max_c_and_tint_b_and_plot>(local.a, 1, local.b)
+	# <set_size_a_max_c_and_tint_b_and_plot>((local.a-1), 2, local.b)
+	# <set_size_a_max_c_and_tint_b_and_plot>((local.a-2), 3, local.b)
+	# <set_size_a_max_c_and_tint_b_and_plot>((local.a-3), 2, local.b)
+	# <set_size_a_max_c_and_tint_b_and_plot>((local.a-4), 1, local.b)
+	# <set_size_a_max_c_and_tint_b_and_plot>((local.a-5), 0, local.b)
+	0
+	local.a
+	<cmp>
+	when(>=)				# (local.a>=0)
+		local.c
+		local.a
+		<cmp>
+		when(<)				# (local.a<local.c)
+			0
+			local.b
+			<cmp>
+			when(>=)		# (local.b>=0)
+				local.a
+				set state.size	# set state.size local.a
+				local.b
+				set state.tint	# set state.tint local.b
+				plot
+			done
+		done
+	done
+	end
+
+proc draw_char_turn_downward 
+	# <draw_char_turn_downward>(6, local.a, local.c, local.e)
+	64
+	state.face
+	+
+	set state.face				# set state.face (state.face+64)
+	<draw_char_draw_column>
+	set state.proc				# set state.proc <draw_char_draw_column>
+	tail
+	end
+
+proc draw_char_draw_column 
+	local.a
+	when(!=)				# local.a !=
+		1
+		local.b
+		&
+		when(!=)			# (local.b&1) !=
+			local.c
+			fork(0)			# local.c()
+		done
+		state.F
+		move				# move state.F
+		local.d
+		wait				# wait local.d
+		<draw_char_draw_column>
+		1
+		local.a
+		-
+		1
+		local.b
+		<ror>
+		set local.b			# set local.b (local.b<ror>1)
+		set local.a			# set local.a (local.a-1)
+		set state.proc			# set state.proc <draw_char_draw_column>
+		tail
+	done
+	end
+
+proc draw_username_hoffman_password
+	# <draw_username_hoffman_password>()
+	80
+	110
+	set state.x				# set state.x 110
+	set state.y				# set state.y 80
+	101
+	11
+	30
+	<draw_fading_plot>
+	#<drawpixel>
+	<smart_rect>
+	fork(4)					# <smart_rect>(101, 11, 30, <draw_fading_plot>)
+
+	10 :: wait					# wait 10
+#
+# <-- pattern row here: 2
+#
+	18
+	state.y
+	-
+	2
+	state.x
+	+
+	set state.x				# set state.x (state.x+2)
+	set state.y				# set state.y (state.y-18)
+	1
+	set state.F				# set state.F 1
+	7
+	set state.E				# set state.E 7
+	<drawpixel>
+	set state.D				# set state.D <drawpixel>
+	3
+	set state.tint				# set state.tint 3
+	081f:1f82
+	9a6e:19a6
+	9a7f:2186
+	107f:2c49
+	107e:3c08
+	14bc:3c49
+	40bf:3f08
+	9a7f:2186
+	0
+	0
+	0
+	<draw_11_chars_F_is_zoom_E_is_letter_spacing>
+	fork(11)				# <draw_11_chars_F_is_zoom_E_is_letter_spacing>(081f:1f82, 9a6e:19a6, 9a7f:2186, 107f:2c49, 107e:3c08, 14bc:3c49, 40bf:3f08, 9a7f:2186, 0, 0, 0)
+
+	16 :: 5 :: * :: wait
+#
+# <-- pattern row here: 18
+#
+	10
+	state.y
+	+
+	set state.y				# set state.y (state.y+10)
+	3
+	set state.tint				# set state.tint 3
+	3
+	set state.size				# set state.size 3
+	14bc:3c49 ::  5 :: <single_char_draw> :: fork(2) :: 15 :: wait :: 7 :: move # A
+	107f:2c49 ::  5 :: <single_char_draw> :: fork(2) ::  5 :: wait :: 7 :: move # R
+	9a6e:19a6 ::  5 :: <single_char_draw> :: fork(2) ::  5 :: wait :: 7 :: move # S
+	189c:2186 ::  5 :: <single_char_draw> :: fork(2) ::  5 :: wait :: 7 :: move # C
+	823f:3f20 ::  5 :: <single_char_draw> :: fork(2) :: 15 :: wait :: 7 :: move # H
+	147f:1c49 ::  5 :: <single_char_draw> :: fork(2) :: 15 :: wait :: 7 :: move # P
+	f860:2087 ::  5 :: <single_char_draw> :: fork(2) :: 10 :: wait :: 7 :: move # I
+	9a6e:19a6 ::  5 :: <single_char_draw> :: fork(2) :: 10 :: wait :: 7 :: move # S
+	9a6e:19a6 ::  5 :: <single_char_draw> :: fork(2) :: 20 :: wait :: 7 :: move # S
+	9a7f:2186 ::  5 :: <single_char_draw> :: fork(2) :: 20 :: wait :: 7 :: move # E
+#
+# <-- pattern row here: 42?
+#
+	0         :: 70 :: <single_char_draw> :: fork(2)
+	state.x :: state.y # save current pos
+
+	5 :: 16 :: * :: wait
+#
+# <-- pattern row here: 58
+#
+	100 :: 110 :: set state.x :: set state.y
+	3 :: set state.tint
+	081f:1f82 :: <char_draw_helper1> :: fork(1) :: 7 :: move # U
+	9a6e:19a6 :: <char_draw_helper1> :: fork(1) :: 7 :: move # S
+	9a7f:2186 :: <char_draw_helper1> :: fork(1) :: 7 :: move # E
+	107f:2c49 :: <char_draw_helper1> :: fork(1) :: 7 :: move # R
+	5 :: wait
+	7 :: move
+	107e:3c08 :: <char_draw_helper1> :: fork(1) :: 7 :: move # N
+	185e:1e86 :: <char_draw_helper1> :: fork(1) :: 7 :: move # O
+	f041:0107 :: <char_draw_helper1> :: fork(1) :: 7 :: move # T
+	7 :: move
+	5 :: wait
+	927f:0104 :: <char_draw_helper1> :: fork(1) :: 7 :: move # F
+	185e:1e86 :: <char_draw_helper1> :: fork(1) :: 7 :: move # O
+	081f:1f82 :: <char_draw_helper1> :: fork(1) :: 7 :: move # U
+	107e:3c08 :: <char_draw_helper1> :: fork(1) :: 7 :: move # N
+	187f:3c8a :: <char_draw_helper1> :: fork(1) :: 7 :: move # D
+	f000:0002 :: <char_draw_helper1> :: fork(1) :: 7 :: move # !
+#
+# <-- pattern row here: 60
+#
+
+	5 :: 6 :: * :: wait :: <clear_error_message> :: fork(0)
+
+#
+# <-- pattern row here: 0
+#
+	5 :: 2 :: * :: wait
+
+	set state.y :: set state.x # restore current pos
+	0         :: 70 :: <single_char_draw> :: fork(2)
+
+	10 :: 5 :: * :: wait
+#
+# <-- pattern row here: 16
+#
+
+	<login_sequenence_continued>
+	fork(0)
+
+ end
+
+proc login_sequenence_continued
+	state.x :: state.y # save current pos
+	100 :: 110 :: 3 :: 7 :: * :: ~ :: + :: set state.x :: set state.y
+	081f:1f82 :: <char_draw_helper1> :: fork(1) :: 7 :: move # U
+	9a6e:19a6 :: <char_draw_helper1> :: fork(1) :: 7 :: move # S
+	9a7f:2186 :: <char_draw_helper1> :: fork(1) :: 7 :: move # E
+	107f:2c49 :: <char_draw_helper1> :: fork(1) :: 7 :: move # R
+	7 :: move :: 5 :: wait
+	9a6e:19a6 :: <char_draw_helper1> :: fork(1) :: 7 :: move # S
+	f041:0107 :: <char_draw_helper1> :: fork(1) :: 7 :: move # T
+	f860:2087 :: <char_draw_helper1> :: fork(1) :: 7 :: move # I
+	083f:3082 :: <char_draw_helper1> :: fork(1) :: 7 :: move # L
+	083f:3082 :: <char_draw_helper1> :: fork(1) :: 7 :: move # L
+	7 :: move :: 5 :: wait
+	107e:3c08 :: <char_draw_helper1> :: fork(1) :: 7 :: move # N
+	185e:1e86 :: <char_draw_helper1> :: fork(1) :: 7 :: move # O
+	f041:0107 :: <char_draw_helper1> :: fork(1) :: 7 :: move # T
+	7 :: move :: 5 :: wait
+	927f:0104 :: <char_draw_helper1> :: fork(1) :: 7 :: move # F
+	185e:1e86 :: <char_draw_helper1> :: fork(1) :: 7 :: move # O
+	081f:1f82 :: <char_draw_helper1> :: fork(1) :: 7 :: move # U
+	107e:3c08 :: <char_draw_helper1> :: fork(1) :: 7 :: move # N
+	187f:3c8a :: <char_draw_helper1> :: fork(1) :: 7 :: move # D
+	f000:0002 :: <char_draw_helper1> :: fork(1) :: 7 :: move # !
+
+#
+# <-- pattern row here: 19
+#
+	5 :: 6 :: * :: wait :: <clear_error_message> :: fork(0)
+#
+# <-- pattern row here: 25
+#
+	5 :: 7 :: * :: wait
+#
+# <-- pattern row here: 32
+#
+	set state.y :: set state.x # restore current pos
+	0         :: 70 :: <single_char_draw> :: fork(2)
+	state.x :: state.y # save current pos
+
+	5 :: 16 :: * :: wait
+#
+# <-- pattern row here: 48
+#
+
+	#state.face :: 2.5 :: ~ :: + :: set state.face
+
+	100 :: 110 :: 5 :: 8.5 :: * :: ~ :: + :: set state.x :: set state.y
+
+	14bc:3c49 :: <char_draw_helper1> :: fork(1) :: 7 :: move # A
+	107f:2c49 :: <char_draw_helper1> :: fork(1) :: 7 :: move # R
+	9a7f:2186 :: <char_draw_helper1> :: fork(1) :: 7 :: move # E
+	7 :: move
+	5 :: wait
+	8207:1fa2 :: <char_draw_helper1> :: fork(1) :: 7 :: move # Y
+	185e:1e86 :: <char_draw_helper1> :: fork(1) :: 7 :: move # O
+	081f:1f82 :: <char_draw_helper1> :: fork(1) :: 7 :: move # U
+	7 :: move
+	5 :: wait
+	9a6e:19a6 :: <char_draw_helper1> :: fork(1) :: 7 :: move # S
+	f041:0107 :: <char_draw_helper1> :: fork(1) :: 7 :: move # T
+	081f:1f82 :: <char_draw_helper1> :: fork(1) :: 7 :: move # U
+	147f:1c49 :: <char_draw_helper1> :: fork(1) :: 7 :: move # P
+	f860:2087 :: <char_draw_helper1> :: fork(1) :: 7 :: move # I
+	187f:3c8a :: <char_draw_helper1> :: fork(1) :: 7 :: move # D
+	7 :: move
+	5 :: wait
+	185e:1e86 :: <char_draw_helper1> :: fork(1) :: 7 :: move # O
+	107f:2c49 :: <char_draw_helper1> :: fork(1) :: 7 :: move # R
+	7 :: move
+	5 :: wait
+	9a6e:19a6 :: <char_draw_helper1> :: fork(1) :: 7 :: move # S
+	185e:1e86 :: <char_draw_helper1> :: fork(1) :: 7 :: move # O
+	40bf:3f08 :: <char_draw_helper1> :: fork(1) :: 7 :: move # M
+	9a7f:2186 :: <char_draw_helper1> :: fork(1) :: 7 :: move # E
+	f041:0107 :: <char_draw_helper1> :: fork(1) :: 7 :: move # T
+	823f:3f20 :: <char_draw_helper1> :: fork(1) :: 7 :: move # H
+	f860:2087 :: <char_draw_helper1> :: fork(1) :: 7 :: move # I
+	107e:3c08 :: <char_draw_helper1> :: fork(1) :: 7 :: move # N
+	98bc:3ba6 :: <char_draw_helper1> :: fork(1) :: 7 :: move # G
+	9040:0e26 :: <char_draw_helper1> :: fork(1) :: 7 :: move # ?
+#
+# <-- pattern row here: 52
+#
+	5 :: 8 :: * :: wait
+#
+# <-- pattern row here: 58
+#
+	state.y :: 4 :: + :: set state.y
+	<clear_error_message> :: fork(0)
+	state.y :: 8 :: + :: set state.y :: <clear_error_message> :: fork(0)
+
+
+	5 :: 4 :: * :: wait
+#
+# <-- pattern row here: 0
+#
+	set state.y :: set state.x # restore current pos
+	0 :: set state.face
+	0 :: 8 :: <clear_single_char> :: fork(2) :: 7 :: ~ :: move :: 10 :: wait
+	0 :: 8 :: <clear_single_char> :: fork(2) :: 7 :: ~ :: move :: 10 :: wait
+	0 :: 8 :: <clear_single_char> :: fork(2) :: 7 :: ~ :: move :: 10 :: wait
+	0 :: 8 :: <clear_single_char> :: fork(2) :: 7 :: ~ :: move :: 10 :: wait
+	0 :: 8 :: <clear_single_char> :: fork(2) :: 7 :: ~ :: move :: 10 :: wait
+	0 :: 8 :: <clear_single_char> :: fork(2) :: 7 :: ~ :: move :: 10 :: wait
+	0 :: 8 :: <clear_single_char> :: fork(2) :: 7 :: ~ :: move :: 10 :: wait
+	0 :: 8 :: <clear_single_char> :: fork(2) :: 7 :: ~ :: move :: 10 :: wait
+	0 :: 8 :: <clear_single_char> :: fork(2) :: 7 :: ~ :: move :: 10 :: wait
+	0 :: 8 :: <clear_single_char> :: fork(2) :: 7 :: ~ :: move :: 10 :: wait
+	0 :: 8 :: <clear_single_char> :: fork(2) ::                   10 :: wait
+
+#
+# <-- pattern row here: 22
+#
+	5 :: 5 :: * :: wait
+#
+# <-- pattern row here: 27
+#
+	083f:3082 ::  5 :: <single_char_draw> :: fork(2) :: 15 :: wait :: 7 :: move # L
+	185e:1e86 ::  5 :: <single_char_draw> :: fork(2) :: 10 :: wait :: 7 :: move # O
+	9a6e:19a6 ::  5 :: <single_char_draw> :: fork(2) ::  5 :: wait :: 7 :: move # S
+	9a6e:19a6 ::  5 :: <single_char_draw> :: fork(2) :: 10 :: wait :: 7 :: move # S
+	185e:1e86 ::  5 :: <single_char_draw> :: fork(2) :: 15 :: wait :: 7 :: move # O
+	0         :: 70 :: <single_char_draw> :: fork(2)
+#
+# <-- pattern row here: 38
+#
+	5 :: 10 :: * :: wait
+#
+# <-- pattern row here: 48
+#
+	0 :: set state.tint :: <clearscreen> :: fork(0) :: 10 :: wait
+	4 :: set state.tint :: <clearscreen> :: fork(0) :: 10 :: wait
+
+	end
+
+proc clear_error_message
+	0 :: set state.tint
+	8 :: set state.size
+	128 :: set state.face
+	32 :: 7 :: * :: move
+	0 :: set state.face
+	plot :: 16 :: move :: 1 :: wait
+	plot :: 16 :: move :: 1 :: wait
+	plot :: 16 :: move :: 1 :: wait
+	plot :: 16 :: move :: 1 :: wait
+	plot :: 16 :: move :: 1 :: wait
+	plot :: 16 :: move :: 1 :: wait
+	plot :: 16 :: move :: 1 :: wait
+	plot :: 16 :: move :: 1 :: wait
+	plot :: 16 :: move :: 1 :: wait
+	plot :: 16 :: move :: 1 :: wait
+	plot :: 16 :: move :: 1 :: wait
+	plot :: 16 :: move :: 1 :: wait
+	plot :: 16 :: move :: 1 :: wait
+	plot :: 16 :: move :: 1 :: wait
+	plot :: 16 :: move :: 1 :: wait
+	plot :: 16 :: move :: 1 :: wait
+	plot :: 16 :: move :: 1 :: wait
+	plot :: 16 :: move :: 1 :: wait
+	plot :: 16 :: move :: 1 :: wait
+	plot :: 16 :: move :: 1 :: wait
+	plot :: 16 :: move :: 1 :: wait
+	plot :: 16 :: move :: 1 :: wait
+	plot :: 16 :: move :: 1 :: wait
+	plot :: 16 :: move :: 1 :: wait
+	plot :: 16 :: move :: 1 :: wait
+	end
+
+proc proc_050 
+	# <proc_050>(local.a)
+	0
+	local.a
+	<cmp>
+	when(>)					# (local.a>0)
+		8
+		<move_a_draw>
+		fork(1)				# <move_a_draw>(8)
+		4
+		state.face
+		+
+		set state.face			# set state.face (state.face+4)
+		0.5
+		wait				# wait 0.5
+		<proc_050>
+		1
+		local.a
+		-
+		set local.a			# set local.a (local.a-1)
+		set state.proc			# set state.proc <proc_050>
+		tail
+	done
+	end
+
+proc clear_single_char
+	6
+	set state.tint				# set state.tint 6
+	3
+	set state.size				# set state.size 3
+	3
+	state.y
+	+
+	3
+	state.x
+	+
+	set state.x				# set state.x (state.x+3)
+	set state.y				# set state.y (state.y+3)
+	plot
+	local.b
+	wait					# wait local.b
+	4
+	set state.tint				# set state.tint 4
+	plot
+	0
+	set state.tint				# set state.tint 4
+	plot
+	2
+	state.y
+	-
+	3
+	state.x
+	-
+	end
+
+
+proc single_char_draw
+	# <single_char_draw>(823f:3f20, 50)
+	# <single_char_draw>(185e:1e86, 30)
+	# <single_char_draw>(927f:0104, 30)
+	# <single_char_draw>(927f:0104, 10)
+	# <single_char_draw>(40bf:3f08, 20)
+	# <single_char_draw>(14bc:3c49, 20)
+	# <single_char_draw>(107e:3c08, 20)
+	# <single_char_draw>(0, 70)
+	6
+	set state.tint				# set state.tint 6
+	3
+	set state.size				# set state.size 3
+	3
+	state.y
+	+
+	3
+	state.x
+	+
+	set state.x				# set state.x (state.x+3)
+	set state.y				# set state.y (state.y+3)
+	plot
+	local.b
+	wait					# wait local.b
+	4
+	set state.tint				# set state.tint 4
+	plot
+	3
+	set state.tint				# set state.tint 3
+	2
+	state.y
+	-
+	3
+	state.x
+	-
+	set state.x				# set state.x (state.x-3)
+	set state.y				# set state.y (state.y-2)
+	<char_draw_helper1>
+	set state.proc				# set state.proc <char_draw_helper1>
+	pop
+	tail
+	end
+
+proc proc_035
+	# <proc_035>(14)
+	0
+	local.a
+	<cmp>
+	when(>)					# (local.a>0)
+		3
+		set state.tint			# set state.tint 3
+		3
+		set state.size			# set state.size 3
+		plot
+		1
+		wait				# wait 1
+		0
+		set state.tint			# set state.tint 0
+		plot
+		7
+		move				# move 7
+		<proc_035>
+		1
+		local.a
+		-
+		set local.a			# set local.a (local.a-1)
+		set state.proc			# set state.proc <proc_035>
+		tail
+	done
+	end
+
+proc circle_with_outline 
+	# <circle_with_outline>()
+	3
+	set state.size				# set state.size 3
+	4
+	set state.tint				# set state.tint 4
+	plot
+	2
+	set state.size				# set state.size 2
+	3
+	set state.tint				# set state.tint 3
+	draw
+	end
+
+proc proc_032 
+	# <proc_032>()
+	3
+	set state.size				# set state.size 3
+	4
+	set state.tint				# set state.tint 4
+	plot
+	0
+	set state.tint				# set state.tint 0
+	plot
+	7
+	~
+	move					# move (-7)
+	end
+
+proc char_draw_helper1 
+	# <char_draw_helper1>(local.a)
+	1
+	set state.F				# set state.F 1
+	local.a
+	state.D
+	0
+	0
+	<draw_char_column>
+	fork(4)					# <draw_char_column>(local.a, state.D, 0, 0)
+	end
+
+proc loading_user_profile_and_main_ui 
+	# <loading_user_profile_and_main_ui>()
+	157
+	0
+	set state.x				# set state.x 0
+	set state.y				# set state.y 157
+	<draw_1337>
+	fork(0)					# <draw_1337>()
+	<draw_logicoma_taskbar_logo>
+	fork(0)					# <draw_logicoma_taskbar_logo>()
+	30
+	wait					# wait 30
+	3
+	set state.tint				# set state.tint 3
+	<proc_062>
+	fork(0)					# <proc_062>()
+	7
+	set state.tint				# set state.tint 7
+	0
+	set state.size				# set state.size 0
+	0
+	set state.face				# set state.face 0
+	320
+	0000:1999
+	<drawline_len_speed>
+	fork(2)					# <drawline_len_speed>(320, 0000:1999)
+	11
+	state.y
+	+
+	12
+	state.x
+	+
+	set state.x				# set state.x (state.x+12)
+	set state.y				# set state.y (state.y+11)
+	1
+	state.y
+	+
+	set state.y				# set state.y (state.y+1)
+	50
+	wait					# wait 50
+	0
+	set state.face				# set state.face 0
+	22
+	move					# move 22
+	0
+	7
+	<maybe_icon_draw_loop>
+	fork(2)					# <maybe_icon_draw_loop>(0, 7)
+	5
+	40
+	*					# 40*5
+	wait					# wait 40*5
+	0
+	set state.tint				# set state.tint 0
+	<proc_062>
+	set state.proc				# set state.proc <proc_062>
+	tail
+	end
+
+proc draw_1337
+	# <draw_1337>()
+	9
+	165
+	+
+	2
+	280
+	-
+	set state.x				# set state.x (280-2)
+	set state.y				# set state.y (165+9)
+	7
+	set state.tint				# set state.tint 7
+	37
+	12
+	10
+	<drawpixel>
+	<smart_rect>
+	fork(4)					# <smart_rect>(37, 12, 10, <drawpixel>)
+	40
+	wait					# wait 40
+	166
+	280
+	set state.x				# set state.x 280
+	set state.y				# set state.y 166
+	1
+	set state.F				# set state.F 1
+	7
+	set state.E				# set state.E 7
+	<drawpixel>
+	set state.D				# set state.D <drawpixel>
+	7
+	set state.tint				# set state.tint 7
+	f880:0083
+	9861:1bb6
+	0
+	9861:1bb6
+	1841:0725
+	0
+	0
+	0
+	0
+	0
+	0
+	<draw_11_chars_F_is_zoom_E_is_letter_spacing>
+	fork(11)				# <draw_11_chars_F_is_zoom_E_is_letter_spacing>(f880:0083, 9861:1bb6, 0, 9861:1bb6, 1841:0725, 0, 0, 0, 0, 0, 0)
+	3
+	42
+	<draw_1338_1339_1340>
+	fork(2)					# <draw_1338_1339_1340>(3, 42)
+	end
+
+proc draw_logicoma_taskbar_logo 
+	# <draw_logicoma_taskbar_logo>()
+	11
+	state.y
+	+
+	12
+	state.x
+	+
+	set state.x				# set state.x (state.x+12)
+	set state.y				# set state.y (state.y+11)
+	7
+	set state.tint				# set state.tint 7
+	7
+	set state.size				# set state.size 7
+	draw
+	4
+	set state.tint				# set state.tint 4
+	6
+	set state.size				# set state.size 6
+	draw
+	7
+	set state.tint				# set state.tint 7
+
+	0
+	set state.size				# set state.size 0
+	4
+	state.y
+	+
+	set state.y				# set state.y (state.y+4)
+
+		0 :: set state.face :: 2 :: ~ :: move :: 5 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: move
+
+	plot
+	7
+	state.y
+	-
+	3
+	state.x
+	-
+	set state.x				# set state.x (state.x-3)
+	set state.y				# set state.y (state.y-7)
+	plot
+	6
+	state.x
+	+
+	set state.x				# set state.x (state.x+6)
+	plot
+	end
+
+proc proc_062 
+	# <proc_062>()
+	<draw_loading_user_profile>
+	set state.proc				# set state.proc <draw_loading_user_profile>
+	tail
+	end
+
+proc maybe_icon_draw_loop 
+	# <maybe_icon_draw_loop>(0, 7)
+	local.b
+	local.a
+	<cmp>
+	when(<)					# (local.a<local.b)
+		<proc_065>
+		fork(0)				# <proc_065>()
+		local.a
+		<maybe_draw_icons1>
+		fork(1)				# <maybe_draw_icons1>(local.a)
+		25
+		wait				# wait 25
+		22
+		move				# move 22
+		<maybe_icon_draw_loop>
+		1
+		local.a
+		+
+		set local.a			# set local.a (local.a+1)
+		set state.proc			# set state.proc <maybe_icon_draw_loop>
+		tail
+	done
+	end
+
+proc draw_1338_1339_1340 
+	# <draw_1338_1339_1340>(3, 42)
+	0
+	local.b
+	<cmp>
+	when(>)					# (local.b>0)
+		<proc_212>
+		fork(0)				# <proc_212>()
+		50
+		wait				# wait 50
+		<draw_1338_1339_1340>
+		1
+		local.b
+		-
+		set local.b			# set local.b (local.b-1)
+		set state.proc			# set state.proc <draw_1338_1339_1340>
+		tail
+	else
+		<proc_211>
+		fork(0)				# <proc_211>()
+		3
+		local.a
+		<cmp>
+		when(==)			# (local.a==3)
+			f880:0083
+			9861:1bb6
+			0
+			9861:1bb6
+			9a56:16a6
+			0
+			0
+			0
+			0
+			0
+			0
+			<draw_11_chars_F_is_zoom_E_is_letter_spacing>
+			fork(11)		# <draw_11_chars_F_is_zoom_E_is_letter_spacing>(f880:0083, 9861:1bb6, 0, 9861:1bb6, 9a56:16a6, 0, 0, 0, 0, 0, 0)
+		done
+		2
+		local.a
+		<cmp>
+		when(==)			# (local.a==2)
+			f880:0083
+			9861:1bb6
+			0
+			9861:1bb6
+			9246:1ea6
+			0
+			0
+			0
+			0
+			0
+			0
+			<draw_11_chars_F_is_zoom_E_is_letter_spacing>
+			fork(11)		# <draw_11_chars_F_is_zoom_E_is_letter_spacing>(f880:0083, 9861:1bb6, 0, 9861:1bb6, 9246:1ea6, 0, 0, 0, 0, 0, 0)
+		done
+		1
+		local.a
+		<cmp>
+		when(==)			# (local.a==1)
+			f880:0083
+			9861:1bb6
+			0
+			820f:08f0
+			185e:1e86
+			0
+			0
+			0
+			0
+			0
+			0
+			<draw_11_chars_F_is_zoom_E_is_letter_spacing>
+			fork(11)		# <draw_11_chars_F_is_zoom_E_is_letter_spacing>(f880:0083, 9861:1bb6, 0, 820f:08f0, 185e:1e86, 0, 0, 0, 0, 0, 0)
+		done
+		0
+		local.a
+		<cmp>
+		when(>)				# (local.a>0)
+			<draw_1338_1339_1340>
+			1
+			local.a
+			-
+			60
+			set local.b		# set local.b 60
+			set local.a		# set local.a (local.a-1)
+			set state.proc		# set state.proc <draw_1338_1339_1340>
+			tail
+		done
+	done
+	end
+
+proc draw_loading_user_profile 
+	1
+	set state.F				# set state.F 1
+	7
+	set state.E				# set state.E 7
+	<drawpixel>
+	set state.D				# set state.D <drawpixel>
+	60
+	140
+	set state.x				# set state.x 140
+	set state.y				# set state.y 60
+	083f:3082
+	185e:1e86
+	14bc:3c49
+	187f:3c8a
+	f860:2087
+	107e:3c08
+	98bc:3ba6
+	0
+	0
+	0
+	0
+	<draw_11_chars_F_is_zoom_E_is_letter_spacing>
+	fork(11)				# <draw_11_chars_F_is_zoom_E_is_letter_spacing>(083f:3082, 185e:1e86, 14bc:3c49, 187f:3c8a, f860:2087, 107e:3c08, 98bc:3ba6, 0, 0, 0, 0)
+	10
+	state.y
+	+
+	11
+	state.x
+	+
+	set state.x				# set state.x (state.x+11)
+	set state.y				# set state.y (state.y+10)
+	081f:1f82
+	9a6e:19a6
+	9a7f:2186
+	107f:2c49
+	0
+	0
+	0
+	0
+	0
+	0
+	0
+	<draw_11_chars_F_is_zoom_E_is_letter_spacing>
+	fork(11)				# <draw_11_chars_F_is_zoom_E_is_letter_spacing>(081f:1f82, 9a6e:19a6, 9a7f:2186, 107f:2c49, 0, 0, 0, 0, 0, 0, 0)
+	10
+	state.y
+	+
+	11
+	state.x
+	-
+	set state.x				# set state.x (state.x-11)
+	set state.y				# set state.y (state.y+10)
+	147f:1c49
+	107f:2c49
+	185e:1e86
+	927f:0104
+	f860:2087
+	083f:3082
+	9a7f:2186
+	0
+	0
+	0
+	0
+	<draw_11_chars_F_is_zoom_E_is_letter_spacing>
+	fork(11)				# <draw_11_chars_F_is_zoom_E_is_letter_spacing>(147f:1c49, 107f:2c49, 185e:1e86, 927f:0104, f860:2087, 083f:3082, 9a7f:2186, 0, 0, 0, 0)
+	end
+
+proc proc_065 
+	10
+	state.y
+	-
+	10
+	state.x
+	-
+	set state.x				# set state.x (state.x-10)
+	set state.y				# set state.y (state.y-10)
+	0
+	set state.face				# set state.face 0
+	19
+	1
+	<drawline_len_speed>
+	fork(2)					# <drawline_len_speed>(19, 1)
+	19
+	move					# move 19
+	64
+	state.face
+	+
+	set state.face				# set state.face (state.face+64)
+	19
+	1
+	<drawline_len_speed>
+	fork(2)					# <drawline_len_speed>(19, 1)
+	19
+	move					# move 19
+	64
+	state.face
+	+
+	set state.face				# set state.face (state.face+64)
+	19
+	1
+	<drawline_len_speed>
+	fork(2)					# <drawline_len_speed>(19, 1)
+	19
+	move					# move 19
+	64
+	state.face
+	+
+	set state.face				# set state.face (state.face+64)
+	19
+	1
+	<drawline_len_speed>
+	fork(2)					# <drawline_len_speed>(19, 1)
+	end
+
+proc maybe_draw_icons1 
+	# <maybe_draw_icons1>(local.a)
+	0
+	local.a
+	<cmp>
+	when(==)				# (local.a==0) search --> porn
+		3c7e:c001	# gfx/icon-porn.png line  0
+		0008:0004	# gfx/icon-porn.png line  2
+		2003:4092	# gfx/icon-porn.png line  4
+		c082:4882	# gfx/icon-porn.png line  6
+		4144:2138	# gfx/icon-porn.png line  8
+		1e08:1008	# gfx/icon-porn.png line 10
+		1004:1004	# gfx/icon-porn.png line 12
+		2004:2084	# gfx/icon-porn.png line 14
+		<icon_draw_thing1>
+		fork(8)				# <icon_draw_thing1>(1f00:2080, 4040:8320, 8320:b020, b820:bc20, 5c40:2080, 1f30:0038, 001c:000e, 0007:0002)
+	done
+	1
+	local.a
+	<cmp>
+	when(==)				# (local.a==1) messaging
+		0
+		0000:7ffe
+		3ffc:5ffa
+		6ff6:77ee
+		6816:5ffa
+		3ffc:7ffe
+		0
+		0
+		<icon_draw_thing1>
+		fork(8)				# <icon_draw_thing1>(0, 0000:7ffe, 3ffc:5ffa, 6ff6:77ee, 6816:5ffa, 3ffc:7ffe, 0, 0)
+	done
+	2
+	local.a
+	<cmp>
+	when(==)				# (local.a==2) demos --> furry porn
+		7838:4648	# gfx/icon-furry.png line  0		5456
+		2190:3000	# gfx/icon-furry.png line  2		3ff8:a00a
+		43b0:4448	# gfx/icon-furry.png line  4		2fe8:a82a
+		8668:0440	# gfx/icon-furry.png line  6		2828:a82a
+		03be:201d	# gfx/icon-furry.png line  8		2828:a00a
+		2009:1001	# gfx/icon-furry.png line 10		3ff8:8002
+		0809:0612	# gfx/icon-furry.png line 12		3ff8:1550
+		05ec:0800	# gfx/icon-furry.png line 14		5456
+		<icon_draw_thing1>
+		fork(8)				# <icon_draw_thing1>(5456, 3ff8:a00a, 2fe8:a82a, 2828:a82a, 2828:a00a, 3ff8:8002, 3ff8:1550, 5456)
+	done
+	3
+	local.a
+	<cmp>
+	when(==)				# (local.a==3) tracker
+		0
+		6223:6223
+		6223:6223
+		6223:6223
+		7777:7777
+		7777:7777
+		0000:7777
+		0
+		<icon_draw_thing1>
+		fork(8)				# <icon_draw_thing1>(0, 6223:6223, 6223:6223, 6223:6223, 7777:7777, 7777:7777, 0000:7777, 0)
+	done
+	4
+	local.a
+	<cmp>
+	when(==)				# (local.a==4) satellite/scanner --> horse porn
+		0818:0c28	# gfx/icon-horse.png line  0
+		0bc8:040c	# gfx/icon-horse.png line  2
+		06c2:0922	# gfx/icon-horse.png line  4
+		0da1:16c0	# gfx/icon-horse.png line  6
+		2004:4004	# gfx/icon-horse.png line  8
+		4008:a830	# gfx/icon-horse.png line 10
+		80c0:8120	# gfx/icon-horse.png line 12
+		4210:3c10	# gfx/icon-horse.png line 14
+		<icon_draw_thing1>
+		fork(8)				# <icon_draw_thing1>(0000:1c18, 2318:40a0, 4040:40a0, 2170:22f0, 15f8:2bf8, 34e8:3b10, 3ce0:0e00, 77f0:7bf8)
+	done
+	5
+	local.a
+	<cmp>
+	when(==)				# (local.a==5) skull key -> scat
+		4400:4404	# gfx/icon-scat.png line  0		0000:01e0
+		8884:80c2	# gfx/icon-scat.png line  2		03f0:07f8
+		41e2:23e4	# gfx/icon-scat.png line  4		04c8:04c8
+		0020:0f80	# gfx/icon-scat.png line  6		07b8:01e0
+		1fec:1dfc	# gfx/icon-scat.png line  8		0210:01e0
+		0ff8:6000	# gfx/icon-scat.png line 10		0000:00c0
+		ff74:ffde	# gfx/icon-scat.png line 12		03c0:00c0
+		7ffe:1ffc	# gfx/icon-scat.png line 14		03c0:03c0
+		<icon_draw_thing1>
+		fork(8)				# <icon_draw_thing1>(0000:01e0, 03f0:07f8, 04c8:04c8, 07b8:01e0, 0210:01e0, 0000:00c0, 03c0:00c0, 03c0:03c0)
+	done
+	6
+	local.a
+	<cmp>
+	when(==)				# (local.a==6) download
+		0000:0ff8
+		4088
+		01c0:01c0
+		01c0:01c0
+		01c0:0ff8
+		07f0:03e0
+		01c0:0080
+		0
+		<icon_draw_thing1>
+		fork(8)				# <icon_draw_thing1>(0000:0ff8, 4088, 01c0:01c0, 01c0:01c0, 01c0:0ff8, 07f0:03e0, 01c0:0080, 0)
+	done
+	7
+	local.a
+	<cmp>
+	when(==)				# (local.a==7)
+		0410:0a28
+		1144:2082
+		1004:280a
+		1414:0808
+		1004:2082
+		1144:2aaa
+		1554:0a28
+		1040
+		<icon_draw_thing1>
+		fork(8)				# <icon_draw_thing1>(0410:0a28, 1144:2082, 1004:280a, 1414:0808, 1004:2082, 1144:2aaa, 1554:0a28, 1040)
+	done
+	end
+
+proc proc_212 
+	# <proc_212>()
+	state.x
+	state.y
+	1
+	state.y
+	+
+	16
+	state.x
+	+
+	set state.x				# set state.x (state.x+16)
+	set state.y				# set state.y (state.y+1)
+	0
+	set state.size				# set state.size 0
+	7
+	set state.tint				# set state.tint 7
+	plot
+	3
+	state.y
+	+
+	set state.y				# set state.y (state.y+3)
+	plot
+	25
+	wait					# wait 25
+	local.b
+	local.a
+	set state.x				# set state.x local.a
+	set state.y				# set state.y local.b
+	1
+	state.y
+	+
+	16
+	state.x
+	+
+	set state.x				# set state.x (state.x+16)
+	set state.y				# set state.y (state.y+1)
+	0
+	set state.size				# set state.size 0
+	4
+	set state.tint				# set state.tint 4
+	plot
+	3
+	state.y
+	+
+	set state.y				# set state.y (state.y+3)
+	plot
+	end
+
+proc proc_211 
+	# <proc_211>()
+	3
+	state.y
+	+
+	3
+	state.x
+	+
+	set state.x				# set state.x (state.x+3)
+	set state.y				# set state.y (state.y+3)
+	4
+	set state.tint				# set state.tint 4
+	4
+	set state.size				# set state.size 4
+	plot
+	9
+	move					# move 9
+	plot
+	9
+	move					# move 9
+	plot
+	9
+	move					# move 9
+	plot
+	9
+	move					# move 9
+	end
+
+proc icon_draw_thing1 
+	7
+	set state.tint				# set state.tint 7
+	8
+	state.y
+	-
+	8
+	state.x
+	-
+	set state.x				# set state.x (state.x-8)
+	set state.y				# set state.y (state.y-8)
+	0
+	set state.size				# set state.size 0
+	local.a
+	32
+	<draw_single_icon_row_or_col>
+	fork(2)					# <draw_single_icon_row_or_col>(local.a, 32)
+	1
+	wait					# wait 1
+	2
+	state.y
+	+
+	set state.y				# set state.y (state.y+2)
+	local.b
+	32
+	<draw_single_icon_row_or_col>
+	fork(2)					# <draw_single_icon_row_or_col>(local.b, 32)
+	1
+	wait					# wait 1
+	2
+	state.y
+	+
+	set state.y				# set state.y (state.y+2)
+	local.c
+	32
+	<draw_single_icon_row_or_col>
+	fork(2)					# <draw_single_icon_row_or_col>(local.c, 32)
+	1
+	wait					# wait 1
+	2
+	state.y
+	+
+	set state.y				# set state.y (state.y+2)
+	local.d
+	32
+	<draw_single_icon_row_or_col>
+	fork(2)					# <draw_single_icon_row_or_col>(local.d, 32)
+	1
+	wait					# wait 1
+	2
+	state.y
+	+
+	set state.y				# set state.y (state.y+2)
+	local.e
+	32
+	<draw_single_icon_row_or_col>
+	fork(2)					# <draw_single_icon_row_or_col>(local.e, 32)
+	1
+	wait					# wait 1
+	2
+	state.y
+	+
+	set state.y				# set state.y (state.y+2)
+	local.f
+	32
+	<draw_single_icon_row_or_col>
+	fork(2)					# <draw_single_icon_row_or_col>(local.f, 32)
+	1
+	wait					# wait 1
+	2
+	state.y
+	+
+	set state.y				# set state.y (state.y+2)
+	local.g
+	32
+	<draw_single_icon_row_or_col>
+	fork(2)					# <draw_single_icon_row_or_col>(local.g, 32)
+	1
+	wait					# wait 1
+	2
+	state.y
+	+
+	set state.y				# set state.y (state.y+2)
+	<draw_single_icon_row_or_col>
+	local.h
+	32
+	set local.b				# set local.b 32
+	set local.a				# set local.a local.h
+	set state.proc				# set state.proc <draw_single_icon_row_or_col>
+	pop
+	pop
+	pop
+	pop
+	pop
+	pop
+	tail
+	end
+
+proc draw_single_icon_row_or_col 
+	# <draw_single_icon_row_or_col>(local.a, 32)
+	# <draw_single_icon_row_or_col>(local.b, 32)
+	# <draw_single_icon_row_or_col>(local.c, 32)
+	# <draw_single_icon_row_or_col>(local.d, 32)
+	# <draw_single_icon_row_or_col>(local.e, 32)
+	# <draw_single_icon_row_or_col>(local.f, 32)
+	# <draw_single_icon_row_or_col>(local.g, 32)
+	16
+	local.b
+	<cmp>
+	when(==)				# (local.b==16)
+		1
+		state.y
+		+
+		16
+		state.x
+		-
+		set state.x			# set state.x (state.x-16)
+		set state.y			# set state.y (state.y+1)
+	done
+	0
+	local.b
+	<cmp>
+	when(>)					# (local.b>0)
+		1
+		local.a
+		&
+		when(!=)			# (local.a&1) !=
+			plot
+		done
+		1
+		move				# move 1
+		0.25
+		wait				# wait 0.25
+		<draw_single_icon_row_or_col>
+		1
+		local.a
+		<ror>
+		1
+		local.b
+		-
+		set local.b			# set local.b (local.b-1)
+		set local.a			# set local.a (local.a<ror>1)
+		set state.proc			# set state.proc <draw_single_icon_row_or_col>
+		tail
+	done
+	end
+
+proc icon_highlighting_search_messaging_demos_tracker 
+	# <icon_highlighting_search_messaging_demos_tracker>()
+	0
+	<module_name_taskbar_writer>
+	fork(1)					# <module_name_taskbar_writer>(0)
+	5
+	6
+	*					# 6*5
+	wait					# wait 6*5
+	0
+	<prepare_module_writer>
+	fork(1)					# <prepare_module_writer>(0)
+	1
+	<module_name_taskbar_writer>
+	fork(1)					# <module_name_taskbar_writer>(1)
+	5
+	6
+	*					# 6*5
+	wait					# wait 6*5
+	1
+	<prepare_module_writer>
+	fork(1)					# <prepare_module_writer>(1)
+	2
+	<module_name_taskbar_writer>
+	fork(1)					# <module_name_taskbar_writer>(2)
+	5
+	6
+	*					# 6*5
+	wait					# wait 6*5
+	2
+	<prepare_module_writer>
+	fork(1)					# <prepare_module_writer>(2)
+	3
+	<module_name_taskbar_writer>
+	fork(1)					# <module_name_taskbar_writer>(3)
+	5
+	19
+	*					# 19*5
+	wait					# wait 19*5
+	3
+	<prepare_module_writer>
+	fork(1)					# <prepare_module_writer>(3)
+	end
+
+proc loading_xxx_and_title_upper_left 
+	# <loading_xxx_and_title_upper_left>(3)
+	# <loading_xxx_and_title_upper_left>(1)
+	# <loading_xxx_and_title_upper_left>(4)
+	# <loading_xxx_and_title_upper_left>(6)
+	local.a
+	1
+	<draw_loading>
+	fork(2)					# <draw_loading>(local.a, 1)
+	5
+	37
+	*					# 37*5
+	wait					# wait 37*5
+	<proc_052>
+	set state.proc				# set state.proc <proc_052>
+	tail
+	end
+
+proc draw_tracker_title_and_pattern 
+	# <draw_tracker_title_and_pattern>()
+	7
+	set state.G				# set state.G 7
+	<draw_title_revision_22_03_bpm_125>
+	fork(0)					# <draw_title_revision_22_03_bpm_125>()
+	5
+	12
+	*					# 12*5
+	wait					# wait 12*5
+	<proc_078>
+	fork(0)					# <proc_078>()
+	5
+	8
+	*					# 8*5
+	wait					# wait 8*5
+	40
+	4
+	set state.x				# set state.x 4
+	set state.y				# set state.y 40
+	<draw_kick_hat_snare_cowbell_bass>
+	fork(0)					# <draw_kick_hat_snare_cowbell_bass>()
+	3
+	state.y
+	+
+	set state.y				# set state.y (state.y+3)
+	end
+
+proc tracker_play_new_voice_message_and_stop 
+	# <tracker_play_new_voice_message_and_stop>()
+	<proc_071>
+	fork(0)					# <proc_071>()
+	43
+	30
+	set state.x				# set state.x 30
+	set state.y				# set state.y 43
+	0
+	72
+	<proc_082>
+	fork(2)					# <proc_082>(0, 72)
+	6
+	22
+	*					# 22*6
+	wait					# wait 22*6
+	8
+	wait					# wait 8
+	<proc_094>
+	fork(0)					# <proc_094>()
+	4
+	wait					# wait 4
+	6
+	56
+	*					# 56*6
+	wait					# wait 56*6
+	<unclear_after_scanner>
+	set state.proc				# set state.proc <unclear_after_scanner>
+	tail
+	end
+
+proc icon_highlighting_tracker_demos_messaging 
+	# <icon_highlighting_tracker_demos_messaging>()
+	3
+	<module_name_taskbar_writer>
+	fork(1)					# <module_name_taskbar_writer>(3)
+	30
+	wait					# wait 30
+	3
+	<prepare_module_writer>
+	fork(1)					# <prepare_module_writer>(3)
+	2
+	<module_name_taskbar_writer>
+	fork(1)					# <module_name_taskbar_writer>(2)
+	30
+	wait					# wait 30
+	2
+	<prepare_module_writer>
+	fork(1)					# <prepare_module_writer>(2)
+	1
+	<module_name_taskbar_writer>
+	fork(1)					# <module_name_taskbar_writer>(1)
+	65
+	wait					# wait 65
+	1
+	<prepare_module_writer>
+	fork(1)					# <prepare_module_writer>(1)
+	end
+
+proc speech_message_part_and_crash 
+	# <speech_message_part_and_crash>()
+	1.5
+	set state.C				# set state.C 1.5
+	<draw_message_subjects>
+	fork(0)					# <draw_message_subjects>()
+ 	41
+	1
+	~
+	set state.x				# set state.x (-1)
+	set state.y				# set state.y 41
+	5
+	set state.tint				# set state.tint 5
+	64
+	set state.face				# set state.face 64
+
+	5
+	<proc_108>
+	fork(1)					# <proc_108>(5)
+
+	5
+	48
+	*					# 48*5
+	wait					# wait 48*5
+	0
+	set state.face				# set state.face 0
+
+	<proc_107>
+	fork(0)					# <proc_107>()
+
+	5
+	16
+	*					# 16*5
+	wait					# wait 16*5
+	93
+	135
+	set state.x				# set state.x 135
+	set state.y				# set state.y 93
+	176
+	45
+	42
+	<drawpixel>
+	<smart_rect>
+	fork(4)					# <smart_rect>(176, 45, 42, <drawpixel>)
+	0
+	set state.size				# set state.size 0
+	1
+	set state.tint				# set state.tint 1
+	2
+	state.y
+	-
+	2
+	state.x
+	+
+	set state.x				# set state.x (state.x+2)
+	set state.y				# set state.y (state.y-2)
+	1
+	set state.tint				# set state.tint 1
+
+	88
+	<proc_105>
+	fork(1)					# <proc_105>(88)
+
+	5
+	16
+	*					# 16*5
+	wait					# wait 16*5
+
+	1
+	<proc_104>
+	fork(1)					# <proc_104>(1)
+
+	5
+	16
+	*					# 16*5
+	wait					# wait 16*5
+	93
+	135
+	set state.x				# set state.x 135
+	set state.y				# set state.y 93
+	1
+	state.y
+	-
+	1
+	state.x
+	+
+	set state.x				# set state.x (state.x+1)
+	set state.y				# set state.y (state.y-1)
+	21
+	state.y
+	-
+	set state.y				# set state.y (state.y-21)
+	0
+	set state.face				# set state.face 0
+	<draw_waveform>
+	fork(0)					# <draw_waveform>()
+	<draw_hey_man_uhh_message>
+	fork(0)					# <draw_hey_man_uhh_message>()
+	5
+	64
+	*					# 64*5
+	wait					# wait 64*5
+	5
+	16
+	*					# 16*5
+	wait					# wait 16*5
+	5
+	16
+	*					# 16*5
+	wait					# wait 16*5
+	<unclear_after_scanner>
+	set state.proc				# set state.proc <unclear_after_scanner>
+	tail
+	end
+
+proc module_name_taskbar_writer
+	# <module_name_taskbar_writer>(0)
+	# <module_name_taskbar_writer>(1)
+	# <module_name_taskbar_writer>(2)
+	# <module_name_taskbar_writer>(3)
+	# <module_name_taskbar_writer>(4)
+	# <module_name_taskbar_writer>(5)
+	# <module_name_taskbar_writer>(6)
+	168
+	33
+	set state.x				# set state.x 33
+	set state.y				# set state.y 168
+	0
+	set state.face				# set state.face 0
+	1
+	set state.tint				# set state.tint 1
+	22
+	local.a
+	*					# local.a*22
+	move					# move local.a*22
+	0
+	9
+	<growing_rect>
+	fork(2)					# <growing_rect>(0, 9)
+	<proc_059>
+	set state.proc				# set state.proc <proc_059>
+	tail
+	end
+
+proc prepare_module_writer
+	# <prepare_module_writer>(0)
+	# <prepare_module_writer>(1)
+	# <prepare_module_writer>(2)
+	# <prepare_module_writer>(3)
+	# <prepare_module_writer>(4)
+	# <prepare_module_writer>(5)
+	# <prepare_module_writer>(6)
+	168
+	33
+	set state.x				# set state.x 33
+	set state.y				# set state.y 168
+	0
+	set state.face				# set state.face 0
+	0
+	set state.tint				# set state.tint 0
+	22
+	local.a
+	*					# local.a*22
+	move					# move local.a*22
+	0
+	9
+	<growing_rect>
+	fork(2)					# <growing_rect>(0, 9)
+	<proc_060>
+	set state.proc				# set state.proc <proc_060>
+	tail
+	end
+
+proc draw_loading 
+	# <draw_loading>(local.a, 1)
+	# <draw_loading>(local.a, 0)
+	1
+	set state.F				# set state.F 1
+	7
+	set state.E				# set state.E 7
+	<drawpixel>
+	set state.D				# set state.D <drawpixel>
+	3
+	set state.tint				# set state.tint 3
+	60
+	110
+	set state.x				# set state.x 110
+	set state.y				# set state.y 60
+	083f:3082
+	185e:1e86
+	14bc:3c49
+	187f:3c8a
+	f860:2087
+	107e:3c08
+	98bc:3ba6
+	0
+	0
+	0
+	0
+	<draw_11_chars_F_is_zoom_E_is_letter_spacing>
+	fork(11)				# <draw_11_chars_F_is_zoom_E_is_letter_spacing>(083f:3082, 185e:1e86, 14bc:3c49, 187f:3c8a, f860:2087, 107e:3c08, 98bc:3ba6, 0, 0, 0, 0)
+	10
+	state.y
+	+
+	set state.y				# set state.y (state.y+10)
+	local.a
+	<draw_search_messaging_demos_tracker_scanner_cracker_receiver>
+	fork(1)					# <draw_search_messaging_demos_tracker_scanner_cracker_receiver>(local.a)
+	3
+	state.y
+	-
+	80
+	state.x
+	+
+	set state.x				# set state.x (state.x+80)
+	set state.y				# set state.y (state.y-3)
+	20
+	wait					# wait 20
+	1
+	set state.size				# set state.size 1
+	1
+	local.b
+	<cmp>
+	when(==)				# (local.b==1)
+		290
+		<proc_049>
+		fork(1)				# <proc_049>(290)
+	else
+		400
+		<proc_049>
+		fork(1)				# <proc_049>(400)
+	done
+	1
+	local.b
+	<cmp>
+	when(==)				# (local.b==1)
+		5
+		26
+		*				# 26*5
+		wait				# wait 26*5
+	else
+		200
+		wait				# wait 200
+	done
+	0
+	set state.tint				# set state.tint 0
+	60
+	110
+	set state.x				# set state.x 110
+	set state.y				# set state.y 60
+	083f:3082
+	185e:1e86
+	14bc:3c49
+	187f:3c8a
+	f860:2087
+	107e:3c08
+	98bc:3ba6
+	0
+	0
+	0
+	0
+	<draw_11_chars_F_is_zoom_E_is_letter_spacing>
+	fork(11)				# <draw_11_chars_F_is_zoom_E_is_letter_spacing>(083f:3082, 185e:1e86, 14bc:3c49, 187f:3c8a, f860:2087, 107e:3c08, 98bc:3ba6, 0, 0, 0, 0)
+	10
+	state.y
+	+
+	set state.y				# set state.y (state.y+10)
+	<draw_search_messaging_demos_tracker_scanner_cracker_receiver>
+	set state.proc				# set state.proc <draw_search_messaging_demos_tracker_scanner_cracker_receiver>
+	pop
+	tail
+	end
+
+proc proc_052 
+	7
+	17
+	~
+	set state.x				# set state.x (-17)
+	set state.y				# set state.y 7
+	64
+	set state.face				# set state.face 64
+	local.a
+	<proc_059>
+	fork(1)					# <proc_059>(local.a)
+	15
+	1
+	set state.x				# set state.x 1
+	set state.y				# set state.y 15
+	0
+	local.a
+	<cmp>
+	when(==)				# (local.a==0)
+		6
+		<proc_053>
+		fork(1)				# <proc_053>(6)
+	done
+	1
+	local.a
+	<cmp>
+	when(==)				# (local.a==1)
+		9
+		<proc_053>
+		fork(1)				# <proc_053>(9)
+	done
+	2
+	local.a
+	<cmp>
+	when(==)				# (local.a==2)
+		5
+		<proc_053>
+		fork(1)				# <proc_053>(5)
+	done
+	3
+	local.a
+	<cmp>
+	when(==)				# (local.a==3)
+		7
+		<proc_053>
+		fork(1)				# <proc_053>(7)
+	done
+	4
+	local.a
+	<cmp>
+	when(==)				# (local.a==4)
+		7
+		<proc_053>
+		fork(1)				# <proc_053>(7)
+	done
+	5
+	local.a
+	<cmp>
+	when(==)				# (local.a==5)
+		7
+		<proc_053>
+		fork(1)				# <proc_053>(7)
+	done
+	6
+	local.a
+	<cmp>
+	when(==)				# (local.a==6)
+		8
+		<proc_053>
+		fork(1)				# <proc_053>(8)
+	done
+	7
+	local.a
+	<cmp>
+	when(==)				# (local.a==7)
+		<proc_053>
+		5
+		set local.a			# set local.a 5
+		set state.proc			# set state.proc <proc_053>
+		tail
+	done
+	end
+
+proc draw_title_revision_22_03_bpm_125 
+	# <draw_title_revision_22_03_bpm_125>()
+	1
+	set state.F				# set state.F 1
+	7
+	set state.E				# set state.E 7
+	<drawpixel>
+	set state.D				# set state.D <drawpixel>
+	20
+	19
+	set state.x				# set state.x 19
+	set state.y				# set state.y 20
+	7
+	set state.tint				# set state.tint 7
+	f041:0107			# T
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(f041:0107)
+	6
+	move					# move 6
+	1
+	wait					# wait 1
+	f860:2087			# I
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(f860:2087)
+	6
+	move					# move 6
+	1
+	wait					# wait 1
+	f041:0107			# T
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(f041:0107)
+	6
+	move					# move 6
+	1
+	wait					# wait 1
+	083f:3082			# L
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(083f:3082)
+	6
+	move					# move 6
+	1
+	wait					# wait 1
+	9a7f:2186			# E
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(9a7f:2186)
+	6
+	move					# move 6
+	1
+	wait					# wait 1
+	<proc_081>
+	fork(0)					# <proc_081>()
+	6
+	move					# move 6
+	1
+	wait					# wait 1
+
+	# song title
+
+	189c:2186 :: <draw_single_char_for_tracker> :: fork(1) :: 6 :: move :: 1 :: wait # C
+	14bc:3c49 :: <draw_single_char_for_tracker> :: fork(1) :: 6 :: move :: 1 :: wait # A
+	083f:3082 :: <draw_single_char_for_tracker> :: fork(1) :: 6 :: move :: 1 :: wait # L
+	8207:1fa2 :: <draw_single_char_for_tracker> :: fork(1) :: 6 :: move :: 1 :: wait # Y
+	147f:1c49 :: <draw_single_char_for_tracker> :: fork(1) :: 6 :: move :: 1 :: wait # P
+	9a6e:19a6 :: <draw_single_char_for_tracker> :: fork(1) :: 6 :: move :: 1 :: wait # S
+	185e:1e86 :: <draw_single_char_for_tracker> :: fork(1) :: 6 :: move :: 1 :: wait # O
+	0000:0002 :: <draw_single_char_for_tracker> :: fork(1) :: 6 :: move :: 1 :: wait # .
+	9a6e:19a6 :: <draw_single_char_for_tracker> :: fork(1) :: 6 :: move :: 1 :: wait # S
+	f860:2087 :: <draw_single_char_for_tracker> :: fork(1) :: 6 :: move :: 1 :: wait # I
+	187f:3c8a :: <draw_single_char_for_tracker> :: fork(1) :: 6 :: move :: 1 :: wait # D
+
+	29
+	19
+	set state.x				# set state.x 19
+	set state.y				# set state.y 29
+	6
+	move					# move 6
+	1
+	wait					# wait 1
+	6
+	move					# move 6
+	1
+	wait					# wait 1
+	987f:14aa
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(987f:14aa) B
+	6
+	move					# move 6
+	1
+	wait					# wait 1
+	147f:1c49
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(147f:1c49) P
+	6
+	move					# move 6
+	1
+	wait					# wait 1
+	40bf:3f08
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(40bf:3f08) M
+	6
+	move					# move 6
+	1
+	wait					# wait 1
+	<proc_081>
+	fork(0)					# <proc_081>()
+	<proc_081>
+	fork(0)					# <proc_081>()
+	6
+	move					# move 6
+	1
+	wait					# wait 1
+
+	f880:0083 :: <draw_single_char_for_tracker> :: fork(1) :: 6 :: move :: 1 :: wait # 1
+	9a56:16a6 :: <draw_single_char_for_tracker> :: fork(1) :: 6 :: move :: 1 :: wait # 8
+	185e:1e86 :: <draw_single_char_for_tracker> :: fork(1)                           # 0
+	end
+
+proc proc_078 
+	# <proc_078>()
+	26
+	263
+	set state.x				# set state.x 263
+	set state.y				# set state.y 26
+	8
+	set state.size				# set state.size 8
+	7
+	set state.tint				# set state.tint 7
+	plot
+	2
+	set state.tint				# set state.tint 2
+	plot
+	4
+	set state.tint				# set state.tint 4
+	7
+	set state.size				# set state.size 7
+	plot
+	4
+	set state.size				# set state.size 4
+	7
+	set state.tint				# set state.tint 7
+	plot
+	10
+	wait					# wait 10
+	20
+	move					# move 20
+	8
+	set state.size				# set state.size 8
+	7
+	set state.tint				# set state.tint 7
+	plot
+	4
+	set state.tint				# set state.tint 4
+	7
+	set state.size				# set state.size 7
+	plot
+	<proc_080>
+	fork(0)					# <proc_080>()
+	10
+	wait					# wait 10
+	20
+	move					# move 20
+	8
+	set state.size				# set state.size 8
+	7
+	set state.tint				# set state.tint 7
+	plot
+	4
+	set state.tint				# set state.tint 4
+	7
+	set state.size				# set state.size 7
+	plot
+	4
+	set state.size				# set state.size 4
+	7
+	set state.tint				# set state.tint 7
+	draw
+	5
+	26
+	*					# 26*5
+	wait					# wait 26*5
+	20
+	~
+	move					# move (-20)
+	20
+	~
+	move					# move (-20)
+	7
+	set state.size				# set state.size 7
+	0
+	set state.tint				# set state.tint 0
+	plot
+	20
+	move					# move 20
+	2
+	set state.tint				# set state.tint 2
+	plot
+	end
+
+proc draw_kick_hat_snare_cowbell_bass 
+	# <draw_kick_hat_snare_cowbell_bass>()
+	0
+	set state.face				# set state.face 0
+	1
+	set state.F				# set state.F 1
+	7
+	set state.E				# set state.E 7
+	<drawpixel>
+	set state.D				# set state.D <drawpixel>
+	7
+	set state.tint				# set state.tint 7
+	#
+	# KICK
+	#
+	823f:2350
+	f860:2087
+	189c:2186
+	823f:2350
+	0
+	0
+	0
+	0081:0281
+	<proc_085>
+	fork(8)					# <proc_085>(823f:2350, f860:2087, 189c:2186, 823f:2350, 0, 0, 0, 0081:0281)
+	1
+	wait					# wait 1
+	8
+	state.y
+	+
+	set state.y				# set state.y (state.y+8)
+	#
+	# HAT
+	#
+	823f:3f20
+	14bc:3c49
+	f041:0107
+	0
+	0
+	0
+	0
+	c444:4444
+	<proc_085>
+	fork(8)					# <proc_085>(823f:3f20, 14bc:3c49, f041:0107, 0, 0, 0, 0, c444:4444)
+	1
+	wait					# wait 1
+	8
+	state.y
+	+
+	set state.y				# set state.y (state.y+8)
+	#
+	# SNARE
+	#
+	9a6e:19a6
+	107e:3c08
+	14bc:3c49
+	107f:2c49
+	9a7f:2186
+	0
+	0
+	1010:9010
+	<proc_085>
+	fork(8)					# <proc_085>(9a6e:19a6, 107e:3c08, 14bc:3c49, 107f:2c49, 9a7f:2186, 0, 0, 1010:9010)
+	1
+	wait					# wait 1
+	8
+	state.y
+	+
+	set state.y				# set state.y (state.y+8)
+	#
+	# COWBELL -> HORSE
+	#
+	823f:3f20 # H 189c:2186 # C
+	185e:1e86 # O 185e:1e86 # O
+	107f:2c49 # R 881f:1f81 # W
+	9a6e:19a6 # S 987f:14aa # B
+	9a7f:2186 # E 9a7f:2186 # E
+	0         #   083f:3082 # L
+	0         #   083f:3082 # L
+	0000:0001
+	<proc_085>
+	fork(8)					# <proc_085>(189c:2186, 185e:1e86, 881f:1f81, 987f:14aa, 9a7f:2186, 083f:3082, 083f:3082, 0)
+	1
+	wait					# wait 1
+	8
+	state.y
+	+
+	set state.y				# set state.y (state.y+8)
+	#
+	# BASS -> GROOVE
+	#
+	98bc:3ba6 # G 987f:14aa # B
+	107f:2c49 # R 14bc:3c49 # A
+	185e:1e86 # O 9a6e:19a6 # S
+	185e:1e86 # O 9a6e:19a6 # S
+	040f:0f42 # V
+	9a7f:2186 # E 0
+	0
+	ffff:ffff # <-- full groove
+	<proc_085>
+	fork(8)					# <proc_085>(987f:14aa, 14bc:3c49, 9a6e:19a6, 9a6e:19a6, 0, 0, 0, 0)
+	end
+
+proc proc_071 
+	43
+	3
+	set state.x				# set state.x 3
+	set state.y				# set state.y 43
+	0
+	72
+	0081:0281
+	<proc_072>
+	fork(3)					# <proc_072>(0, 72, 0081:0281)
+	8
+	state.y
+	+
+	set state.y				# set state.y (state.y+8)
+	0
+	72
+	c444:4444
+	<proc_072>
+	fork(3)					# <proc_072>(0, 72, c444:4444)
+	8
+	state.y
+	+
+	set state.y				# set state.y (state.y+8)
+	0
+	72
+	1010:9010
+	<proc_072>
+	fork(3)					# <proc_072>(0, 72, 1010:9010)
+	end
+
+proc proc_082 
+	# <proc_082>(0, 72)
+	0
+	local.b
+	<cmp>
+	when(>)					# (local.b>0)
+		2
+		set state.tint			# set state.tint 2
+		local.a
+		<proc_083>
+		fork(1)				# <proc_083>(local.a)
+		1
+		local.a
+		&
+		when(!=)			# (local.a&1) !=
+			4
+			wait			# wait 4
+		else
+			8
+			wait			# wait 8
+		done
+		0
+		set state.tint			# set state.tint 0
+		local.a
+		<proc_083>
+		fork(1)				# <proc_083>(local.a)
+		8
+		move				# move 8
+		31
+		local.a
+		<cmp>
+		when(<)				# (local.a<31)
+			<proc_082>
+			1
+			local.a
+			+
+			1
+			local.b
+			-
+			set local.b		# set local.b (local.b-1)
+			set local.a		# set local.a (local.a+1)
+			set state.proc		# set state.proc <proc_082>
+			tail
+		else
+			<proc_082>
+			0
+			1
+			local.b
+			-
+			set local.b		# set local.b (local.b-1)
+			set local.a		# set local.a 0
+			set state.proc		# set state.proc <proc_082>
+			tail
+		done
+	else
+		<proc_077>
+		set state.proc			# set state.proc <proc_077>
+		pop
+		pop
+		tail
+	done
+	end
+
+proc proc_094 
+	# <proc_094>()
+	1
+	set state.F				# set state.F 1
+	7
+	set state.E				# set state.E 7
+	<drawpixel>
+	set state.D				# set state.D <drawpixel>
+	0
+	set state.size				# set state.size 0
+	135
+	250
+	set state.x				# set state.x 250
+	set state.y				# set state.y 135
+	6
+	set state.tint				# set state.tint 6
+	<draw_new_voice_message>
+	fork(0)					# <draw_new_voice_message>()
+	17
+	state.y
+	+
+	3
+	state.x
+	-
+	set state.x				# set state.x (state.x-3)
+	set state.y				# set state.y (state.y+17)
+	66
+	20
+	20
+	<draw_fading_plot>
+	<smart_rect>
+	fork(4)					# <smart_rect>(66, 20, 20, <draw_fading_plot>)
+	5
+	32
+	*					# 32*5
+	wait					# wait 32*5
+	0
+	set state.tint				# set state.tint 0
+	66
+	20
+	20
+	<drawpixel>
+	<smart_rect>
+	fork(4)					# <smart_rect>(66, 20, 20, <drawpixel>)
+	135
+	250
+	set state.x				# set state.x 250
+	set state.y				# set state.y 135
+	4
+	set state.tint				# set state.tint 4
+	<draw_new_voice_message>
+	set state.proc				# set state.proc <draw_new_voice_message>
+	tail
+	end
+
+proc unclear_after_scanner 
+	# <unclear_after_scanner>()
+	6
+	0
+	set state.x				# set state.x 0
+	set state.y				# set state.y 6
+	10
+	set state.size				# set state.size 10
+	0
+	set state.face				# set state.face 0
+	8
+	<proc_045>
+	fork(1)					# <proc_045>(8)
+	end
+
+proc draw_message_subjects 
+	# <draw_message_subjects>()
+	1
+	set state.F				# set state.F 1
+	7
+	set state.E				# set state.E 7
+	<drawpixel>
+	set state.D				# set state.D <drawpixel>
+	25
+	3
+	set state.x				# set state.x 3
+	set state.y				# set state.y 25
+	7
+	set state.G				# set state.G 7
+	927f:0104
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(927f:0104) F
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	107f:2c49
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(107f:2c49) R
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	185e:1e86
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(185e:1e86) O?
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	40bf:3f08
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(40bf:3f08) M?
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	<proc_081>
+	fork(0)					# <proc_081>()
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	987f:14aa #927f:0104
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(927f:0104) # F > B
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	185e:1e86 # 9a7f:2186
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(9a7f:2186) # E > O
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	187f:3c8a # 107f:2c49
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(107f:2c49) # R > D
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	0 # 107f:2c49
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(107f:2c49) # R
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	0 # f860:2087
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(f860:2087) # I
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	0 # 9a6e:19a6
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(9a6e:19a6) # S
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	9
+	state.y
+	+
+	3
+	set state.x				# set state.x 3
+	set state.y				# set state.y (state.y+9)
+	9a6e:19a6
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(9a6e:19a6) s
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	081f:1f82
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(081f:1f82) u
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	987f:14aa
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(987f:14aa) b
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	1871:0f46
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(1871:0f46) j
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	9a7f:2186
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(9a7f:2186) e
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	189c:2186
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(189c:2186) c
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	f041:0107
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(f041:0107) t
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	<proc_081>
+	fork(0)					# <proc_081>()
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	9a6e:19a6
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(9a6e:19a6) s
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	f860:2087
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(f860:2087) i
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	98bc:3ba6
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(98bc:3ba6) g
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	107e:3c08
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(107e:3c08) n
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	14bc:3c49
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(14bc:3c49) a
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	083f:3082
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(083f:3082) l
+	5
+	set state.G				# set state.G 5
+	17
+	state.y
+	+
+	3
+	set state.x				# set state.x 3
+	set state.y				# set state.y (state.y+17)
+	927f:0104
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(927f:0104) f
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	107f:2c49
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(107f:2c49) r
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	185e:1e86
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(185e:1e86) o
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	40bf:3f08
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(40bf:3f08) m
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	<proc_081>
+	fork(0)					# <proc_081>()
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	823f:3f20 # 987f:14aa
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(987f:14aa) b
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	185e:1e86 # 083f:3082
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(083f:3082) l
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	927f:0104 # 081f:1f82
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(081f:1f82) u
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	927f:0104 # 9a7f:2186
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(9a7f:2186) e
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	40bf:3f08 # 987f:14aa
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(987f:14aa) b
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	14bc:3c49 # 9a7f:2186
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(9a7f:2186) e
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	107e:3c08 # 107f:2c49
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(107f:2c49) r
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	0 # 107f:2c49
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(107f:2c49) r
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	0 # 8207:1fa2
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(8207:1fa2) y
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	9
+	state.y
+	+
+	3
+	set state.x				# set state.x 3
+	set state.y				# set state.y (state.y+9)
+	9a6e:19a6
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(9a6e:19a6)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	081f:1f82
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(081f:1f82)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	987f:14aa
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(987f:14aa)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	1871:0f46
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(1871:0f46)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	9a7f:2186
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(9a7f:2186)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	189c:2186
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(189c:2186)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	f041:0107
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(f041:0107) subjecT
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	<proc_081>
+	fork(0)					# <proc_081>()
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	881f:1f81 # 107f:2c49
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(107f:2c49) W
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	f041:0107 # 9a7f:2186
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(9a7f:2186) T
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	927f:0104 # 107f:2c49
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(107f:2c49) F
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	9040:0e26 # 185e:1e86
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(185e:1e86) ?
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	f000:0002 # 9a6e:19a6
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(9a6e:19a6) !
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	0 # 9a7f:2186
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(9a7f:2186)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	0
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(0)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	0 # 987f:14aa
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(987f:14aa)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	0 # 081f:1f82
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(081f:1f82)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	0 # 98bc:3ba6
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(98bc:3ba6)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	0 # 0020:2002
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(0020:2002)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	17
+	state.y
+	+
+	3
+	set state.x				# set state.x 3
+	set state.y				# set state.y (state.y+17)
+	927f:0104
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(927f:0104)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	107f:2c49
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(107f:2c49)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	185e:1e86
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(185e:1e86)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	40bf:3f08
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(40bf:3f08)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	<proc_081>
+	fork(0)					# <proc_081>()
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	881f:1f81
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(881f:1f81)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	185e:1e86
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(185e:1e86)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	987f:14aa
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(987f:14aa)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	987f:14aa
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(987f:14aa)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	083f:3082
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(083f:3082)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	9a7f:2186
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(9a7f:2186)
+	9
+	state.y
+	+
+	3
+	set state.x				# set state.x 3
+	set state.y				# set state.y (state.y+9)
+	9a6e:19a6
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(9a6e:19a6)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	081f:1f82
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(081f:1f82)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	987f:14aa
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(987f:14aa)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	1871:0f46
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(1871:0f46)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	9a7f:2186
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(9a7f:2186)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	189c:2186
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(189c:2186)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	f041:0107
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(f041:0107)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	<proc_081>
+	fork(0)					# <proc_081>()
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	820f:08f0
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(820f:08f0)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	9a72:26a6
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(9a72:26a6)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	185e:1e86
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(185e:1e86)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	0
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(0)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	987f:14aa
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(987f:14aa)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	107f:2c49
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(107f:2c49)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	185e:1e86
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(185e:1e86)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	17
+	state.y
+	+
+	3
+	set state.x				# set state.x 3
+	set state.y				# set state.y (state.y+17)
+	927f:0104
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(927f:0104)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	107f:2c49
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(107f:2c49)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	185e:1e86
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(185e:1e86)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	40bf:3f08
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(40bf:3f08)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	<proc_081>
+	fork(0)					# <proc_081>()
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	9a6e:19a6
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(9a6e:19a6)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	189c:2186
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(189c:2186)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	f860:2087
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(f860:2087)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	0
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(0)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	107e:3c08
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(107e:3c08)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	9a7f:2186
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(9a7f:2186)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	881f:1f81
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(881f:1f81)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	9a6e:19a6
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(9a6e:19a6)
+	9
+	state.y
+	+
+	3
+	set state.x				# set state.x 3
+	set state.y				# set state.y (state.y+9)
+	9a6e:19a6
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(9a6e:19a6)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	081f:1f82
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(081f:1f82)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	987f:14aa
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(987f:14aa)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	1871:0f46
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(1871:0f46)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	9a7f:2186
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(9a7f:2186)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	189c:2186
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(189c:2186)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	f041:0107
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(f041:0107)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	<proc_081>
+	fork(0)					# <proc_081>()
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	189c:2186
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(189c:2186)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	9a7f:2186
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(9a7f:2186)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	f041:0107
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(f041:0107)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	f860:2087
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(f860:2087)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	0
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(0)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	927f:0104
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(927f:0104)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	f860:2087
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(f860:2087)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	107e:3c08
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(107e:3c08)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	187f:3c8a
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(187f:3c8a)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	0
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(0)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	9a7f:2186
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(9a7f:2186)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	0020:2002
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(0020:2002)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	17
+	state.y
+	+
+	3
+	set state.x				# set state.x 3
+	set state.y				# set state.y (state.y+17)
+	927f:0104
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(927f:0104)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	107f:2c49
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(107f:2c49)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	185e:1e86
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(185e:1e86)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	40bf:3f08
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(40bf:3f08)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	<proc_081>
+	fork(0)					# <proc_081>()
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	107f:2c49
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(107f:2c49)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	9a7f:2186
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(9a7f:2186)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	040f:0f42
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(040f:0f42)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	f860:2087
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(f860:2087)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	9a6e:19a6
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(9a6e:19a6)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	f860:2087
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(f860:2087)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	185e:1e86
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(185e:1e86)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	107e:3c08
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(107e:3c08)
+	9
+	state.y
+	+
+	3
+	set state.x				# set state.x 3
+	set state.y				# set state.y (state.y+9)
+	9a6e:19a6
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(9a6e:19a6)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	081f:1f82
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(081f:1f82)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	987f:14aa
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(987f:14aa)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	1871:0f46
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(1871:0f46)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	9a7f:2186
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(9a7f:2186)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	189c:2186
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(189c:2186)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	f041:0107
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(f041:0107)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	<proc_081>
+	fork(0)					# <proc_081>()
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	8207:1fa2
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(8207:1fa2)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	185e:1e86
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(185e:1e86)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	081f:1f82
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(081f:1f82)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	107f:2c49
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(107f:2c49)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	0
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(0)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	f041:0107
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(f041:0107)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	f860:2087
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(f860:2087)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	189c:2186
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(189c:2186)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	823f:2350
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(823f:2350)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	9a7f:2186
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(9a7f:2186)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	f041:0107
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(f041:0107)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	0020:2002
+	<draw_single_char_for_tracker>
+	fork(1)					# <draw_single_char_for_tracker>(0020:2002)
+	6
+	move					# move 6
+	state.C
+	wait					# wait state.C
+	end
+
+proc proc_108 
+	# <proc_108>(5)
+	0
+	local.a
+	<cmp>
+	when(>)					# (local.a>0)
+		128
+		19
+		20
+		<drawpixel>
+		<smart_rect>
+		fork(4)				# <smart_rect>(128, 19, 20, <drawpixel>)
+		5
+		10
+		*				# 10*5
+		wait				# wait 10*5
+		26
+		move				# move 26
+		<proc_108>
+		1
+		local.a
+		-
+		set local.a			# set local.a (local.a-1)
+		set state.proc			# set state.proc <proc_108>
+		tail
+	done
+	end
+
+proc proc_107 
+	# <proc_107>()
+	32
+	10
+	~
+	set state.x				# set state.x (-10)
+	set state.y				# set state.y 32
+	1
+	set state.tint				# set state.tint 1
+	8
+	set state.size				# set state.size 8
+	9
+	1
+	16
+	<proc_015>
+	fork(3)					# <proc_015>(9, 1, 16)
+	end
+
+proc proc_105 
+	# <proc_105>(88)
+	0
+	local.a
+	<cmp>
+	when(>)					# (local.a>0)
+		192
+		set state.face			# set state.face 192
+		21
+		<proc_106>
+		fork(1)				# <proc_106>(21)
+		0
+		set state.face			# set state.face 0
+		2
+		move				# move 2
+		0.5
+		wait				# wait 0.5
+		<proc_105>
+		1
+		local.a
+		-
+		set local.a			# set local.a (local.a-1)
+		set state.proc			# set state.proc <proc_105>
+		tail
+	done
+	end
+
+proc proc_104 
+	# <proc_104>(1)
+	# <proc_104>(0)
+	32
+	143
+	set state.x				# set state.x 143
+	set state.y				# set state.y 32
+	8
+	set state.size				# set state.size 8
+	5
+	set state.tint				# set state.tint 5
+	plot
+	1
+	set state.tint				# set state.tint 1
+	plot
+	4
+	set state.tint				# set state.tint 4
+	7
+	set state.size				# set state.size 7
+	plot
+	4
+	set state.size				# set state.size 4
+	7
+	set state.tint				# set state.tint 7
+	plot
+	1
+	local.a
+	<cmp>
+	when(==)				# (local.a==1)
+		10
+		wait				# wait 10
+	done
+	20
+	move					# move 20
+	8
+	set state.size				# set state.size 8
+	5
+	set state.tint				# set state.tint 5
+	plot
+	4
+	set state.tint				# set state.tint 4
+	7
+	set state.size				# set state.size 7
+	plot
+	0
+	set state.tint				# set state.tint 0
+	plot
+	<proc_080>
+	fork(0)					# <proc_080>()
+	1
+	local.a
+	<cmp>
+	when(==)				# (local.a==1)
+		10
+		wait				# wait 10
+		10
+		wait				# wait 10
+		10
+		wait				# wait 10
+		20
+		~
+		move				# move (-20)
+		8
+		set state.size			# set state.size 8
+		0
+		set state.tint			# set state.tint 0
+		plot
+		20
+		move				# move 20
+		1
+		set state.tint			# set state.tint 1
+		plot
+		10
+		wait				# wait 10
+		10
+		wait				# wait 10
+		2
+		set state.tint			# set state.tint 2
+		plot
+		5
+		wait				# wait 5
+		1
+		set state.tint			# set state.tint 1
+		plot
+	done
+	end
+
+proc draw_waveform 
+	# <draw_waveform>()
+	88
+	0
+0000:0025
+5565:6235
+6544:6665
+6433:4444
+3346:6634
+6642:4385
+5446:6548
+9668:aa63
+3689:8987
+879d:fbaa
+878b:ceeb
+7889:c9bf
+	<waveform_draw_data>
+	fork(14)				# <waveform_draw_data>(88, 0, 3740:7665, 0139:1000, dbcc:5ccd, 0000:3860, 0011:bac3, cf47:67c4, 1112:0260, 3001:9227, 069a:d700, 6060.25, 3006:7b22, 0)
+	0002:1999
+	88
+	*					# 88*0002:1999
+	wait					# wait 88*0002:1999
+	88
+	state.x
+	+
+	set state.x				# set state.x (state.x+88)
+	88
+	0
+eac8:8dca
+ced8:bbba
+99da:affd
+8665:68df
+ffff:ffff
+ffff:eefe
+eeeb:ffdb
+ceff:ddee
+cddd:ddbc
+c9dd:cddd
+dcbd:bedc
+a833:8cc1
+	<waveform_draw_data>
+	fork(14)				# <waveform_draw_data>(88, 0, 3397:7993, b211:2236, 6642:8523, 5017:38dc, 0147:5600, 4322:0002, 0, abb4:0005, 0024:5717, d301:a257, 5, 0)
+	0002:1999
+	88
+	*					# 88*0002:1999
+	wait					# wait 88*0002:1999
+	0
+	<proc_104>
+	fork(1)					# <proc_104>(0)
+	end
+
+proc draw_hey_man_uhh_message
+#	# <draw_hey_man_uhh_message>()
+	97 :: set state.y
+	138 :: set state.x
+	2 :: set state.tint
+
+	<drawpixel> :: set state.D
+
+		987f:14aa :: <char_draw_helper1> :: fork(1) :: 6 :: move :: 5 :: wait # B
+		081f:1f82 :: <char_draw_helper1> :: fork(1) :: 6 :: move :: 5 :: wait # U
+		081f:1f82 :: <char_draw_helper1> :: fork(1) :: 6 :: move :: 5 :: wait
+		081f:1f82 :: <char_draw_helper1> :: fork(1) :: 6 :: move :: 5 :: wait
+		081f:1f82 :: <char_draw_helper1> :: fork(1) :: 6 :: move :: 5 :: wait
+		081f:1f82 :: <char_draw_helper1> :: fork(1) :: 6 :: move :: 5 :: wait
+		081f:1f82 :: <char_draw_helper1> :: fork(1) :: 6 :: move :: 5 :: wait
+		081f:1f82 :: <char_draw_helper1> :: fork(1) :: 6 :: move :: 5 :: wait
+		081f:1f82 :: <char_draw_helper1> :: fork(1) :: 6 :: move :: 5 :: wait
+		081f:1f82 :: <char_draw_helper1> :: fork(1) :: 6 :: move :: 5 :: wait
+		081f:1f82 :: <char_draw_helper1> :: fork(1) :: 6 :: move :: 5 :: wait
+		081f:1f82 :: <char_draw_helper1> :: fork(1) :: 6 :: move :: 5 :: wait
+		081f:1f82 :: <char_draw_helper1> :: fork(1) :: 6 :: move :: 5 :: wait
+		081f:1f82 :: <char_draw_helper1> :: fork(1) :: 6 :: move :: 5 :: wait
+		081f:1f82 :: <char_draw_helper1> :: fork(1) :: 6 :: move :: 5 :: wait
+		081f:1f82 :: <char_draw_helper1> :: fork(1) :: 6 :: move :: 5 :: wait
+		081f:1f82 :: <char_draw_helper1> :: fork(1) :: 6 :: move :: 5 :: wait
+		081f:1f82 :: <char_draw_helper1> :: fork(1) :: 6 :: move :: 5 :: wait
+		107f:2c49 :: <char_draw_helper1> :: fork(1) :: 6 :: move :: 5 :: wait  # R
+		147f:1c49 :: <char_draw_helper1> :: fork(1) :: 6 :: move :: 5 :: wait  # P
+		f000:0002 :: <char_draw_helper1> :: fork(1) :: 7 :: move # !
+		end
+
+proc growing_rect 
+	# <growing_rect>(0, 9)
+	local.b
+	local.a
+	<cmp>
+	when(<=)				# (local.a<=local.b)
+		local.a
+		set state.size			# set state.size local.a
+		plot
+		1
+		wait				# wait 1
+		<growing_rect>
+		1
+		local.a
+		+
+		set local.a			# set local.a (local.a+1)
+		set state.proc			# set state.proc <growing_rect>
+		tail
+	done
+	end
+
+proc proc_059 
+	# <proc_059>(9)
+	# <proc_059>(local.a)
+	2
+	set state.F				# set state.F 2
+	12
+	set state.E				# set state.E 12
+	<drawpixel>
+	set state.D				# set state.D <drawpixel>
+	4
+	~
+	move					# move (-4)
+	64
+	~
+	state.face
+	+
+	set state.face				# set state.face (state.face+(-64))
+	20
+	move					# move 20
+	3
+	set state.tint				# set state.tint 3
+	local.a
+	<draw_search_messaging_demos_tracker_scanner_cracker_receiver>
+	fork(1)					# <draw_search_messaging_demos_tracker_scanner_cracker_receiver>(local.a)
+	1
+	move					# move 1
+	1
+	wait					# wait 1
+	2
+	set state.tint				# set state.tint 2
+	<draw_search_messaging_demos_tracker_scanner_cracker_receiver>
+	set state.proc				# set state.proc <draw_search_messaging_demos_tracker_scanner_cracker_receiver>
+	tail
+	end
+
+proc proc_060 
+	# <proc_060>(8)
+	2
+	set state.F				# set state.F 2
+	12
+	set state.E				# set state.E 12
+	<set_size_1>
+	set state.D				# set state.D <set_size_1>
+	4
+	~
+	move					# move (-4)
+	64
+	~
+	state.face
+	+
+	set state.face				# set state.face (state.face+(-64))
+	20
+	move					# move 20
+	0
+	set state.tint				# set state.tint 0
+	<draw_search_messaging_demos_tracker_scanner_cracker_receiver>
+	set state.proc				# set state.proc <draw_search_messaging_demos_tracker_scanner_cracker_receiver>
+	tail
+	end
+
+proc draw_search_messaging_demos_tracker_scanner_cracker_receiver 
+	# <draw_search_messaging_demos_tracker_scanner_cracker_receiver>(local.a)
+	0
+	local.a
+	<cmp>
+	when(==)				# (local.a==0) -> SEARCH -> PORN
+		147f:1c49 # P		#9a6e:19a6
+		185e:1e86 # O		#9a7f:2186
+		107f:2c49 # R		#14bc:3c49
+		107e:3c08 # N		#107f:2c49
+		0			#189c:2186
+		0			#823f:3f20
+		0
+		0
+		0
+		0
+		0
+		<draw_11_chars_F_is_zoom_E_is_letter_spacing>
+		fork(11)			# <draw_11_chars_F_is_zoom_E_is_letter_spacing>(9a6e:19a6, 9a7f:2186, 14bc:3c49, 107f:2c49, 189c:2186, 823f:3f20, 0, 0, 0, 0, 0)
+	done
+	1
+	local.a
+	<cmp>
+	when(==)				# (local.a==1) -> MESSAGING
+		40bf:3f08
+		9a7f:2186
+		9a6e:19a6
+		9a6e:19a6
+		14bc:3c49
+		98bc:3ba6
+		f860:2087
+		107e:3c08
+		98bc:3ba6
+		0
+		0
+		<draw_11_chars_F_is_zoom_E_is_letter_spacing>
+		fork(11)			# <draw_11_chars_F_is_zoom_E_is_letter_spacing>(40bf:3f08, 9a7f:2186, 9a6e:19a6, 9a6e:19a6, 14bc:3c49, 98bc:3ba6, f860:2087, 107e:3c08, 98bc:3ba6, 0, 0)
+	done
+	2
+	local.a
+	<cmp>
+	when(==)				# (local.a==2) -> DEMOS -> FURRY PORN
+		927f:0104 # F	f	187f:3c8a
+		081f:1f82 # U	u	9a7f:2186
+		107f:2c49 # R	r	40bf:3f08
+		107f:2c49 # R	r	185e:1e86
+		8207:1fa2 # Y	y	9a6e:19a6
+		0
+		147f:1c49 # P p	0
+		185e:1e86 # O o	0
+		107f:2c49 # R r	0
+		107e:3c08 # N n	0
+		0
+		<draw_11_chars_F_is_zoom_E_is_letter_spacing>
+		fork(11)			# <draw_11_chars_F_is_zoom_E_is_letter_spacing>(187f:3c8a, 9a7f:2186, 40bf:3f08, 185e:1e86, 9a6e:19a6, 0, 0, 0, 0, 0, 0)
+	done
+	3
+	local.a
+	<cmp>
+	when(==)				# (local.a==3) -> TRACKER
+		f041:0107
+		107f:2c49
+		14bc:3c49
+		189c:2186
+		823f:2350
+		9a7f:2186
+		107f:2c49
+		0
+		0
+		0
+		0
+		<draw_11_chars_F_is_zoom_E_is_letter_spacing>
+		fork(11)			# <draw_11_chars_F_is_zoom_E_is_letter_spacing>(f041:0107, 107f:2c49, 14bc:3c49, 189c:2186, 823f:2350, 9a7f:2186, 107f:2c49, 0, 0, 0, 0)
+	done
+	4
+	local.a
+	<cmp>
+	when(==)				# (local.a==4) -> SCANNER -> HORSE PORN
+				823f:3f20 # H		#h 9a6e:19a6
+				185e:1e86 # O		185e:1e86 # O	#o 189c:2186
+				107f:2c49 # R		107f:2c49 # R	#r 14bc:3c49
+				9a6e:19a6 # S		#s 107e:3c08
+				9a7f:2186 # E		#e 107e:3c08
+				0			# 9a7f:2186
+				147f:1c49 # P		#9a6e:19a6#p 107f:2c49
+				185e:1e86 # O		#9a7f:2186#o 0
+				107f:2c49 # R		#14bc:3c49#r 0
+				107e:3c08 # N		#107f:2c49#n 0
+				0
+		<draw_11_chars_F_is_zoom_E_is_letter_spacing>
+		fork(11)			# <draw_11_chars_F_is_zoom_E_is_letter_spacing>(9a6e:19a6, 189c:2186, 14bc:3c49, 107e:3c08, 107e:3c08, 9a7f:2186, 107f:2c49, 0, 0, 0, 0)
+	done
+	5
+	local.a
+	<cmp>
+	when(==)				# (local.a==5) -> CRACKER
+		189c:2186
+		107f:2c49
+		14bc:3c49
+		189c:2186
+		823f:2350
+		9a7f:2186
+		107f:2c49
+		0
+		0
+		0
+		0
+		<draw_11_chars_F_is_zoom_E_is_letter_spacing>
+		fork(11)			# <draw_11_chars_F_is_zoom_E_is_letter_spacing>(189c:2186, 107f:2c49, 14bc:3c49, 189c:2186, 823f:2350, 9a7f:2186, 107f:2c49, 0, 0, 0, 0)
+	done
+	6
+	local.a
+	<cmp>
+	when(==)				# (local.a==6) -> RECEIVER
+		107f:2c49
+		9a7f:2186
+		189c:2186
+		9a7f:2186
+		f860:2087
+		040f:0f42
+		9a7f:2186
+		107f:2c49
+		0
+		0
+		0
+		<draw_11_chars_F_is_zoom_E_is_letter_spacing>
+		fork(11)			# <draw_11_chars_F_is_zoom_E_is_letter_spacing>(107f:2c49, 9a7f:2186, 189c:2186, 9a7f:2186, f860:2087, 040f:0f42, 9a7f:2186, 107f:2c49, 0, 0, 0)
+	done
+	7
+	local.a
+	<cmp>
+	when(==)				# (local.a==7)
+		6
+		rand
+		<ror>
+		6
+		rand
+		<ror>
+		6
+		rand
+		<ror>
+		6
+		rand
+		<ror>
+		6
+		rand
+		<ror>
+		6
+		rand
+		<ror>
+		6
+		rand
+		<ror>
+		6
+		rand
+		<ror>
+		6
+		rand
+		<ror>
+		6
+		rand
+		<ror>
+		0
+		<draw_11_chars_F_is_zoom_E_is_letter_spacing>
+		fork(11)			# <draw_11_chars_F_is_zoom_E_is_letter_spacing>((rand<ror>6), (rand<ror>6), (rand<ror>6), (rand<ror>6), (rand<ror>6), (rand<ror>6), (rand<ror>6), (rand<ror>6), (rand<ror>6), (rand<ror>6), 0)
+	done
+	8
+	local.a
+	<cmp>
+	when(==)				# (local.a==8) -> R
+		107f:2c49
+		0
+		0
+		0
+		0
+		0
+		0
+		0
+		0
+		0
+		0
+		<draw_11_chars_F_is_zoom_E_is_letter_spacing>
+		fork(11)			# <draw_11_chars_F_is_zoom_E_is_letter_spacing>(107f:2c49, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+	done
+	9
+	local.a
+	<cmp>
+	when(==)				# (local.a==9) -> D
+		187f:3c8a
+		0
+		0
+		0
+		0
+		0
+		0
+		0
+		0
+		0
+		0
+		<draw_11_chars_F_is_zoom_E_is_letter_spacing>
+		fork(11)			# <draw_11_chars_F_is_zoom_E_is_letter_spacing>(187f:3c8a, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+	done
+	end
+
+proc proc_049 
+	# <proc_049>(290)
+	# <proc_049>(400)
+	3
+	set state.size				# set state.size 3
+	2
+	set state.tint				# set state.tint 2
+	local.a
+	<proc_050>
+	fork(1)					# <proc_050>(local.a)
+	3
+	wait					# wait 3
+	2
+	set state.size				# set state.size 2
+	1
+	set state.tint				# set state.tint 1
+	local.a
+	<proc_050>
+	fork(1)					# <proc_050>(local.a)
+	3
+	set state.size				# set state.size 3
+	9
+	wait					# wait 9
+	0
+	set state.tint				# set state.tint 0
+	<proc_050>
+	set state.proc				# set state.proc <proc_050>
+	tail
+	end
+
+proc proc_053 
+	# <proc_053>(6)
+	# <proc_053>(9)
+	# <proc_053>(5)
+	# <proc_053>(7)
+	# <proc_053>(8)
+	1
+	local.a
+	12
+	*					# 12*local.a
+	+
+	15
+	28
+	<plot_tint_1_2_3_2_0_5>
+	<smart_rect>
+	fork(4)					# <smart_rect>((12*local.a+1), 15, 28, <plot_tint_1_2_3_2_0_5>)
+	end
+
+proc draw_single_char_for_tracker 
+	# <draw_single_char_for_tracker>(f041:0107)
+	# <draw_single_char_for_tracker>(f860:2087)
+	# <draw_single_char_for_tracker>(083f:3082)
+	# <draw_single_char_for_tracker>(9a7f:2186)
+	# <draw_single_char_for_tracker>(107f:2c49)
+	# <draw_single_char_for_tracker>(040f:0f42)
+	# <draw_single_char_for_tracker>(9a6e:19a6)
+	# <draw_single_char_for_tracker>(185e:1e86)
+	# <draw_single_char_for_tracker>(107e:3c08)
+	# <draw_single_char_for_tracker>(9a72:26a6)
+	2
+	state.y
+	+
+	3
+	state.x
+	+
+	set state.x				# set state.x (state.x+3)
+	set state.y				# set state.y (state.y+2)
+	7
+	set state.tint				# set state.tint 7
+	3
+	set state.size				# set state.size 3
+	plot
+	1
+	wait					# wait 1
+	4
+	set state.tint				# set state.tint 4
+	plot
+	0
+	wait					# wait 0
+	2
+	state.y
+	-
+	3
+	state.x
+	-
+	set state.x				# set state.x (state.x-3)
+	set state.y				# set state.y (state.y-2)
+	state.G
+	set state.tint				# set state.tint state.G
+	0
+	set state.size				# set state.size 0
+	<char_draw_helper1>
+	set state.proc				# set state.proc <char_draw_helper1>
+	tail
+	end
+
+proc proc_081 
+	# <proc_081>()
+	state.G
+	set state.tint				# set state.tint state.G
+	0
+	set state.size				# set state.size 0
+	2
+	move					# move 2
+	64
+	state.face
+	+
+	set state.face				# set state.face (state.face+64)
+	2
+	move					# move 2
+	plot
+	2
+	move					# move 2
+	plot
+	end
+
+proc proc_080 
+	# <proc_080>()
+	0
+	set state.size				# set state.size 0
+	7
+	set state.tint				# set state.tint 7
+	4
+	state.y
+	-
+	4
+	state.x
+	-
+	set state.x				# set state.x (state.x-4)
+	set state.y				# set state.y (state.y-4)
+	plot
+	64
+	state.face
+	+
+	set state.face				# set state.face (state.face+64)
+	9
+	0
+	<drawline_len_speed>
+	fork(2)					# <drawline_len_speed>(9, 0)
+	1
+	state.x
+	+
+	set state.x				# set state.x (state.x+1)
+	9
+	0
+	<drawline_len_speed>
+	fork(2)					# <drawline_len_speed>(9, 0)
+	2
+	state.x
+	+
+	set state.x				# set state.x (state.x+2)
+	9
+	0
+	<drawline_len_speed>
+	fork(2)					# <drawline_len_speed>(9, 0)
+	1
+	state.x
+	+
+	set state.x				# set state.x (state.x+1)
+	9
+	0
+	<drawline_len_speed>
+	fork(2)					# <drawline_len_speed>(9, 0)
+	1
+	state.y
+	+
+	1
+	state.x
+	+
+	set state.x				# set state.x (state.x+1)
+	set state.y				# set state.y (state.y+1)
+	7
+	0
+	<drawline_len_speed>
+	fork(2)					# <drawline_len_speed>(7, 0)
+	1
+	state.y
+	+
+	1
+	state.x
+	+
+	set state.x				# set state.x (state.x+1)
+	set state.y				# set state.y (state.y+1)
+	5
+	0
+	<drawline_len_speed>
+	fork(2)					# <drawline_len_speed>(5, 0)
+	1
+	state.y
+	+
+	1
+	state.x
+	+
+	set state.x				# set state.x (state.x+1)
+	set state.y				# set state.y (state.y+1)
+	3
+	0
+	<drawline_len_speed>
+	fork(2)					# <drawline_len_speed>(3, 0)
+	1
+	state.y
+	+
+	1
+	state.x
+	+
+	set state.x				# set state.x (state.x+1)
+	set state.y				# set state.y (state.y+1)
+	1
+	0
+	<drawline_len_speed>
+	fork(2)					# <drawline_len_speed>(1, 0)
+	end
+
+proc proc_085 
+	# <proc_085>(823f:2350, f860:2087, 189c:2186, 823f:2350, 0, 0, 0, 0081:0281)
+	# <proc_085>(823f:3f20, 14bc:3c49, f041:0107, 0, 0, 0, 0, c444:4444)
+	# <proc_085>(9a6e:19a6, 107e:3c08, 14bc:3c49, 107f:2c49, 9a7f:2186, 0, 0, 1010:9010)
+	# <proc_085>(189c:2186, 185e:1e86, 881f:1f81, 987f:14aa, 9a7f:2186, 083f:3082, 083f:3082, 0)
+	# <proc_085>(987f:14aa, 14bc:3c49, 9a6e:19a6, 9a6e:19a6, 0, 0, 0, 0)
+	local.a
+	local.b
+	local.c
+	local.d
+	local.e
+	local.f
+	local.g
+	0
+	0
+	0
+	0
+	<draw_11_chars_F_is_zoom_E_is_letter_spacing>
+	fork(11)				# <draw_11_chars_F_is_zoom_E_is_letter_spacing>(local.a, local.b, local.c, local.d, local.e, local.f, local.g, 0, 0, 0, 0)
+	5
+	7
+	*					# 7*5
+	wait					# wait 7*5
+	3
+	state.y
+	+
+	55
+	state.x
+	+
+	set state.x				# set state.x (state.x+55)
+	set state.y				# set state.y (state.y+3)
+	<proc_086>
+	32
+	local.h
+	set local.b				# set local.b local.h
+	set local.a				# set local.a 32
+	set state.proc				# set state.proc <proc_086>
+	pop
+	pop
+	pop
+	pop
+	pop
+	pop
+	tail
+	end
+
+proc proc_072 
+	# <proc_072>(0, 72, 0081:0281)
+	# <proc_072>(0, 72, c444:4444)
+	# <proc_072>(0, 72, 1010:9010)
+	0
+	local.b
+	<cmp>
+	when(>)					# (local.b>0)
+		1
+		local.c
+		&
+		when(!=)			# (local.c&1) !=
+			14
+			local.a
+			<cmp>
+			when(==)		# (local.a==14)
+				7
+				<proc_073>
+				fork(1)		# <proc_073>(7)
+			else
+				8
+				<proc_073>
+				fork(1)		# <proc_073>(8)
+			done
+		done
+		1
+		local.a
+		&
+		when(!=)			# (local.a&1) !=
+			4
+			wait			# wait 4
+		else
+			8
+			wait			# wait 8
+		done
+		31
+		local.a
+		<cmp>
+		when(<)				# (local.a<31)
+			<proc_072>
+			1
+			local.a
+			+
+			1
+			local.b
+			-
+			1
+			local.c
+			<ror>
+			set local.c		# set local.c (local.c<ror>1)
+			set local.b		# set local.b (local.b-1)
+			set local.a		# set local.a (local.a+1)
+			set state.proc		# set state.proc <proc_072>
+			tail
+		else
+			<proc_072>
+			0
+			1
+			local.b
+			-
+			1
+			local.c
+			<ror>
+			set local.c		# set local.c (local.c<ror>1)
+			set local.b		# set local.b (local.b-1)
+			set local.a		# set local.a 0
+			set state.proc		# set state.proc <proc_072>
+			tail
+		done
+	done
+	end
+
+proc proc_083 
+	# <proc_083>(local.a)
+	8
+	local.a
+	*					# local.a*8
+	59
+	+
+	set state.x				# set state.x (59+local.a*8)
+	3
+	set state.size				# set state.size 3
+	plot
+	64
+	set state.face				# set state.face 64
+	8
+	move					# move 8
+	plot
+	8
+	move					# move 8
+	plot
+	8
+	move					# move 8
+	plot
+	8
+	move					# move 8
+	plot
+	end
+
+proc proc_077 
+	26
+	263
+	set state.x				# set state.x 263
+	set state.y				# set state.y 26
+	8
+	set state.size				# set state.size 8
+	7
+	set state.tint				# set state.tint 7
+	plot
+	2
+	set state.tint				# set state.tint 2
+	plot
+	4
+	set state.tint				# set state.tint 4
+	7
+	set state.size				# set state.size 7
+	plot
+	4
+	set state.size				# set state.size 4
+	7
+	set state.tint				# set state.tint 7
+	plot
+	8
+	set state.size				# set state.size 8
+	20
+	move					# move 20
+	0
+	set state.tint				# set state.tint 0
+	plot
+	end
+
+proc draw_new_voice_message 
+	# <draw_new_voice_message>()
+	107e:3c08
+	9a7f:2186
+	881f:1f81
+	0
+	040f:0f42
+	185e:1e86
+	f860:2087
+	189c:2186
+	9a7f:2186
+	0
+	0
+	<draw_11_chars_F_is_zoom_E_is_letter_spacing>
+	fork(11)				# <draw_11_chars_F_is_zoom_E_is_letter_spacing>(107e:3c08, 9a7f:2186, 881f:1f81, 0, 040f:0f42, 185e:1e86, f860:2087, 189c:2186, 9a7f:2186, 0, 0)
+	10
+	state.y
+	+
+	set state.y				# set state.y (state.y+10)
+	0
+	40bf:3f08
+	9a7f:2186
+	9a6e:19a6
+	9a6e:19a6
+	14bc:3c49
+	98bc:3ba6
+	9a7f:2186
+	0
+	0
+	0
+	<draw_11_chars_F_is_zoom_E_is_letter_spacing>
+	fork(11)				# <draw_11_chars_F_is_zoom_E_is_letter_spacing>(0, 40bf:3f08, 9a7f:2186, 9a6e:19a6, 9a6e:19a6, 14bc:3c49, 98bc:3ba6, 9a7f:2186, 0, 0, 0)
+	end
+
+proc proc_045 
+	# <proc_045>(8)
+	0
+	local.a
+	<cmp>
+	when(>)					# (local.a>0)
+		0
+		set state.tint			# set state.tint 0
+		17
+		1
+		20
+		<proc_015>
+		fork(3)				# <proc_015>(17, 1, 20)
+		4
+		set state.tint			# set state.tint 4
+		17
+		1
+		20
+		<proc_015>
+		fork(3)				# <proc_015>(17, 1, 20)
+		20
+		state.y
+		+
+		set state.y			# set state.y (state.y+20)
+		<proc_045>
+		1
+		local.a
+		-
+		set local.a			# set local.a (local.a-1)
+		set state.proc			# set state.proc <proc_045>
+		tail
+	done
+	end
+
+proc proc_015 
+	0
+	local.a
+	<cmp>
+	when(>)					# (local.a>0)
+		plot
+		local.c
+		move				# move local.c
+		local.b
+		wait				# wait local.b
+		<proc_015>
+		1
+		local.a
+		-
+		set local.a			# set local.a (local.a-1)
+		set state.proc			# set state.proc <proc_015>
+		tail
+	done
+	end
+
+proc proc_106 
+	# <proc_106>(21)
+	0
+	local.a
+	<cmp>
+	when(>)					# (local.a>0)
+		plot
+		2
+		move				# move 2
+		<proc_106>
+		1
+		local.a
+		-
+		set local.a			# set local.a (local.a-1)
+		set state.proc			# set state.proc <proc_106>
+		tail
+	done
+	end
+
+proc waveform_draw_data 
+	# <waveform_draw_data>(88, 0, 3740:7665, 0139:1000, dbcc:5ccd, 0000:3860, 0011:bac3, cf47:67c4, 1112:0260, 3001:9227, 069a:d700, 6060.25, 3006:7b22, 0)
+	# <waveform_draw_data>(88, 0, 3397:7993, b211:2236, 6642:8523, 5017:38dc, 0147:5600, 4322:0002, 0, abb4:0005, 0024:5717, d301:a257, 5, 0)
+	0
+	local.a
+	<cmp>
+	when(>)					# (local.a>0)
+		0
+		set state.size			# set state.size 0
+		2
+		set state.tint			# set state.tint 2
+		plot
+		1.5
+		15
+		local.c
+		&
+		*				# (local.c&15)*1.5
+		local.o
+		<proc_101>
+		fork(1)				# <proc_101>(local.o)
+		0002:1999
+		wait				# wait 0002:1999
+		1
+		move				# move 1
+		7
+		local.b
+		<cmp>
+		when(<)				# (local.b<7)
+			<waveform_draw_data>
+			1
+			local.a
+			-
+			1
+			local.b
+			+
+			4
+			local.c
+			<ror>
+			0
+			set local.n		# set local.n 0
+			set local.c		# set local.c (local.c<ror>4)
+			set local.b		# set local.b (local.b+1)
+			set local.a		# set local.a (local.a-1)
+			set state.proc		# set state.proc <waveform_draw_data>
+			pop
+			tail
+		else
+			<waveform_draw_data>
+			1
+			local.a
+			-
+			0
+			local.d
+			local.e
+			local.f
+			local.g
+			local.h
+			local.i
+			local.j
+			local.k
+			local.l
+			local.m
+			0
+			0
+			set local.n		# set local.n 0
+			set local.m		# set local.m 0
+			set local.l		# set local.l local.m
+			set local.k		# set local.k local.l
+			set local.j		# set local.j local.k
+			set local.i		# set local.i local.j
+			set local.h		# set local.h local.i
+			set local.g		# set local.g local.h
+			set local.f		# set local.f local.g
+			set local.e		# set local.e local.f
+			set local.d		# set local.d local.e
+			set local.c		# set local.c local.d
+			set local.b		# set local.b 0
+			set local.a		# set local.a (local.a-1)
+			set state.proc		# set state.proc <waveform_draw_data>
+			pop
+			tail
+		done
+	done
+	end
+
+proc set_size_1 
+	1
+	set state.size				# set state.size 1
+	plot
+	end
+
+proc proc_086 
+	0
+	local.a
+	<cmp>
+	when(>)					# (local.a>0)
+		7
+		set state.tint			# set state.tint 7
+		4
+		set state.size			# set state.size 4
+		plot
+		4
+		set state.tint			# set state.tint 4
+		3
+		set state.size			# set state.size 3
+		plot
+		1
+		local.b
+		&
+		when(!=)			# (local.b&1) !=
+			2
+			set state.size		# set state.size 2
+			7
+			set state.tint		# set state.tint 7
+			draw
+		done
+		8
+		move				# move 8
+		1
+		wait				# wait 1
+		<proc_086>
+		1
+		local.a
+		-
+		1
+		local.b
+		<ror>
+		set local.b			# set local.b (local.b<ror>1)
+		set local.a			# set local.a (local.a-1)
+		set state.proc			# set state.proc <proc_086>
+		tail
+	done
+	end
+
+proc proc_073 
+	# <proc_073>(7)
+	# <proc_073>(8)
+	0
+	set state.face				# set state.face 0
+	3
+	set state.size				# set state.size 3
+	2
+	set state.tint				# set state.tint 2
+	plot
+	7
+	move					# move 7
+	plot
+	7
+	move					# move 7
+	plot
+	7
+	move					# move 7
+	plot
+	7
+	move					# move 7
+	plot
+	7
+	move					# move 7
+	plot
+	7
+	move					# move 7
+	plot
+	7
+	move					# move 7
+	plot
+	1
+	wait					# wait 1
+	0
+	set state.tint				# set state.tint 0
+	128
+	state.face
+	+
+	set state.face				# set state.face (state.face+128)
+	local.a
+	7
+	<proc_074>
+	fork(2)					# <proc_074>(local.a, 7)
+	end
+
+proc proc_101 
+	# <proc_101>(local.o)
+	64
+	~
+	state.face
+	+
+	set state.face				# set state.face (state.face+(-64))
+	3
+	set state.tint				# set state.tint 3
+	local.a
+	<proc_102>
+	fork(1)					# <proc_102>(local.a)
+	3
+	wait					# wait 3
+	2
+	set state.tint				# set state.tint 2
+	local.a
+	<proc_102>
+	fork(1)					# <proc_102>(local.a)
+	1
+	set state.tint				# set state.tint 1
+	<proc_102>
+	0.5
+	local.a
+	*					# local.a*0.5
+	set local.a				# set local.a local.a*0.5
+	set state.proc				# set state.proc <proc_102>
+	tail
+	end
+
+proc proc_074 
+	# <proc_074>(local.a, 7)
+	0
+	local.a
+	<cmp>
+	when(>)					# (local.a>0)
+		plot
+		local.b
+		move				# move local.b
+		1
+		wait				# wait 1
+		<proc_074>
+		1
+		local.a
+		-
+		1
+		local.b
+		*				# local.b*1
+		set local.b			# set local.b local.b*1
+		set local.a			# set local.a (local.a-1)
+		set state.proc			# set state.proc <proc_074>
+		tail
+	done
+	end
+
+proc proc_102 
+	# <proc_102>(local.a)
+	local.a
+	0
+	<drawline_len_speed>
+	fork(2)					# <drawline_len_speed>(local.a, 0)
+	128
+	state.face
+	+
+	set state.face				# set state.face (state.face+128)
+	local.a
+	0
+	<drawline_len_speed>
+	fork(2)					# <drawline_len_speed>(local.a, 0)
+	128
+	state.face
+	+
+	set state.face				# set state.face (state.face+128)
+	end
+
+proc icon_highlighting_scanner
+	# <icon_highlighting_scanner>()
+	1
+	<module_name_taskbar_writer>
+	fork(1)					# <module_name_taskbar_writer>(1)
+	30
+	wait					# wait 30
+	1
+	<prepare_module_writer>
+	fork(1)					# <prepare_module_writer>(1)
+	2
+	<module_name_taskbar_writer>
+	fork(1)					# <module_name_taskbar_writer>(2)
+	30
+	wait					# wait 30
+	2
+	<prepare_module_writer>
+	fork(1)					# <prepare_module_writer>(2)
+	3
+	<module_name_taskbar_writer>
+	fork(1)					# <module_name_taskbar_writer>(3)
+	30
+	wait					# wait 30
+	3
+	<prepare_module_writer>
+	fork(1)					# <prepare_module_writer>(3)
+	4
+	<module_name_taskbar_writer>
+	fork(1)					# <module_name_taskbar_writer>(4)
+	85
+	wait					# wait 85
+	4
+	<prepare_module_writer>
+	fork(1)					# <prepare_module_writer>(4)
+	end
+
+proc write_poem
+
+
+
+##################################### P
+	10 :: wait
+	 75 :: set state.x ::  48 :: set state.y :: draw :: 1 :: wait
+	101 :: set state.face :: 5 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	 71 :: set state.x ::  51 :: set state.y :: draw :: 1 :: wait
+	77 :: set state.face :: 40 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	 58 :: set state.x ::  88 :: set state.y :: draw :: 1 :: wait
+	96 :: set state.face :: 8 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	 53 :: set state.x ::  93 :: set state.y :: draw :: 1 :: wait
+	122 :: set state.face :: 8 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	 46 :: set state.x ::  94 :: set state.y :: draw :: 1 :: wait
+##################################### P2
+	10 :: wait
+	 52 :: set state.x ::  69 :: set state.y :: draw :: 1 :: wait
+	150 :: set state.face :: 6 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	 47 :: set state.x ::  66 :: set state.y :: draw :: 1 :: wait
+	197 :: set state.face :: 8 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	 48 :: set state.x ::  59 :: set state.y :: draw :: 1 :: wait
+	224 :: set state.face :: 15 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	 58 :: set state.x ::  49 :: set state.y :: draw :: 1 :: wait
+	247 :: set state.face :: 26 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	 83 :: set state.x ::  44 :: set state.y :: draw :: 1 :: wait
+	21 :: set state.face :: 14 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	 95 :: set state.x ::  51 :: set state.y :: draw :: 1 :: wait
+	73 :: set state.face :: 13 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	 92 :: set state.x ::  63 :: set state.y :: draw :: 1 :: wait
+	104 :: set state.face :: 14 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	 81 :: set state.x ::  70 :: set state.y :: draw :: 1 :: wait
+	113 :: set state.face :: 14 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	 68 :: set state.x ::  75 :: set state.y :: draw :: 1 :: wait
+##################################### o
+	10 :: wait
+	106 :: set state.x ::  59 :: set state.y :: draw :: 1 :: wait
+	110 :: set state.face :: 10 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	 97 :: set state.x ::  63 :: set state.y :: draw :: 1 :: wait
+	80 :: set state.face :: 13 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	 92 :: set state.x ::  75 :: set state.y :: draw :: 1 :: wait
+	57 :: set state.face :: 7 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	 93 :: set state.x ::  81 :: set state.y :: draw :: 1 :: wait
+	232 :: set state.face :: 8 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	 99 :: set state.x ::  77 :: set state.y :: draw :: 1 :: wait
+	217 :: set state.face :: 14 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	107 :: set state.x ::  66 :: set state.y :: draw :: 1 :: wait
+	186 :: set state.face :: 8 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	106 :: set state.x ::  59 :: set state.y :: draw :: 1 :: wait
+##################################### e
+	10 :: wait
+	110 :: set state.x ::  67 :: set state.y :: draw :: 1 :: wait
+	245 :: set state.face :: 12 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	121 :: set state.x ::  64 :: set state.y :: draw :: 1 :: wait
+	207 :: set state.face :: 6 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	123 :: set state.x ::  59 :: set state.y :: draw :: 1 :: wait
+	160 :: set state.face :: 5 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	120 :: set state.x ::  56 :: set state.y :: draw :: 1 :: wait
+	104 :: set state.face :: 8 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	114 :: set state.x ::  60 :: set state.y :: draw :: 1 :: wait
+	80 :: set state.face :: 16 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	108 :: set state.x ::  74 :: set state.y :: draw :: 1 :: wait
+	26 :: set state.face :: 5 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	112 :: set state.x ::  77 :: set state.y :: draw :: 1 :: wait
+	241 :: set state.face :: 9 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	120 :: set state.x ::  74 :: set state.y :: draw :: 1 :: wait
+##################################### m
+	10 :: wait
+	130 :: set state.x ::  55 :: set state.y :: draw :: 1 :: wait
+	75 :: set state.face :: 21 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	124 :: set state.x ::  75 :: set state.y :: draw :: 1 :: wait
+	209 :: set state.face :: 17 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	131 :: set state.x ::  60 :: set state.y :: draw :: 1 :: wait
+	229 :: set state.face :: 10 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	139 :: set state.x ::  54 :: set state.y :: draw :: 1 :: wait
+	77 :: set state.face :: 19 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	133 :: set state.x ::  72 :: set state.y :: draw :: 1 :: wait
+	210 :: set state.face :: 12 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	138 :: set state.x ::  62 :: set state.y :: draw :: 1 :: wait
+	226 :: set state.face :: 14 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	148 :: set state.x ::  53 :: set state.y :: draw :: 1 :: wait
+	72 :: set state.face :: 11 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	146 :: set state.x ::  63 :: set state.y :: draw :: 1 :: wait
+	78 :: set state.face :: 9 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	143 :: set state.x ::  71 :: set state.y :: draw :: 1 :: wait
+	0 :: set state.face :: 5 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	148 :: set state.x ::  71 :: set state.y :: draw :: 1 :: wait
+	210 :: set state.face :: 7 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	151 :: set state.x ::  65 :: set state.y :: draw :: 1 :: wait
+##################################### t
+	10 :: wait
+	176 :: set state.x ::  38 :: set state.y :: draw :: 1 :: wait
+	81 :: set state.face :: 29 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	164 :: set state.x ::  64 :: set state.y :: draw :: 1 :: wait
+	54 :: set state.face :: 5 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	165 :: set state.x ::  68 :: set state.y :: draw :: 1 :: wait
+	232 :: set state.face :: 8 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	171 :: set state.x ::  64 :: set state.y :: draw :: 1 :: wait
+##################################### t2
+	10 :: wait
+	166 :: set state.x ::  50 :: set state.y :: draw :: 1 :: wait
+	248 :: set state.face :: 12 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	177 :: set state.x ::  48 :: set state.y :: draw :: 1 :: wait
+##################################### o
+	10 :: wait
+	188 :: set state.x ::  46 :: set state.y :: draw :: 1 :: wait
+	113 :: set state.face :: 9 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	180 :: set state.x ::  49 :: set state.y :: draw :: 1 :: wait
+	89 :: set state.face :: 9 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	175 :: set state.x ::  56 :: set state.y :: draw :: 1 :: wait
+	64 :: set state.face :: 11 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	175 :: set state.x ::  67 :: set state.y :: draw :: 1 :: wait
+	249 :: set state.face :: 7 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	181 :: set state.x ::  66 :: set state.y :: draw :: 1 :: wait
+	215 :: set state.face :: 11 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	187 :: set state.x ::  57 :: set state.y :: draw :: 1 :: wait
+	195 :: set state.face :: 12 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	188 :: set state.x ::  46 :: set state.y :: draw :: 1 :: wait
+##################################### a
+	10 :: wait
+	216 :: set state.x ::  43 :: set state.y :: draw :: 1 :: wait
+	137 :: set state.face :: 5 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	212 :: set state.x ::  42 :: set state.y :: draw :: 1 :: wait
+	104 :: set state.face :: 8 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	206 :: set state.x ::  46 :: set state.y :: draw :: 1 :: wait
+	82 :: set state.face :: 12 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	201 :: set state.x ::  56 :: set state.y :: draw :: 1 :: wait
+	57 :: set state.face :: 7 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	202 :: set state.x ::  62 :: set state.y :: draw :: 1 :: wait
+	237 :: set state.face :: 5 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	206 :: set state.x ::  60 :: set state.y :: draw :: 1 :: wait
+	215 :: set state.face :: 24 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	219 :: set state.x ::  40 :: set state.y :: draw :: 1 :: wait
+	79 :: set state.face :: 17 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	213 :: set state.x ::  55 :: set state.y :: draw :: 1 :: wait
+	70 :: set state.face :: 7 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	212 :: set state.x ::  61 :: set state.y :: draw :: 1 :: wait
+	242 :: set state.face :: 7 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	218 :: set state.x ::  59 :: set state.y :: draw :: 1 :: wait
+##################################### H
+	10 :: wait
+	174 :: set state.x ::  94 :: set state.y :: draw :: 1 :: wait
+	121 :: set state.face :: 7 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	168 :: set state.x ::  95 :: set state.y :: draw :: 1 :: wait
+	160 :: set state.face :: 8 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	163 :: set state.x ::  90 :: set state.y :: draw :: 1 :: wait
+	208 :: set state.face :: 13 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	168 :: set state.x ::  78 :: set state.y :: draw :: 1 :: wait
+	0 :: set state.face :: 33 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	201 :: set state.x ::  78 :: set state.y :: draw :: 1 :: wait
+##################################### H2
+	10 :: wait
+	198 :: set state.x ::  74 :: set state.y :: draw :: 1 :: wait
+	81 :: set state.face :: 44 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	180 :: set state.x :: 114 :: set state.y :: draw :: 1 :: wait
+	99 :: set state.face :: 8 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	174 :: set state.x :: 119 :: set state.y :: draw :: 1 :: wait
+	104 :: set state.face :: 8 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	168 :: set state.x :: 123 :: set state.y :: draw :: 1 :: wait
+	139 :: set state.face :: 8 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	161 :: set state.x :: 121 :: set state.y :: draw :: 1 :: wait
+##################################### H3
+	10 :: wait
+	180 :: set state.x :: 101 :: set state.y :: draw :: 1 :: wait
+	249 :: set state.face :: 36 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	215 :: set state.x ::  95 :: set state.y :: draw :: 1 :: wait
+##################################### H4
+	10 :: wait
+	225 :: set state.x ::  68 :: set state.y :: draw :: 1 :: wait
+	116 :: set state.face :: 8 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	218 :: set state.x ::  70 :: set state.y :: draw :: 1 :: wait
+	84 :: set state.face :: 13 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	212 :: set state.x ::  81 :: set state.y :: draw :: 1 :: wait
+	75 :: set state.face :: 32 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	203 :: set state.x :: 111 :: set state.y :: draw :: 1 :: wait
+	40 :: set state.face :: 4 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	205 :: set state.x :: 114 :: set state.y :: draw :: 1 :: wait
+	220 :: set state.face :: 8 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	210 :: set state.x :: 108 :: set state.y :: draw :: 1 :: wait
+##################################### o
+	10 :: wait
+	228 :: set state.x ::  90 :: set state.y :: draw :: 1 :: wait
+	122 :: set state.face :: 8 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	221 :: set state.x ::  91 :: set state.y :: draw :: 1 :: wait
+	82 :: set state.face :: 9 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	217 :: set state.x ::  99 :: set state.y :: draw :: 1 :: wait
+	68 :: set state.face :: 11 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	216 :: set state.x :: 109 :: set state.y :: draw :: 1 :: wait
+	0 :: set state.face :: 4 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	220 :: set state.x :: 109 :: set state.y :: draw :: 1 :: wait
+	224 :: set state.face :: 10 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	227 :: set state.x :: 102 :: set state.y :: draw :: 1 :: wait
+	195 :: set state.face :: 13 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	228 :: set state.x ::  90 :: set state.y :: draw :: 1 :: wait
+##################################### r
+	10 :: wait
+	236 :: set state.x ::  87 :: set state.y :: draw :: 1 :: wait
+	73 :: set state.face :: 22 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	231 :: set state.x :: 108 :: set state.y :: draw :: 1 :: wait
+	205 :: set state.face :: 13 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	235 :: set state.x ::  96 :: set state.y :: draw :: 1 :: wait
+	218 :: set state.face :: 12 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	242 :: set state.x ::  87 :: set state.y :: draw :: 1 :: wait
+	13 :: set state.face :: 4 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	245 :: set state.x ::  88 :: set state.y :: draw :: 1 :: wait
+##################################### s
+	10 :: wait
+	260 :: set state.x ::  84 :: set state.y :: draw :: 1 :: wait
+	122 :: set state.face :: 8 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	253 :: set state.x ::  85 :: set state.y :: draw :: 1 :: wait
+	91 :: set state.face :: 7 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	249 :: set state.x ::  90 :: set state.y :: draw :: 1 :: wait
+	35 :: set state.face :: 8 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	254 :: set state.x ::  96 :: set state.y :: draw :: 1 :: wait
+	57 :: set state.face :: 7 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	255 :: set state.x :: 102 :: set state.y :: draw :: 1 :: wait
+	104 :: set state.face :: 8 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	249 :: set state.x :: 106 :: set state.y :: draw :: 1 :: wait
+	141 :: set state.face :: 7 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	243 :: set state.x :: 104 :: set state.y :: draw :: 1 :: wait
+##################################### e
+	10 :: wait
+	262 :: set state.x ::  92 :: set state.y :: draw :: 1 :: wait
+	245 :: set state.face :: 12 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	273 :: set state.x ::  89 :: set state.y :: draw :: 1 :: wait
+	200 :: set state.face :: 6 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	274 :: set state.x ::  84 :: set state.y :: draw :: 1 :: wait
+	160 :: set state.face :: 3 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	272 :: set state.x ::  82 :: set state.y :: draw :: 1 :: wait
+	105 :: set state.face :: 6 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	267 :: set state.x ::  85 :: set state.y :: draw :: 1 :: wait
+	81 :: set state.face :: 15 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	261 :: set state.x ::  98 :: set state.y :: draw :: 1 :: wait
+	45 :: set state.face :: 5 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	263 :: set state.x :: 102 :: set state.y :: draw :: 1 :: wait
+	244 :: set state.face :: 8 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	270 :: set state.x :: 100 :: set state.y :: draw :: 1 :: wait
+	214 :: set state.face :: 6 :: 0 :: <drawline_len_speed> :: fork(2) :: 2 :: wait
+	273 :: set state.x ::  95 :: set state.y :: draw :: 1 :: wait
+
+	end
+
+proc atw_pictures
+	0 :: set state.size
+
+	88 :: set state.x
+	12 :: set state.y
+	<drawpixel>
+	set state.D				# set state.D <drawpixel>
+
+	14bc:3c49 :: <char_draw_helper1> :: fork(1) :: 7 :: move :: 5 :: wait # A
+	f041:0107 :: <char_draw_helper1> :: fork(1) :: 7 :: move :: 5 :: wait # T
+	881f:1f81 :: <char_draw_helper1> :: fork(1) :: 7 :: move :: 5 :: wait # W
+	7 :: move                                                :: 5 :: wait
+	147f:1c49 :: <char_draw_helper1> :: fork(1) :: 7 :: move :: 5 :: wait # P
+	f860:2087 :: <char_draw_helper1> :: fork(1) :: 7 :: move :: 5 :: wait # I
+	189c:2186 :: <char_draw_helper1> :: fork(1) :: 7 :: move :: 5 :: wait # C
+	f041:0107 :: <char_draw_helper1> :: fork(1) :: 7 :: move :: 5 :: wait # T
+	081f:1f82 :: <char_draw_helper1> :: fork(1) :: 7 :: move :: 5 :: wait # U
+	107f:2c49 :: <char_draw_helper1> :: fork(1) :: 7 :: move :: 5 :: wait # R
+	9a7f:2186 :: <char_draw_helper1> :: fork(1) :: 7 :: move :: 5 :: wait # E
+	9a6e:19a6 :: <char_draw_helper1> :: fork(1) :: 7 :: move :: 5 :: wait # S
+	7 :: move                                                :: 5 :: wait
+	147f:1c49 :: <char_draw_helper1> :: fork(1) :: 7 :: move :: 5 :: wait # P
+	107f:2c49 :: <char_draw_helper1> :: fork(1) :: 7 :: move :: 5 :: wait # R
+	9a7f:2186 :: <char_draw_helper1> :: fork(1) :: 7 :: move :: 5 :: wait # E
+	9a6e:19a6 :: <char_draw_helper1> :: fork(1) :: 7 :: move :: 5 :: wait # S
+	9a7f:2186 :: <char_draw_helper1> :: fork(1) :: 7 :: move :: 5 :: wait # E
+	107e:3c08 :: <char_draw_helper1> :: fork(1) :: 7 :: move :: 5 :: wait # N
+	f041:0107 :: <char_draw_helper1> :: fork(1) :: 7 :: move :: 5 :: wait # T
+	9a6e:19a6 :: <char_draw_helper1> :: fork(1) :: 7 :: move :: 5 :: wait # S
+
+	end
+
+proc a_romantic
+	0 :: set state.size
+
+	88 :: 35 :: + :: set state.x
+	140 :: set state.y
+	<drawpixel>
+	set state.D				# set state.D <drawpixel>
+
+	9a7f:2186 :: <char_draw_helper1> :: fork(1) :: 7 :: move :: 5 :: wait # E
+	989c:2f46 :: <char_draw_helper1> :: fork(1) :: 7 :: move :: 5 :: wait # Q
+	081f:1f82 :: <char_draw_helper1> :: fork(1) :: 7 :: move :: 5 :: wait # U
+	f860:2087 :: <char_draw_helper1> :: fork(1) :: 7 :: move :: 5 :: wait # I
+	107e:3c08 :: <char_draw_helper1> :: fork(1) :: 7 :: move :: 5 :: wait # N
+	9a7f:2186 :: <char_draw_helper1> :: fork(1) :: 7 :: move :: 5 :: wait # E
+	7 :: move                                                :: 5 :: wait
+	083f:3082 :: <char_draw_helper1> :: fork(1) :: 7 :: move :: 5 :: wait # L
+	185e:1e86 :: <char_draw_helper1> :: fork(1) :: 7 :: move :: 5 :: wait # O
+	040f:0f42 :: <char_draw_helper1> :: fork(1) :: 7 :: move :: 5 :: wait # V
+	9a7f:2186 :: <char_draw_helper1> :: fork(1) :: 7 :: move :: 5 :: wait # E
+
+	0 :: set state.size
+
+	end
+
+proc buffering
+	160 :: set state.x
+	80 :: set state.y
+	3 :: set state.tint
+	40 :: set state.size
+	plot
+	0 :: set state.tint
+	state.size
+	1
+	~
+	+
+	set state.size
+	plot
+	1
+	wait
+3000 :: <proc_049> :: fork(1)
+
+	end
+
+
+proc buf_text
+	128 :: set state.x :: 108 :: set state.y
+	1
+	set state.F				# set state.F 1
+	7
+	set state.E				# set state.E 7
+	<drawpixel>
+	set state.D				# set state.D <drawpixel>
+	3
+	set state.tint				# set state.tint 3
+	987f:14aa # B
+	081f:1f82 # U
+	927f:0104 # F
+	927f:0104 # F
+	9a7f:2186 # E
+	107f:2c49 # R
+	f860:2087 # I
+	107e:3c08 # N
+	98bc:3ba6 # G
+	0020:2002 # ...
+	0
+	<draw_11_chars_F_is_zoom_E_is_letter_spacing>
+	fork(11)				# <draw_11_chars_F_is_zoom_E_is_letter_spacing>(f860:2087, 107e:3c08, f860:2087, f041:0107, f860:2087, f041:0107, 14bc:3c49, 083f:3082, f860:2087, 9a6e:19a6, 9a7f:2186)
+
+	end
+
+proc crasho
+	rand :: 32 :: * :: 10 :: * :: set state.x
+	rand :: 18 :: * :: 10 :: * :: set state.y
+	rand :: 20 :: * :: 5 :: + :: set state.size
+	rand :: 6 :: * :: 1 :: + :: set state.tint
+	# rand :: 256 :: * :: set state.face
+	plot
+	state.size :: 1 :: ~ :: + :: set state.size
+	0 :: set state.tint :: plot
+	4 :: set state.tint :: plot
+	rand :: 10 :: * :: 1 :: + :: wait
+	<crasho>
+	set state.proc			# set state.proc <drawline_len_speed>
+	tail
+	end
+
+proc realcrash
+	draw
+	1 :: wait
+	<realcrash>
+	fork(0)
+	end
+
+
+BC_END_OF_SCRIPT
+BC_END_OF_SCRIPT

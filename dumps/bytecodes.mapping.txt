@@ -1,0 +1,271 @@
+proc_005 title_sequence
+proc_022 title_logic_L
+proc_025 title_logic_O
+proc_026 title_logic_G
+proc_027 title_logic_I
+proc_028 title_logic_C
+proc_020 logicoma_logo_big
+proc_016 big_S_in_OS
+
+proc_054 module_name_taskbar_clearer
+proc_058 growing_rect
+proc_060 module_name_taskbar_clearer_sub2
+
+# calling proc_198 causes initial wait time to be low. ?!
+# called very often
+
+proc_198 smart_rect
+
+proc_033 circle_with_outline
+proc_034 single_char_draw
+proc_036 loading_user_profile_and_main_ui
+proc_038 icon_highlighting_search_messaging_demos_tracker
+proc_207 char_draw_helper1
+proc_199 char_draw_helper2
+proc_193 char_draw_helper3_maybe_next_line
+proc_055 module_name_taskbar_writer
+
+proc_109 draw_message_subjects
+proc_197 draw_multiple_threats_detected
+proc_196 draw_comms_observed
+proc_110 draw_hey_man_uhh_message
+proc_183 draw_format_decrypt_key
+proc_031 draw_username_hoffman_password
+proc_061 draw_search_messaging_demos_tracker_scanner_cracker_receiver
+proc_076 draw_title_revision_22_03_bpm_125
+proc_150 draw_idle_analysing_sample_cycling_ai_keys_decrypt
+proc_069 maybe_draw_icons1
+proc_232 maybe_draw_icons2
+proc_099 maybe_draw_icons3
+proc_175 draw_receiving_sampling_idle_sending
+proc_195 draw_send_data
+proc_116 draw_init_tuning_scanning_signal_lock
+proc_148 draw_blacklotus_key
+proc_048 draw_loading
+proc_084 draw_kick_hat_snare_cowbell_bass
+proc_210 draw_1338_1339_1340
+proc_119 draw_x_y_frequency_status
+proc_063 draw_loading_user_profile
+proc_133 draw_signal
+proc_209 draw_1337
+proc_145 draw_key_profile
+proc_146 draw_key_result
+proc_097 draw_new_voice_message
+proc_147 draw_status
+
+
+
+
+
+proc_013 draw_squares_length_a_step_7
+proc_012 draw_title_progress_bar
+proc_010 set_size_a_max_c_and_tint_b_and_plot
+proc_008 set_size_1
+proc_007 pixel_plot_tint_7_tint_5
+proc_009 maybe_title_logo_wipeout_with_squares
+proc_002 plot_tint_1_2_3_2_0_5
+proc_003 plot_tint_1_2_3_2_0_6
+proc_004 plot_tint_1_2_3_2
+proc_021 move_12_draw_tint_3_size_2_draw_tint_0_size_1
+proc_030 move_a_draw
+proc_029 arc_with_turn_4_len_a
+proc_017 big_S_draw_helper
+proc_021 move_12_then_logicoma_logo_circle_tint_3
+proc_029 logicoma_logo_half_circle
+proc_019 diagonal_line_len_speed
+proc_200 erase_pixel
+
+
+
+
+
+
+
+
+
+# that fucker's using layers!
+
+proc_070 draw_tracker_title_and_pattern
+proc_075 tracker_play_new_voice_message_and_stop
+proc_039 icon_highlighting_tracker_demos_messaging
+
+ # param: 1 = messaging
+ # param: 2 = demos <-- unused in logic OS?
+ # param: 3 = tracker
+ # param: 4 = scanner
+ # param: 5 = cracker <-- strange: not in code, but does appear in demo?!
+ # param: 6 = receiver
+proc_046 loading_xxx_and_title_upper_left
+
+proc_098 speech_message_part_and_crash
+
+proc_040 icon_highlighting_scanner
+proc_112 scanner_thingie_crash
+proc_044 unclear_after_scanner
+proc_041 icon_highlighting_receiver
+proc_169 huge_datastream_sequence
+proc_042 icon_highlighting_receiver_cracker
+
+# tint 1, 2, 3, 2, 1
+proc_001 draw_fading_plot
+
+
+# draws in different direction? face 1.5 at beginning tilts rect
+proc_204 rect_helper
+
+proc_011 render_5cols
+
+
+# proc_167 forks interestingly to proc_164
+
+
+proc_006 drawpixel
+proc_014 drawline_len_speed
+
+
+#	proc proc_123 a
+#		60	BC_RLOCAL(0)=a
+#		07	BC_PROC
+#		06	<drawpixel>
+#		9a	BC_CONST(26) 1       0001.0000
+#		9a	BC_CONST(26) 1       0001.0000
+#		07	BC_PROC
+#		ca	<draw_char_column>
+#		24	BC_FORK(4)      		fork draw_char_column a drawpixel 1 1
+#		02	BC_END
+
+proc_123 draw_single_char
+
+#	title_sequence
+#		20	BC_FORK(0)      		fork title_logic_L
+#		20	BC_FORK(0)      		fork title_logic_O
+#		20	BC_FORK(0)      		fork title_logic_G
+#		20	BC_FORK(0)      		fork title_logic_I
+#		20	BC_FORK(0)      		fork title_logic_C
+#		20	BC_FORK(0)      		fork logicoma_logo_big
+#		20	BC_FORK(0)      		fork big_S_in_OS
+#		24	BC_FORK(4)      		fork smart_rect rand 50 70 draw_fading_plot
+#
+#		2b	BC_FORK(11)      	fork proc_208 63584.127 4222.234 63584.127 61505.004 63584.127 61505.004 5308.235 2111.189 63584.127 39534.1 39551.131
+
+proc_208 draw_11_chars_F_is_zoom_E_is_letter_spacing
+
+#			some_text_writer: == 208
+#			24 BC_FORK(4)       	fork proc_202 a D 1 1, then move E wait 3
+#			24 BC_FORK(4)       	fork proc_202 b D 1 1
+#			24 BC_FORK(4)       	fork proc_202 c D 1 1
+#			24 BC_FORK(4)       	fork proc_202 d D 1 1
+#			24 BC_FORK(4)       	fork proc_202 e D 1 1
+#			24 BC_FORK(4)       	fork proc_202 f D 1 1
+#			24 BC_FORK(4)       	fork proc_202 g D 1 1
+#			24 BC_FORK(4)       	fork proc_202 h D 1 1
+#			24 BC_FORK(4)       	fork proc_202 i D 1 1
+#			24 BC_FORK(4)       	fork proc_202 j D 1 1
+#			24 TAIL             	fork proc_202 k D 1 1
+#
+
+proc_202 draw_char_column
+
+#				proc 202
+#				60 BC_RLOCAL(0)=a
+#				a1 BC_CONST(33) 5          0005.0000  .............#.#................
+#				61 BC_RLOCAL(1)=b
+#				62 BC_RLOCAL(2)=c
+#				63 BC_RLOCAL(3)=d
+#				07 BC_PROC
+#				cc <proc_204>
+#				25 BC_FORK(5)       	fork proc_204 a 5 b c d
+#				02 BC_END
+#
+
+proc_204 draw_char_iterate_rows
+
+#					proc 204
+#					61 BC_RLOCAL(1)=b
+#					17 BC_WHEN(7)       	when b !=
+#					a2 BC_CONST(34) 6          0006.0000  .............##.................
+#					60 BC_RLOCAL(0)=a
+#					62 BC_RLOCAL(2)=c
+#					64 BC_RLOCAL(4)=e
+#					07 BC_PROC
+#					cd <proc_205>
+#					24 BC_FORK(4)       	fork proc_205 6 a c e
+#					7d BC_RSTATE(F)
+#					0e BC_MOVE          	move F
+#					63 BC_RLOCAL(3)=d
+#					0a BC_WAIT          	wait d
+#					07 BC_PROC
+#					cc <proc_204>
+#					a2 BC_CONST(34) 6          0006.0000  .............##.................
+#					60 BC_RLOCAL(0)=a
+#					33 BC_OP(3)=OP_ROR
+#					9a BC_CONST(26) 1          0001.0000  ...............#................
+#					61 BC_RLOCAL(1)=b
+#					39 BC_OP(9)=OP_SUB
+#					41 BC_WLOCAL(1)     	b b-1
+#					40 BC_WLOCAL(0)     	a aror6
+#					50 BC_WSTATE(0)     	proc proc_204
+#					05 BC_TAIL
+#					00 BC_DONE          	done
+#					02 BC_END
+
+proc_205 draw_char_turn_downward
+
+#						proc 205
+#						d7 BC_CONST(87) 64         0040.0000  .........#......................
+#						76 BC_RSTATE(face)
+#						3d BC_OP(13)=OP_ADD
+#						56 BC_WSTATE(6)     	face face+64
+#						07 BC_PROC
+#						ce <proc_206>
+#						50 BC_WSTATE(0)     	proc proc_206
+#						05 BC_TAIL
+#						02 BC_END
+
+proc_206 draw_char_draw_column
+
+#						proc 206
+#						60 BC_RLOCAL(0)=a
+#						17 BC_WHEN(7)       	when a !=
+#						9a BC_CONST(26) 1          0001.0000  ...............#................
+#						61 BC_RLOCAL(1)=b
+#						3c BC_OP(12)=OP_AND
+#						17 BC_WHEN(7)       	when b&1 !=
+#						62 BC_RLOCAL(2)=c
+#						20 BC_FORK(0)       	BC_FORK(0)
+#						00 BC_DONE          	done
+#						7d BC_RSTATE(F)
+#						0e BC_MOVE          	move F
+#						63 BC_RLOCAL(3)=d
+#						0a BC_WAIT          	wait d
+#						07 BC_PROC
+#						ce <proc_206>
+#						9a BC_CONST(26) 1          0001.0000  ...............#................
+#						60 BC_RLOCAL(0)=a
+#						39 BC_OP(9)=OP_SUB
+#						9a BC_CONST(26) 1          0001.0000  ...............#................
+#						61 BC_RLOCAL(1)=b
+#						33 BC_OP(3)=OP_ROR
+#						41 BC_WLOCAL(1)     	b bror1
+#						40 BC_WLOCAL(0)     	a a-1
+#						50 BC_WSTATE(0)     	proc proc_206
+#						05 BC_TAIL
+#						00 BC_DONE          	done
+#						02 BC_END
+
+################################ CENTER RECT
+# e0	BC_CONST(96) 90
+# f7     bytecode 0xf7 = 160
+# 51	BC_WSTATE(1)    		x 160
+# 52	BC_WSTATE(2)    		y 90
+# 9f	BC_CONST(31) 3
+# 54	BC_WSTATE(4)    		tint 3
+# b2	BC_CONST(50) 20
+# 53	BC_WSTATE(3)    		size 20
+# 04	BC_DRAW         		draw
+# 9c	BC_CONST(28) 2
+# 54	BC_WSTATE(4)    		tint 2
+# a0	BC_CONST(32) 4
+# 53	BC_WSTATE(3)    		size 4
+# 06	BC_PLOT         		plot
+############################ END CENTER RECT

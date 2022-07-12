@@ -1,0 +1,44 @@
+
+plan
+	0:fff 1:53C 2:f00 3:0ff 4:f1f 5:ff0 6:00f
+	wait 1
+	0:fff
+	wait 2
+	0:eee
+	wait 3
+	0:ddd
+	wait 4
+	0:ccc
+	wait 5
+	0:bbb
+
+proc main
+	tint 2
+	face 32
+	move 10
+	draw
+
+	wait 64
+
+	tint 3
+	move 10
+	draw
+
+	wait 64
+
+	tint 1
+	move 10
+	draw
+
+	wait 10
+	seed 02
+	wire gurke=50
+	fork cmptest 1337
+
+proc cmptest a
+	move a<10 ? a*2 : a*5
+	when a / gurke == 23
+		draw
+	else
+		plot
+	done

@@ -1,0 +1,310 @@
+
+Package rose;
+
+Helpers
+
+    all = [0 .. 0xFFFF];
+	digit = ['0' .. '9'];
+	hexdigit = digit | ['A' .. 'F'] | ['a' .. 'f'];
+	letter = ['A' .. 'Z'] | ['a' .. 'z'] | '_';
+	decnumber = digit+ ('.' digit+) ?;
+	hexnumber = '$' hexdigit+;
+	quote = '"';
+	all_ascii = [0x20 .. 0x7E];
+	not_quote = [all_ascii - quote];
+
+	tab = 9;
+	cr = 13;
+	lf = 10;
+	eol = cr lf | cr | lf;
+	blank = (' ' | tab | eol)+;
+
+Tokens
+
+	defy = 'defy';
+	done = 'done';
+	draw = 'draw';
+	else = 'else';
+	face = 'face';
+	fact = 'fact';
+	fade = 'fade';
+	fork = 'fork';
+	form = 'form';
+	jump = 'jump';
+	look = 'look';
+	move = 'move';
+	part = 'part';
+	plan = 'plan';
+	plot = 'plot';
+	proc = 'proc';
+	rand = 'rand';
+	seed = 'seed';
+	sine = 'sine';
+	size = 'size';
+	temp = 'temp';
+	tint = 'tint';
+	turn = 'turn';
+	wait = 'wait';
+	when = 'when';
+	wire = 'wire';
+
+	l_par = '(';
+	r_par = ')';
+	plus = '+';
+	minus = '-';
+	mul = '*';
+	div = '/';
+	asl = '<<';
+	asr = '>>';
+	lsr = '>>>';
+	rol = '><<';
+	ror = '>><';
+	eq = '==';
+	ne = '!=';
+	lt = '<';
+	le = '<=';
+	gt = '>';
+	ge = '>=';
+	and = '&';
+	or = '|';
+	assign = '=';
+	neg = '~';
+	question = '?';
+	colon = ':';
+
+	number = decnumber | hexnumber;
+	identifier = letter (letter | digit)*;
+	color = digit+ ':' hexdigit hexdigit hexdigit;
+	string = quote not_quote* quote;
+
+	blank = blank;
+	comment = '#' [all - [cr + lf]]* eol;
+
+Ignored Tokens
+
+	blank, comment;
+
+Productions
+
+	program		=			toplevel*
+							{-> New program ([toplevel.decl])}
+				;
+
+	toplevel	{-> decl} =
+					{form}	form [width]:exp [height]:exp [count]:exp [depth]:exp
+							{-> New decl.form (form, width.expression, height.expression, count.expression, depth.expression)}
+				|	{plan}	plan ev*
+							{-> New decl.plan ([ev.event])}
+				|	{fact}	fact [name]:identifier assign exp
+							{-> New decl.fact (name, exp.expression)}
+				|	{look}	look [name]:identifier ev*
+							{-> New decl.look (name, [ev.event])}
+				|	{proc}	proc [name]:identifier param* stmt*
+							{-> New decl.proc(name, [param.local], [stmt.statement])}
+				|	{part}	part [file]:string
+							{-> New decl.part(file)}
+				;
+
+	ev			{-> event} =
+					{wait}	wait exp
+							{-> New event.wait(exp.expression)}
+				|	{fade}	fade exp
+							{-> New event.fade(exp.expression)}
+				|	{color}	color
+							{-> New event.color(color)}
+				|	{ref} identifier
+							{-> New event.ref(identifier)}
+				;
+
+	param		{-> local} =
+							identifier
+							{-> New local(identifier)}
+				;
+
+	stmt		{-> statement} =
+					{defy}	defy
+							{-> New statement.defy(defy)}
+				|	{draw}	draw
+							{-> New statement.draw(draw)}
+				|	{plot}	plot
+							{-> New statement.plot(plot)}
+				|	{move}	move exp
+							{-> New statement.move(move, exp.expression)}
+				|	{jump}	jump [x]:exp [y]:exp
+							{-> New statement.jump(jump, x.expression, y.expression)}
+				|	{turn}	turn exp
+							{-> New statement.turn(turn, exp.expression)}
+				|	{face}	face exp
+							{-> New statement.face(face, exp.expression)}
+				|	{tint}	tint exp
+							{-> New statement.tint(tint, exp.expression)}
+				|	{size}	size exp
+							{-> New statement.size(size, exp.expression)}
+				|	{wait}	wait exp
+							{-> New statement.wait(wait, exp.expression)}
+				|	{fork}	fork identifier exp*
+							{-> New statement.fork(fork, New expression.var(identifier), [exp.expression])}
+				|	{temp}	temp identifier assign exp
+							{-> New statement.temp(New local(identifier), exp.expression)}
+				|	{wire}	wire identifier assign exp
+							{-> New statement.wire(New local(identifier), exp.expression)}
+				|	{seed}	seed exp
+							{-> New statement.seed(seed, exp.expression)}
+				|	{when}	when exp stmt* done
+							{-> New statement.when(when, exp.expression, [stmt.statement], New else_marker(), [])}
+				|	{else}	when exp [s1]:stmt* else [s2]:stmt* done
+							{-> New statement.when(when, exp.expression, [s1.statement], New else_marker(), [s2.statement])}
+				;
+
+	exp			{-> expression} =
+					{next}	orexp
+							{-> orexp.expression}
+				|	{cond}	[cond]:orexp question [when]:exp colon [else]:exp
+							{-> New expression.cond(question, cond.expression, when.expression, else.expression)}
+				;
+
+	orexp		{-> expression} =
+					{next}	andexp
+							{-> andexp.expression}
+				|	{or}	orexp or andexp
+							{-> New expression.binary(New binop.or(or), orexp.expression, andexp.expression)}
+				;
+
+	andexp		{-> expression} =
+					{next}	compexp
+							{-> compexp.expression}
+				|	{and}	andexp and compexp
+							{-> New expression.binary(New binop.and(and), andexp.expression, compexp.expression)}
+				;
+
+	compexp		{-> expression} =
+					{next}	addsubexp
+							{-> addsubexp.expression}
+				|	{eq}	[left]:addsubexp eq [right]:addsubexp
+							{-> New expression.binary(New binop.eq(eq), left.expression, right.expression)}
+				|	{ne}	[left]:addsubexp ne [right]:addsubexp
+							{-> New expression.binary(New binop.ne(ne), left.expression, right.expression)}
+				|	{lt}	[left]:addsubexp lt [right]:addsubexp
+							{-> New expression.binary(New binop.lt(lt), left.expression, right.expression)}
+				|	{le}	[left]:addsubexp le [right]:addsubexp
+							{-> New expression.binary(New binop.le(le), left.expression, right.expression)}
+				|	{gt}	[left]:addsubexp gt [right]:addsubexp
+							{-> New expression.binary(New binop.gt(gt), left.expression, right.expression)}
+				|	{ge}	[left]:addsubexp ge [right]:addsubexp
+							{-> New expression.binary(New binop.ge(ge), left.expression, right.expression)}
+				;
+
+	addsubexp	{-> expression} =
+					{next}	shiftexp
+							{-> shiftexp.expression}
+				|	{plus}	addsubexp plus shiftexp
+							{-> New expression.binary(New binop.plus(plus), addsubexp.expression, shiftexp.expression)}
+				|	{minus}	addsubexp minus shiftexp
+							{-> New expression.binary(New binop.minus(minus), addsubexp.expression, shiftexp.expression)}
+				;
+
+	shiftexp	{-> expression} =
+					{next}	muldivexp
+							{-> muldivexp.expression}
+				|	{asl}	[left]:shiftexp asl [right]:muldivexp
+							{-> New expression.binary(New binop.asl(asl), left.expression, right.expression)}
+				|	{asr}	[left]:shiftexp asr [right]:muldivexp
+							{-> New expression.binary(New binop.asr(asr), left.expression, right.expression)}
+				|	{lsr}	[left]:shiftexp lsr [right]:muldivexp
+							{-> New expression.binary(New binop.lsr(lsr), left.expression, right.expression)}
+				|	{rol}	[left]:shiftexp rol [right]:muldivexp
+							{-> New expression.binary(New binop.rol(rol), left.expression, right.expression)}
+				|	{ror}	[left]:shiftexp ror [right]:muldivexp
+							{-> New expression.binary(New binop.ror(ror), left.expression, right.expression)}
+				;
+
+	muldivexp	{-> expression} =
+					{next}	unaryexp
+							{-> unaryexp.expression}
+				|	{mul}	muldivexp mul unaryexp
+							{-> New expression.binary(New binop.multiply(mul), muldivexp.expression, unaryexp.expression)}
+				|	{div}	muldivexp div unaryexp
+							{-> New expression.binary(New binop.divide(div), muldivexp.expression, unaryexp.expression)}
+				;
+
+	unaryexp	{-> expression} =
+					{neg}	neg unaryexp
+							{-> New expression.neg(neg, unaryexp.expression)}
+				|	{var}	identifier
+							{-> New expression.var(identifier)}
+				|	{num}	number
+							{-> New expression.number(number)}
+				|	{paren}	l_par exp r_par
+							{-> exp.expression}
+				|	{sine}	sine l_par exp r_par
+							{-> New expression.sine(sine, exp.expression)}
+				|	{rand}	rand
+							{-> New expression.rand(rand)}
+				;
+
+Abstract Syntax Tree
+
+	program		=			decl*;
+
+	decl		=	{form}	[token]:form [width]:expression [height]:expression [count]:expression [depth]:expression
+				|	{plan}	event*
+				|	{fact}	[name]:identifier expression
+				|	{look}	[name]:identifier event*
+				|	{proc}	[name]:identifier [params]:local* [body]:statement*
+				|	{part}	[file]:string
+				;
+
+	event		=	{wait}	expression
+				|	{fade}	expression
+				|	{color}	color
+				|	{ref}	[name]:identifier
+				;
+
+	local		=			[name]:identifier;
+
+	statement	=	{defy}	[token]:defy
+				|	{draw}	[token]:draw
+				|	{plot}	[token]:plot
+				|	{fork}	[token]:fork [proc]:expression [args]:expression*
+				|	{move}	[token]:move expression
+				|	{jump}	[token]:jump [x]:expression [y]:expression
+				|	{size}	[token]:size expression
+				|	{temp}	[var]:local expression
+				|	{wire}	[var]:local expression
+				|	{tint}	[token]:tint expression
+				|	{turn}	[token]:turn expression
+				|	{face}	[token]:face expression
+				|	{wait}	[token]:wait expression
+				|	{seed}	[token]:seed expression
+				|	{when}	[token]:when [cond]:expression [when]:statement* [between]:else_marker [else]:statement*
+				;
+
+	else_marker	=			;
+
+	expression	=	{number}	number
+				|	{var}		[name]:identifier
+				|	{binary}	[op]:binop [left]:expression [right]:expression
+				|	{neg}		[token]:neg expression
+				|	{sine}		[token]:sine expression
+				|	{rand}		[token]:rand
+				|	{cond}		[token]:question [cond]:expression [when]:expression [else]:expression
+				;
+
+	binop		=	{plus}		plus
+				|	{minus}		minus
+				|	{multiply}	mul
+				|	{divide}	div
+				|	{asl}		asl
+				|	{asr}		asr
+				|	{lsr}		lsr
+				|	{rol}		rol
+				|	{ror}		ror
+				|	{eq}		eq
+				|	{ne}		ne
+				|	{lt}		lt
+				|	{le}		le
+				|	{gt}		gt
+				|	{ge}		ge
+				|	{and}		and
+				|	{or}		or
+				;
